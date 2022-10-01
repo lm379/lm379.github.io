@@ -2658,7 +2658,7 @@ mark.search-keyword {
   vertical-align: middle;
 }
 .links-of-author a::before {
-  background: #4abea8;
+  background: #ff90ac;
   display: inline-block;
   margin-right: 3px;
   transform: translateY(-2px);
@@ -2677,4 +2677,11 @@ mark.search-keyword {
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+}
+.fa-bilibili {
+  background: url("/images/bilibili.svg");
+  background-position: 50% 75%;
+  background-repeat: no-repeat;
+  height: 1rem;
+  width: 1rem;
 }
