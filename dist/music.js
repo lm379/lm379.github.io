@@ -27,7 +27,7 @@ const ap = new APlayer({
         {
             "title": "打上花火",
             "author": "DAOKO、米津玄師",
-            "url": "https://pan.lm379.cn/d/Music/DAOKO%E3%80%81%E7%B1%B3%E6%B4%A5%E7%8E%84%E5%B8%AB%20-%20%E6%89%93%E4%B8%8A%E8%8A%B1%E7%81%AB.mp3",
+            "url": "https://pan.lm379.cn/d/Music/DAOKO%E3%80%81%E7%B1%B3%E6%B4%A5%E7%8E%84%E5%B8%AB%20-%20%E6%89%93%E4%B8%8A%E8%8A%B1%E7%81%AB.flac",
             "pic": "https://imgessl.kugou.com/stdmusic/20170810/20170810111013866169.jpg",
             "lrc": "https://pan.lm379.cn/d/Music/lrc/%E7%B1%B3%E6%B4%A5%E7%8E%84%E5%B8%AB%E3%80%81DAOKO%20-%20%E6%89%93%E4%B8%8A%E8%8A%B1%E7%81%AB.lrc"
         },
