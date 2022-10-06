@@ -2658,7 +2658,7 @@ mark.search-keyword {
   vertical-align: middle;
 }
 .links-of-author a::before {
-  background: #ff383e;
+  background: #e74fff;
   display: inline-block;
   margin-right: 3px;
   transform: translateY(-2px);
@@ -2687,6 +2687,13 @@ mark.search-keyword {
 }
 .fa-coolapk {
   background: url("/images/coolapk.svg");
+  background-position: 50% 75%;
+  background-repeat: no-repeat;
+  height: 1rem;
+  width: 1rem;
+}
+.fa-zhihu {
+  background: url("/images/zhihu.svg");
   background-position: 50% 75%;
   background-repeat: no-repeat;
   height: 1rem;
