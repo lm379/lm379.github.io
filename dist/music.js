@@ -13,30 +13,37 @@ const ap = new APlayer({
         {
             "title": "起风了",
             "author": "买辣椒也用券",
-            "url": "https://pan.lm379.cn/d/blog/%E4%B9%B0%E8%BE%A3%E6%A4%92%E4%B9%9F%E7%94%A8%E5%88%B8%20-%20%E8%B5%B7%E9%A3%8E%E4%BA%86.mp3",
+            "url": "https://jsd.onmicrosoft.cn/gh/lm379/files/Music/%E4%B9%B0%E8%BE%A3%E6%A4%92%E4%B9%9F%E7%94%A8%E5%88%B8%20-%20%E8%B5%B7%E9%A3%8E%E4%BA%86.mp3",
             "pic": "https://y.qq.com/music/photo_new/T002R300x300M000003j3NMw1ZBpsv_2.jpg?max_age=2592000",
-            "lrc": "https://pan.lm379.cn/d/lrc/%E4%B9%B0%E8%BE%A3%E6%A4%92%E4%B9%9F%E7%94%A8%E5%88%B8%20-%20%E8%B5%B7%E9%A3%8E%E4%BA%86.lrc"
+            "lrc": "https://jsd.onmicrosoft.cn/gh/lm379/files/lrc/CORSAK%E8%83%A1%E6%A2%A6%E5%91%A8%E3%80%81%E9%A9%AC%E5%90%9F%E5%90%9F%20-%20%E6%BA%AF%20(Reverse).lrc"
         },
         {
             "title": "溯 (Reverse)",
             "author": "CORSAK胡梦周、马吟吟",
-            "url": "https://pan.lm379.cn/d/blog/CORSAK%E8%83%A1%E6%A2%A6%E5%91%A8%E3%80%81%E9%A9%AC%E5%90%9F%E5%90%9F%20-%20%E6%BA%AF%20(Reverse).flac",
-            "lrc": "https://pan.lm379.cn/d/lrc/CORSAK%E8%83%A1%E6%A2%A6%E5%91%A8%E3%80%81%E9%A9%AC%E5%90%9F%E5%90%9F%20-%20%E6%BA%AF%20(Reverse).lrc",
+            "url": "https://jsd.cdn.zzko.cn/gh/lm379/files/Music/CORSAK%E8%83%A1%E6%A2%A6%E5%91%A8%E3%80%81%E9%A9%AC%E5%90%9F%E5%90%9F%20-%20%E6%BA%AF%20(Reverse).mp3",
+            "lrc": "https://jsd.onmicrosoft.cn/gh/lm379/files/lrc/%E7%B1%B3%E6%B4%A5%E7%8E%84%E5%B8%AB%E3%80%81DAOKO%20-%20%E6%89%93%E4%B8%8A%E8%8A%B1%E7%81%AB.lrc",
             "pic": "https://y.qq.com/music/photo_new/T002R300x300M000002yOiJ347ly2o_1.jpg?max_age=2592000"
         },
         {
             "title": "打上花火",
             "author": "DAOKO、米津玄師",
-            "url": "https://pan.lm379.cn/d/blog/DAOKO%E3%80%81%E7%B1%B3%E6%B4%A5%E7%8E%84%E5%B8%AB%20-%20%E6%89%93%E4%B8%8A%E8%8A%B1%E7%81%AB.flac",
+            "url": "https://jsd.onmicrosoft.cn/gh/lm379/files/Music/DAOKO%E3%80%81%E7%B1%B3%E6%B4%A5%E7%8E%84%E5%B8%AB%20-%20%E6%89%93%E4%B8%8A%E8%8A%B1%E7%81%AB.mp3",
             "pic": "https://imgessl.kugou.com/stdmusic/20170810/20170810111013866169.jpg",
-            "lrc": "https://pan.lm379.cn/d/lrc/%E7%B1%B3%E6%B4%A5%E7%8E%84%E5%B8%AB%E3%80%81DAOKO%20-%20%E6%89%93%E4%B8%8A%E8%8A%B1%E7%81%AB.lrc"
+            "lrc": "https://jsd.onmicrosoft.cn/gh/lm379/files/lrc/%E7%B1%B3%E6%B4%A5%E7%8E%84%E5%B8%AB%E3%80%81DAOKO%20-%20%E6%89%93%E4%B8%8A%E8%8A%B1%E7%81%AB.lrc"
         },
         {
             "title": "错位时空",
             "author": "艾辰",
-            "url": "https://pan.lm379.cn/d/blog/%E8%89%BE%E8%BE%B0%20-%20%E9%94%99%E4%BD%8D%E6%97%B6%E7%A9%BA.flac",
-            "pic": "http://tva1.sinaimg.cn/large/007Dxz4Tly1h6sf9l7x95j30ew0ewq6a.jpg",
-            "lrc": "https://pan.lm379.cn/d/lrc/%E8%89%BE%E8%BE%B0%20-%20%E9%94%99%E4%BD%8D%E6%97%B6%E7%A9%BA.lrc"
+            "url": "https://jsd.onmicrosoft.cn/gh/lm379/files/Music/%E8%89%BE%E8%BE%B0%20-%20%E9%94%99%E4%BD%8D%E6%97%B6%E7%A9%BA.mp3",
+            "pic": "https://jsd.onmicrosoft.cn/gh/lm379/files/pic/%E8%89%BE%E8%BE%B0%20-%20%E9%94%99%E4%BD%8D%E6%97%B6%E7%A9%BA.png",
+            "lrc": "https://jsd.onmicrosoft.cn/gh/lm379/files/lrc/%E8%89%BE%E8%BE%B0%20-%20%E9%94%99%E4%BD%8D%E6%97%B6%E7%A9%BA.lrc"
+        },
+        {
+            "title": "我们都拥有海洋",
+            "author": "吴青峰",
+            "url": "https://jsd.onmicrosoft.cn/gh/lm379/files/Music/%E5%90%B4%E9%9D%92%E5%B3%B0%20-%20%E6%88%91%E4%BB%AC%E9%83%BD%E6%8B%A5%E6%9C%89%E6%B5%B7%E6%B4%8B.mp3",
+            "pic": "https://jsd.onmicrosoft.cn/gh/lm379/files/pic/%E5%90%B4%E9%9D%92%E5%B3%B0%20-%20%E6%88%91%E4%BB%AC%E9%83%BD%E6%8B%A5%E6%9C%89%E6%B5%B7%E6%B4%8B.png",
+            "lrc": "https://jsd.cdn.zzko.cn/gh/lm379/files/lrc/%E5%90%B4%E9%9D%92%E5%B3%B0%20-%20%E6%88%91%E4%BB%AC%E9%83%BD%E6%8B%A5%E6%9C%89%E6%B5%B7%E6%B4%8B.lrc"
         }
 	]
 });
