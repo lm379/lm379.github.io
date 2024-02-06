@@ -1,8 +1,147 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>Hello World!!!</title>
+    <title>Welcome to my blog</title>
     <url>/2022/10/01/lm379-s-blog/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script>]]></content>
+  </entry>
+  <entry>
+    <title>玩客云安装docker-compose</title>
+    <url>/2024/02/05/%E7%8E%A9%E5%AE%A2%E4%BA%91%E5%AE%89%E8%A3%85docker-compose/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="玩客云安装docker-compose"><a href="#玩客云安装docker-compose" class="headerlink" title="玩客云安装docker-compose"></a>玩客云安装docker-compose</h1><blockquote>
+<p>玩客云安装docker比较简单，直接根据网上的教程来就行，但是docker-compose安装起来比较麻烦<br>玩客云的SOC是arm32架构，但是官方并没有发布关于docker-compose的arm32版本，所以需要自己编译或者使用大佬编译好的镜像 </p>
+</blockquote>
+<h2 id="方法一：直接安装大佬编译好的arm32版docker-compose"><a href="#方法一：直接安装大佬编译好的arm32版docker-compose" class="headerlink" title="方法一：直接安装大佬编译好的arm32版docker-compose"></a>方法一：直接安装大佬编译好的arm32版docker-compose</h2><ul>
+<li>请先自行安装好docker，安装好后执行<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">curl -fsSL https://raw.githubusercontent.com/aleksanderlech/armv7-docker-compose/master/run.sh -o /usr/local/bin/docker-compose</span><br><span class="line"><span class="built_in">chmod</span> +x /usr/local/bin/docker-compose</span><br><span class="line">docker-compose version</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h2 id="方法二：使用python"><a href="#方法二：使用python" class="headerlink" title="方法二：使用python"></a>方法二：使用python</h2><h3 id="1-检查系统环境"><a href="#1-检查系统环境" class="headerlink" title="1. 检查系统环境"></a>1. 检查系统环境</h3><blockquote>
+<p>编译需要用到python3（版本大于3.6），本文使用的系统为armbian，部分大佬编译的系统固件中默认包含了python，所以建议先检查系统中是否已经默认安装了</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">python3 -V </span><br><span class="line">pip -V</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>若没有安装，请执行</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">apt update &amp;&amp; apt install python3 python3-pip</span><br><span class="line">root@onecloud:~<span class="comment"># python3 -V</span></span><br><span class="line">Python 3.9.2</span><br><span class="line">root@onecloud:~<span class="comment"># pip -V</span></span><br><span class="line">pip 20.3.4 from /usr/lib/python3/dist-packages/pip (python 3.9)</span><br></pre></td></tr></table></figure>
+<p>若apt update失败或很慢，请先更换apt源</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">nano /etc/apt/sources.list</span><br></pre></td></tr></table></figure>
+<p>将原有文件内容全部删掉或者注释，并替换为以下内容  </p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment">## 中科大源</span></span><br><span class="line">deb http://mirrors.ustc.edu.cn/debian bullseye main contrib non-free</span><br><span class="line"><span class="comment">#deb-src http://mirrors.ustc.edu.cn/debian bullseye main contrib non-free</span></span><br><span class="line"></span><br><span class="line">deb http://mirrors.ustc.edu.cn/debian bullseye-updates main contrib non-free</span><br><span class="line"><span class="comment">#deb-src http://mirrors.ustc.edu.cn/debian bullseye-updates main contrib non-free</span></span><br><span class="line"></span><br><span class="line">deb http://mirrors.ustc.edu.cn/debian bullseye-backports main contrib non-free</span><br><span class="line"><span class="comment">#deb-src http://mirrors.ustc.edu.cn/debian bullseye-backports main contrib non-free</span></span><br><span class="line"></span><br><span class="line">deb http://mirrors.ustc.edu.cn/debian-security/ bullseye-security main contrib non-free</span><br><span class="line"><span class="comment">#deb-src http://mirrors.ustc.edu.cn/debian-security/ bullseye-security main contrib non-free</span></span><br></pre></td></tr></table></figure>
+<p>然后ctrl+o并回车保存，ctrl+x退出</p>
+<blockquote>
+<p>pip换源</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">pip config <span class="built_in">set</span> global.index-url https://pypi.tuna.tsinghua.edu.cn/simple  // 更换为清华源</span><br><span class="line">pip config <span class="built_in">set</span> global.trusted-host pypi.tuna.tsinghua.edu.cn</span><br></pre></td></tr></table></figure>
+<h3 id="2-安装部分依赖，否则pip安装docker-compose报错"><a href="#2-安装部分依赖，否则pip安装docker-compose报错" class="headerlink" title="2. 安装部分依赖，否则pip安装docker-compose报错"></a>2. 安装部分依赖，否则pip安装docker-compose报错</h3><p>编译安装rustup  </p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">curl --proto <span class="string">&#x27;=https&#x27;</span> --tlsv1.2 -sSf https://sh.rustup.rs | sh</span><br></pre></td></tr></table></figure>
+<p>安装cargo</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">apt install cargo</span><br></pre></td></tr></table></figure>
+<p>安装libffi</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">apt install libffi-dev</span><br></pre></td></tr></table></figure>
+
+<h3 id="3-pip安装docker-compose（时间很长）"><a href="#3-pip安装docker-compose（时间很长）" class="headerlink" title="3. pip安装docker-compose（时间很长）"></a>3. pip安装docker-compose（时间很长）</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">pip install docker-compose</span><br></pre></td></tr></table></figure>
+<p>检查docker-compose版本</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">root@onecloud:~<span class="comment"># docker-compose --version</span></span><br><span class="line">docker-compose version 1.29.2, build 5bece73</span><br></pre></td></tr></table></figure>
+<p>至此，安装结束</p>
+]]></content>
+  </entry>
+  <entry>
+    <title>Redmi Note 12 Turbo 官方rom下载索引(Global)</title>
+    <url>/2024/02/06/Redmi%20Note%2012%20Turbo%20%E5%AE%98%E6%96%B9rom%E4%B8%8B%E8%BD%BD%E7%B4%A2%E5%BC%95(Global)/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>MIUI其他区域正在上传中，后续一起更新</p>
+<h1 id="Redmi-Note-12-Turbo-MIUI-x2F-HyperOS官方更新包下载索引"><a href="#Redmi-Note-12-Turbo-MIUI-x2F-HyperOS官方更新包下载索引" class="headerlink" title="Redmi Note 12 Turbo MIUI&#x2F;HyperOS官方更新包下载索引"></a>Redmi Note 12 Turbo MIUI&#x2F;HyperOS官方更新包下载索引</h1><h2 id="MIUI-中国台湾版"><a href="#MIUI-中国台湾版" class="headerlink" title="MIUI 中国台湾版"></a>MIUI 中国台湾版</h2><h3 id="线刷包"><a href="#线刷包" class="headerlink" title="线刷包"></a>线刷包</h3><ul>
+<li><a href="https://cloud.lm379.cn/d/%E5%88%B7%E6%9C%BA/Redmi%20Note%2012%20Turbo/MIUI%20(Global)/TW/marble_tw_global_images_V14.0.5.0.TMRTWXM_20230807.0000.00_13.0_tw_aca570c05d.tgz">MIUI14.0.5.0</a>  </li>
+<li><a href="https://cloud.lm379.cn/d/%E5%88%B7%E6%9C%BA/Redmi%20Note%2012%20Turbo/MIUI%20(Global)/TW/marble_tw_global_images_V14.0.6.0.TMRTWXM_20231023.0000.00_13.0_tw_54434e8e88.tgz">MIUI14.0.6.0</a></li>
+</ul>
+<h3 id="卡刷包"><a href="#卡刷包" class="headerlink" title="卡刷包"></a>卡刷包</h3><ul>
+<li><a href="https://cloud.lm379.cn/d/%E5%88%B7%E6%9C%BA/Redmi%20Note%2012%20Turbo/MIUI%20(Global)/TW/miui_MARBLETWGlobal_V14.0.3.0.TMRTWXM_da8a372e29_13.0.zip">MIUI14.0.3.0</a>  </li>
+<li><a href="https://cloud.lm379.cn/d/%E5%88%B7%E6%9C%BA/Redmi%20Note%2012%20Turbo/MIUI%20(Global)/TW/miui_MARBLETWGlobal_V14.0.4.0.TMRTWXM_a176a73239_13.0.zip">MIUI14.0.4.0</a>  </li>
+<li><a href="https://cloud.lm379.cn/d/%E5%88%B7%E6%9C%BA/Redmi%20Note%2012%20Turbo/MIUI%20(Global)/TW/miui_MARBLETWGlobal_V14.0.5.0.TMRTWXM_b055d4584c_13.0.zip">MIUI14.0.5.0</a>  </li>
+<li><a href="https://cloud.lm379.cn/d/%E5%88%B7%E6%9C%BA/Redmi%20Note%2012%20Turbo/MIUI%20(Global)/TW/miui_MARBLETWGlobal_V14.0.6.0.TMRTWXM_ac81b0b2e8_13.0.zip">MIUI14.0.6.0</a></li>
+</ul>
+<h2 id="MIUI-国际版"><a href="#MIUI-国际版" class="headerlink" title="MIUI 国际版"></a>MIUI 国际版</h2><h3 id="线刷包-1"><a href="#线刷包-1" class="headerlink" title="线刷包"></a>线刷包</h3><h3 id="卡刷包-1"><a href="#卡刷包-1" class="headerlink" title="卡刷包"></a>卡刷包</h3><h2 id="MIUI-俄罗斯版"><a href="#MIUI-俄罗斯版" class="headerlink" title="MIUI 俄罗斯版"></a>MIUI 俄罗斯版</h2><h3 id="线刷包-2"><a href="#线刷包-2" class="headerlink" title="线刷包"></a>线刷包</h3><h3 id="卡刷包-2"><a href="#卡刷包-2" class="headerlink" title="卡刷包"></a>卡刷包</h3><h2 id="MIUI-印度版"><a href="#MIUI-印度版" class="headerlink" title="MIUI 印度版"></a>MIUI 印度版</h2><h3 id="线刷包-3"><a href="#线刷包-3" class="headerlink" title="线刷包"></a>线刷包</h3><h3 id="卡刷包-3"><a href="#卡刷包-3" class="headerlink" title="卡刷包"></a>卡刷包</h3><h2 id="MIUI-欧洲EEA版"><a href="#MIUI-欧洲EEA版" class="headerlink" title="MIUI 欧洲EEA版"></a>MIUI 欧洲EEA版</h2><h3 id="线刷包-4"><a href="#线刷包-4" class="headerlink" title="线刷包"></a>线刷包</h3><h3 id="卡刷包-4"><a href="#卡刷包-4" class="headerlink" title="卡刷包"></a>卡刷包</h3><h2 id="MIUI-印度尼西亚版"><a href="#MIUI-印度尼西亚版" class="headerlink" title="MIUI 印度尼西亚版"></a>MIUI 印度尼西亚版</h2><h3 id="线刷包-5"><a href="#线刷包-5" class="headerlink" title="线刷包"></a>线刷包</h3><h3 id="卡刷包-5"><a href="#卡刷包-5" class="headerlink" title="卡刷包"></a>卡刷包</h3><h2 id="MIUI-土耳其版"><a href="#MIUI-土耳其版" class="headerlink" title="MIUI 土耳其版"></a>MIUI 土耳其版</h2><h3 id="线刷包-6"><a href="#线刷包-6" class="headerlink" title="线刷包"></a>线刷包</h3><h3 id="卡刷包-6"><a href="#卡刷包-6" class="headerlink" title="卡刷包"></a>卡刷包</h3><h2 id="HyperOS-中国台湾版"><a href="#HyperOS-中国台湾版" class="headerlink" title="HyperOS 中国台湾版"></a>HyperOS 中国台湾版</h2><h3 id="线刷包-7"><a href="#线刷包-7" class="headerlink" title="线刷包"></a>线刷包</h3><ul>
+<li><a href="https://cloud.lm379.cn/d/%E5%88%B7%E6%9C%BA/Redmi%20Note%2012%20Turbo/Hyper%20OS%20(Global)/TW/marble_tw_global_images_OS1.0.1.0.UMRTWXM_20231229.0000.00_14.0_tw_44893e29fb.tgz">OS1.0.1.0</a></li>
+</ul>
+<h3 id="卡刷包-7"><a href="#卡刷包-7" class="headerlink" title="卡刷包"></a>卡刷包</h3><ul>
+<li><a href="https://cloud.lm379.cn/d/%E5%88%B7%E6%9C%BA/Redmi%20Note%2012%20Turbo/Hyper%20OS%20(Global)/TW/miui_MARBLETWGlobal_OS1.0.1.0.UMRTWXM_045d3d43d6_14.0.zip">OS1.0.1.0</a></li>
+</ul>
+<h2 id="HyperOS-国际版"><a href="#HyperOS-国际版" class="headerlink" title="HyperOS 国际版"></a>HyperOS 国际版</h2><h3 id="线刷包-8"><a href="#线刷包-8" class="headerlink" title="线刷包"></a>线刷包</h3><ul>
+<li><a href="https://cloud.lm379.cn/d/%E5%88%B7%E6%9C%BA/Redmi%20Note%2012%20Turbo/Hyper%20OS%20(Global)/Global/marble_global_images_OS1.0.2.0.UMRMIXM_20231218.0000.00_14.0_global_17a885eed3.tgz">OS1.0.2.0</a></li>
+</ul>
+<h3 id="卡刷包-8"><a href="#卡刷包-8" class="headerlink" title="卡刷包"></a>卡刷包</h3><ul>
+<li><a href="https://cloud.lm379.cn/d/%E5%88%B7%E6%9C%BA/Redmi%20Note%2012%20Turbo/Hyper%20OS%20(Global)/Global/miui_MARBLEGlobal_OS1.0.2.0.UMRMIXM_5e39b4ed67_14.0.zip">OS1.0.2.0</a></li>
+</ul>
+<h2 id="HyperOS-俄罗斯版"><a href="#HyperOS-俄罗斯版" class="headerlink" title="HyperOS 俄罗斯版"></a>HyperOS 俄罗斯版</h2><h3 id="卡刷包-9"><a href="#卡刷包-9" class="headerlink" title="卡刷包"></a>卡刷包</h3><ul>
+<li><a href="https://cloud.lm379.cn/d/%E5%88%B7%E6%9C%BA/Redmi%20Note%2012%20Turbo/Hyper%20OS%20(Global)/RU/miui_MARBLERUGlobal_OS1.0.1.0.UMRRUXM_bc53430177_14.0.zip">OS1.0.1.0</a></li>
+</ul>
+<h3 id="线刷包-9"><a href="#线刷包-9" class="headerlink" title="线刷包"></a>线刷包</h3><ul>
+<li><a href="https://cloud.lm379.cn/d/%E5%88%B7%E6%9C%BA/Redmi%20Note%2012%20Turbo/Hyper%20OS%20(Global)/RU/marble_ru_global_images_OS1.0.1.0.UMRRUXM_20240104.0000.00_14.0_ru_9dac140c35.tgz">OS1.0.1.0</a></li>
+</ul>
+<h2 id="HyperOS-印度版"><a href="#HyperOS-印度版" class="headerlink" title="HyperOS 印度版"></a>HyperOS 印度版</h2><h3 id="线刷包-10"><a href="#线刷包-10" class="headerlink" title="线刷包"></a>线刷包</h3><ul>
+<li><a href="https://cloud.lm379.cn/d/%E5%88%B7%E6%9C%BA/Redmi%20Note%2012%20Turbo/Hyper%20OS%20(Global)/IN/marble_in_global_images_OS1.0.5.0.UMRINXM_20240109.0000.00_14.0_in_1a79c90276.tgz">OS1.0.5.0</a></li>
+</ul>
+<h3 id="卡刷包-10"><a href="#卡刷包-10" class="headerlink" title="卡刷包"></a>卡刷包</h3><ul>
+<li><a href="https://cloud.lm379.cn/d/%E5%88%B7%E6%9C%BA/Redmi%20Note%2012%20Turbo/Hyper%20OS%20(Global)/IN/miui_MARBLEINGlobal_OS1.0.3.0.UMRINXM_7f6cfe7e7e_14.0.zip">OS1.0.3.0</a>  </li>
+<li><a href="https://cloud.lm379.cn/d/%E5%88%B7%E6%9C%BA/Redmi%20Note%2012%20Turbo/Hyper%20OS%20(Global)/IN/miui_MARBLEINGlobal_OS1.0.5.0.UMRINXM_497e50893d_14.0.zip">OS1.0.5.0</a></li>
+</ul>
+<h2 id="HyperOS-欧洲版"><a href="#HyperOS-欧洲版" class="headerlink" title="HyperOS 欧洲版"></a>HyperOS 欧洲版</h2><h3 id="线刷包-11"><a href="#线刷包-11" class="headerlink" title="线刷包"></a>线刷包</h3><ul>
+<li><a href="https://cloud.lm379.cn/d/%E5%88%B7%E6%9C%BA/Redmi%20Note%2012%20Turbo/Hyper%20OS%20(Global)/EEA/marble_eea_global_images_OS1.0.4.0.UMREUXM_20231129.0000.00_14.0_eea_734682258a.tgz">OS1.0.4.0</a></li>
+</ul>
+<h3 id="卡刷包-11"><a href="#卡刷包-11" class="headerlink" title="卡刷包"></a>卡刷包</h3><ul>
+<li><a href="https://cloud.lm379.cn/d/%E5%88%B7%E6%9C%BA/Redmi%20Note%2012%20Turbo/Hyper%20OS%20(Global)/EEA/miui_MARBLEEEAGlobal_OS1.0.4.0.UMREUXM_733c4626e6_14.0.zip">OS1.0.4.0</a></li>
+</ul>
+<h2 id="HyperOS-印度尼西亚版"><a href="#HyperOS-印度尼西亚版" class="headerlink" title="HyperOS 印度尼西亚版"></a>HyperOS 印度尼西亚版</h2><h3 id="线刷包-12"><a href="#线刷包-12" class="headerlink" title="线刷包"></a>线刷包</h3><ul>
+<li><a href="https://cloud.lm379.cn/d/%E5%88%B7%E6%9C%BA/Redmi%20Note%2012%20Turbo/Hyper%20OS%20(Global)/ID/marble_id_global_images_OS1.0.1.0.UMRIDXM_20231229.0000.00_14.0_id_104d3faa44.tgz">OS1.0.1.0</a></li>
+</ul>
+<h3 id="卡刷包-12"><a href="#卡刷包-12" class="headerlink" title="卡刷包"></a>卡刷包</h3><ul>
+<li><a href="https://cloud.lm379.cn/d/%E5%88%B7%E6%9C%BA/Redmi%20Note%2012%20Turbo/Hyper%20OS%20(Global)/ID/miui_MARBLEIDGlobal_OS1.0.1.0.UMRIDXM_d299b1d7e8_14.0.zip">OS1.0.1.0</a></li>
+</ul>
+<h2 id="HyperOS-土耳其版"><a href="#HyperOS-土耳其版" class="headerlink" title="HyperOS 土耳其版"></a>HyperOS 土耳其版</h2><h3 id="线刷包-13"><a href="#线刷包-13" class="headerlink" title="线刷包"></a>线刷包</h3><blockquote>
+<p>暂未发布</p>
+</blockquote>
+<h3 id="卡刷包-13"><a href="#卡刷包-13" class="headerlink" title="卡刷包"></a>卡刷包</h3><ul>
+<li><a href="https://cloud.lm379.cn/d/%E5%88%B7%E6%9C%BA/Redmi%20Note%2012%20Turbo/Hyper%20OS%20(Global)/TR/miui_MARBLETRGlobal_OS1.0.2.0.UMRTRXM_76afa5d49c_14.0.zip">OS1.0.2.0</a></li>
+</ul>
+]]></content>
+  </entry>
+  <entry>
+    <title>Redmi Note 12 Turbo 官方rom下载索引(中国大陆版)</title>
+    <url>/2024/02/06/Redmi%20Note%2012%20Turbo%20%E5%AE%98%E6%96%B9rom%E4%B8%8B%E8%BD%BD%E7%B4%A2%E5%BC%95(%E4%B8%AD%E5%9B%BD%E5%A4%A7%E9%99%86%E7%89%88)/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="Redmi-Note-12-Turbo-MIUI-x2F-HyperOS官方rom下载索引"><a href="#Redmi-Note-12-Turbo-MIUI-x2F-HyperOS官方rom下载索引" class="headerlink" title="Redmi Note 12 Turbo MIUI&#x2F;HyperOS官方rom下载索引"></a>Redmi Note 12 Turbo MIUI&#x2F;HyperOS官方rom下载索引</h1><h2 id="MIUI"><a href="#MIUI" class="headerlink" title="MIUI"></a>MIUI</h2><h3 id="线刷包"><a href="#线刷包" class="headerlink" title="线刷包"></a>线刷包</h3><ul>
+<li><a href="https://cloud.lm379.cn/d/%E5%88%B7%E6%9C%BA/Redmi%20Note%2012%20Turbo/MIUI/%E7%BA%BF%E5%88%B7/marble_images_V14.0.1.0.TMRCNXM_20230210.0000.00_13.0_cn_5ae6ea7d44.tgz">V14.0.1.0</a></li>
+<li><a href="https://cloud.lm379.cn/d/%E5%88%B7%E6%9C%BA/Redmi%20Note%2012%20Turbo/MIUI/%E7%BA%BF%E5%88%B7/marble_images_V14.0.5.0.TMRCNXM_20230317.0000.00_13.0_cn_327768a357.tgz">V14.0.5.0</a></li>
+<li><a href="https://cloud.lm379.cn/d/%E5%88%B7%E6%9C%BA/Redmi%20Note%2012%20Turbo/MIUI/%E7%BA%BF%E5%88%B7/marble_images_V14.0.10.0.TMRCNXM_20230327.0000.00_13.0_cn_41b8ae632f.tgz">V14.0.10.0</a></li>
+<li><a href="https://cloud.lm379.cn/d/%E5%88%B7%E6%9C%BA/Redmi%20Note%2012%20Turbo/MIUI/%E7%BA%BF%E5%88%B7/marble_images_V14.0.12.0.TMRCNXM_20230403.0000.00_13.0_cn_b46ffdfa96.tgz">V14.0.12.0</a></li>
+<li><a href="https://cloud.lm379.cn/d/%E5%88%B7%E6%9C%BA/Redmi%20Note%2012%20Turbo/MIUI/%E7%BA%BF%E5%88%B7/marble_images_V14.0.16.0.TMRCNXM_20230415.0000.00_13.0_cn_faf9729cf3.tgz">V14.0.16.0</a></li>
+<li><a href="https://cloud.lm379.cn/d/%E5%88%B7%E6%9C%BA/Redmi%20Note%2012%20Turbo/MIUI/%E7%BA%BF%E5%88%B7/marble_images_V14.0.19.0.TMRCNXM_20230426.0000.00_13.0_cn_5fc5692104.tgz">V14.0.19.0</a></li>
+<li><a href="https://cloud.lm379.cn/d/%E5%88%B7%E6%9C%BA/Redmi%20Note%2012%20Turbo/MIUI/%E7%BA%BF%E5%88%B7/marble_images_V14.0.20.0.TMRCNXM_20230602.0000.00_13.0_cn_aef3806799.tgz">V14.0.20.0</a></li>
+<li><a href="https://cloud.lm379.cn/d/%E5%88%B7%E6%9C%BA/Redmi%20Note%2012%20Turbo/MIUI/%E7%BA%BF%E5%88%B7/marble_images_V14.0.23.0.TMRCNXM_20230726.0000.00_13.0_cn_05ddac9d57.tgz">V14.0.23.0</a></li>
+<li><a href="https://cloud.lm379.cn/d/%E5%88%B7%E6%9C%BA/Redmi%20Note%2012%20Turbo/MIUI/%E7%BA%BF%E5%88%B7/marble_images_V14.0.27.0.TMRCNXM_20231220.0000.00_13.0_cn_20c17bd222.tgz">V14.0.27.0</a></li>
+</ul>
+<h3 id="卡刷包"><a href="#卡刷包" class="headerlink" title="卡刷包"></a>卡刷包</h3><ul>
+<li><a href="https://cloud.lm379.cn/d/%E5%88%B7%E6%9C%BA/Redmi%20Note%2012%20Turbo/MIUI/%E5%8D%A1%E5%88%B7/miui_MARBLE_V14.0.1.0.TMRCNXM_ebfaece465_13.0.zip">V14.0.1.0</a></li>
+<li><a href="https://cloud.lm379.cn/d/%E5%88%B7%E6%9C%BA/Redmi%20Note%2012%20Turbo/MIUI/%E5%8D%A1%E5%88%B7/miui_MARBLE_V14.0.2.0.TMRCNXM_e73d3a18f4_13.0.zip">V14.0.2.0</a></li>
+<li><a href="https://cloud.lm379.cn/d/%E5%88%B7%E6%9C%BA/Redmi%20Note%2012%20Turbo/MIUI/%E5%8D%A1%E5%88%B7/miui_MARBLE_V14.0.3.0.TMRCNXM_aefede495f_13.0.zip">V14.0.3.0</a></li>
+<li><a href="https://cloud.lm379.cn/d/%E5%88%B7%E6%9C%BA/Redmi%20Note%2012%20Turbo/MIUI/%E5%8D%A1%E5%88%B7/miui_MARBLE_V14.0.5.0.TMRCNXM_3b3a24f2d5_13.0.zip">V14.0.5.0</a></li>
+<li><a href="https://cloud.lm379.cn/d/%E5%88%B7%E6%9C%BA/Redmi%20Note%2012%20Turbo/MIUI/%E5%8D%A1%E5%88%B7/miui_MARBLE_V14.0.10.0.TMRCNXM_ccd8dc167f_13.0.zip">V14.0.10.0</a></li>
+<li><a href="https://cloud.lm379.cn/d/%E5%88%B7%E6%9C%BA/Redmi%20Note%2012%20Turbo/MIUI/%E5%8D%A1%E5%88%B7/miui_MARBLE_V14.0.12.0.TMRCNXM_39c5137e9d_13.0.zip">V14.0.12.0</a></li>
+<li><a href="https://cloud.lm379.cn/d/%E5%88%B7%E6%9C%BA/Redmi%20Note%2012%20Turbo/MIUI/%E5%8D%A1%E5%88%B7/miui_MARBLE_V14.0.14.0.TMRCNXM_68c05d74a9_13.0.zip">V14.0.14.0</a></li>
+<li><a href="https://cloud.lm379.cn/d/%E5%88%B7%E6%9C%BA/Redmi%20Note%2012%20Turbo/MIUI/%E5%8D%A1%E5%88%B7/miui_MARBLE_V14.0.16.0.TMRCNXM_af816f3572_13.0.zip">V14.0.16.0</a></li>
+<li><a href="https://cloud.lm379.cn/d/%E5%88%B7%E6%9C%BA/Redmi%20Note%2012%20Turbo/MIUI/%E5%8D%A1%E5%88%B7/miui_MARBLE_V14.0.18.0.TMRCNXM_b17f48d8a1_13.0.zip">V14.0.18.0</a></li>
+<li><a href="https://cloud.lm379.cn/d/%E5%88%B7%E6%9C%BA/Redmi%20Note%2012%20Turbo/MIUI/%E5%8D%A1%E5%88%B7/miui_MARBLE_V14.0.19.0.TMRCNXM_cdffc8d82e_13.0.zip">V14.0.19.0</a></li>
+<li><a href="https://cloud.lm379.cn/d/%E5%88%B7%E6%9C%BA/Redmi%20Note%2012%20Turbo/MIUI/%E5%8D%A1%E5%88%B7/miui_MARBLE_V14.0.20.0.TMRCNXM_f50020a18f_13.0.zip">V14.0.20.0</a></li>
+<li><a href="https://cloud.lm379.cn/d/%E5%88%B7%E6%9C%BA/Redmi%20Note%2012%20Turbo/MIUI/%E5%8D%A1%E5%88%B7/miui_MARBLE_V14.0.21.0.TMRCNXM_8aa9899d82_13.0.zip">V14.0.21.0</a></li>
+<li><a href="https://cloud.lm379.cn/d/%E5%88%B7%E6%9C%BA/Redmi%20Note%2012%20Turbo/MIUI/%E5%8D%A1%E5%88%B7/miui_MARBLE_V14.0.21.1.TMRCNXM_4edd461d96_13.0.zip">V14.0.21.1</a></li>
+<li><a href="https://cloud.lm379.cn/d/%E5%88%B7%E6%9C%BA/Redmi%20Note%2012%20Turbo/MIUI/%E5%8D%A1%E5%88%B7/miui_MARBLE_V14.0.22.0.TMRCNXM_40e1f05e0d_13.0.zip">V14.0.22.0</a></li>
+<li><a href="https://cloud.lm379.cn/d/%E5%88%B7%E6%9C%BA/Redmi%20Note%2012%20Turbo/MIUI/%E5%8D%A1%E5%88%B7/miui_MARBLE_V14.0.23.0.TMRCNXM_749010fa11_13.0.zip">V14.0.23.0</a></li>
+<li><a href="https://cloud.lm379.cn/d/%E5%88%B7%E6%9C%BA/Redmi%20Note%2012%20Turbo/MIUI/%E5%8D%A1%E5%88%B7/miui_MARBLE_V14.0.25.0.TMRCNXM_9189e7c3a9_13.0.zip">V14.0.25.0</a></li>
+<li><a href="https://cloud.lm379.cn/d/%E5%88%B7%E6%9C%BA/Redmi%20Note%2012%20Turbo/MIUI/%E5%8D%A1%E5%88%B7/miui_MARBLE_V14.0.27.0.TMRCNXM_07a1238ff9_13.0.zip">V14.0.27.0</a></li>
+</ul>
+<h2 id="HyperOS-中国大陆版"><a href="#HyperOS-中国大陆版" class="headerlink" title="HyperOS 中国大陆版"></a>HyperOS 中国大陆版</h2><h3 id="线刷包-1"><a href="#线刷包-1" class="headerlink" title="线刷包"></a>线刷包</h3><blockquote>
+<p>暂未发布</p>
+</blockquote>
+<h3 id="卡刷包-1"><a href="#卡刷包-1" class="headerlink" title="卡刷包"></a>卡刷包</h3><ul>
+<li><a href="https://cloud.lm379.cn/d/%E5%88%B7%E6%9C%BA/Redmi%20Note%2012%20Turbo/Hyper%20OS/miui_MARBLE_OS1.0.2.0.UMRCNXM_65288a855a_14.0.zip">OS1.0.2.0</a></li>
+</ul>
+]]></content>
   </entry>
 </search>
