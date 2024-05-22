@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#000"><meta name="generator" content="Hexo 7.2.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#000">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://mirrors.sustech.edu.cn/cdnjs/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha256-DfWjNxDkM94fVBWx1H5BMMp0Zq7luBlV8QRcSES7s+0=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://mirrors.sustech.edu.cn/cdnjs/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://mirrors.sustech.edu.cn/cdnjs/ajax/libs/pace/1.2.4/themes/blue/pace-theme-minimal.css">
+  <script src="https://mirrors.sustech.edu.cn/cdnjs/ajax/libs/pace/1.2.4/pace.min.js" integrity="sha256-gqd7YTjg/BtfqWSwsJOvndl0Bxc8gFImLEkXQT8+qj0=" crossorigin="anonymous"></script>
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"lm379.cn","root":"/","images":"/images","scheme":"Muse","darkmode":false,"version":"8.12.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":true}}</script><script src="https://mirrors.sustech.edu.cn/cdnjs/ajax/libs/hexo-theme-next/8.12.2/config.min.js"></script>
+
+    <meta name="description" content="Educoder C语言程序设计实验题">
+<meta property="og:type" content="article">
+<meta property="og:title" content="头歌C语言实验 练习10：数组与字符串">
+<meta property="og:url" content="http://lm379.cn/2024/05/02/%E5%A4%B4%E6%AD%8CC%E8%AF%AD%E8%A8%80%E5%AE%9E%E9%AA%8C/%E5%A4%B4%E6%AD%8CC%E8%AF%AD%E8%A8%80%E5%AE%9E%E9%AA%8C-%E7%BB%83%E4%B9%A010%EF%BC%9A%E6%95%B0%E7%BB%84%E4%B8%8E%E5%AD%97%E7%AC%A6%E4%B8%B2/index.html">
+<meta property="og:site_name" content="lm379のBlog">
+<meta property="og:description" content="Educoder C语言程序设计实验题">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2024-05-01T16:00:29.000Z">
+<meta property="article:modified_time" content="2024-05-01T16:43:43.041Z">
+<meta property="article:author" content="lm379">
+<meta property="article:tag" content="Educoder">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="http://lm379.cn/2024/05/02/%E5%A4%B4%E6%AD%8CC%E8%AF%AD%E8%A8%80%E5%AE%9E%E9%AA%8C/%E5%A4%B4%E6%AD%8CC%E8%AF%AD%E8%A8%80%E5%AE%9E%E9%AA%8C-%E7%BB%83%E4%B9%A010%EF%BC%9A%E6%95%B0%E7%BB%84%E4%B8%8E%E5%AD%97%E7%AC%A6%E4%B8%B2/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://lm379.cn/2024/05/02/%E5%A4%B4%E6%AD%8CC%E8%AF%AD%E8%A8%80%E5%AE%9E%E9%AA%8C/%E5%A4%B4%E6%AD%8CC%E8%AF%AD%E8%A8%80%E5%AE%9E%E9%AA%8C-%E7%BB%83%E4%B9%A010%EF%BC%9A%E6%95%B0%E7%BB%84%E4%B8%8E%E5%AD%97%E7%AC%A6%E4%B8%B2/","path":"2024/05/02/头歌C语言实验/头歌C语言实验-练习10：数组与字符串/","title":"头歌C语言实验 练习10：数组与字符串"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>头歌C语言实验 练习10：数组与字符串 | lm379のBlog</title>
+  
+
+
+
+  <script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{&quot;token&quot;: &quot;5a58651dc232489989204bf6775afe7a&quot;}'></script>
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">lm379のBlog</p>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">10</span></a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">2</span></a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">29</span></a></li><li class="menu-item menu-item-commonweal"><a href="/404/" rel="section"><i class="fa fa-heartbeat fa-fw"></i>公益 404</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC1%E5%85%B3%EF%BC%9A%E6%88%90%E7%BB%A9%E6%8E%92%E5%BA%8F"><span class="nav-number">1.</span> <span class="nav-text">第1关：成绩排序</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC2%E5%85%B3%EF%BC%9A%E8%AE%A1%E7%AE%97%E5%AD%97%E7%AC%A6%E4%B8%B2%E9%95%BF%E5%BA%A6"><span class="nav-number">2.</span> <span class="nav-text">第2关：计算字符串长度</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC3%E5%85%B3%EF%BC%9A%E5%AD%97%E7%AC%A6%E6%9B%BF%E6%8D%A2"><span class="nav-number">3.</span> <span class="nav-text">第3关：字符替换</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC4%E5%85%B3%EF%BC%9A%E7%BB%9F%E8%AE%A1%E5%AD%97%E7%AC%A6%E6%95%B0"><span class="nav-number">4.</span> <span class="nav-text">第4关：统计字符数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC5%E5%85%B3%EF%BC%9A%E6%B5%AE%E7%82%B9%E6%95%B0%E6%A0%BC%E5%BC%8F"><span class="nav-number">5.</span> <span class="nav-text">第5关：浮点数格式</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="lm379"
+      src="https://r2.lm379.cn/2024/05/4e267962f6254f01166242c803cd488f.jpg">
+  <p class="site-author-name" itemprop="name">lm379</p>
+  <div class="site-description" itemprop="description">记录个人的折腾之旅</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">29</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">10</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/lm379" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;lm379" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:lm379@foxmail.com" title="E-Mail → mailto:lm379@foxmail.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://weibo.com/u/6997206595" title="Weibo → https:&#x2F;&#x2F;weibo.com&#x2F;u&#x2F;6997206595" rel="noopener" target="_blank"><i class="fab fa-weibo fa-fw"></i>Weibo</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://space.bilibili.com/299502822" title="B站 → https:&#x2F;&#x2F;space.bilibili.com&#x2F;299502822" rel="noopener" target="_blank"><i class="fa bilibili fa-fw"></i>B站</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.zhihu.com/people/yi-ben-zheng-jing-1-19" title="知乎 → https:&#x2F;&#x2F;www.zhihu.com&#x2F;people&#x2F;yi-ben-zheng-jing-1-19" rel="noopener" target="_blank"><i class="fa zhihu fa-fw"></i>知乎</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="http://www.coolapk.com/u/3126124" title="酷安 → http:&#x2F;&#x2F;www.coolapk.com&#x2F;u&#x2F;3126124" rel="noopener" target="_blank"><i class="fa coolapk fa-fw"></i>酷安</a>
+      </span>
+  </div>
+
+
+  <div class="links-of-blogroll site-overview-item animated">
+    <div class="links-of-blogroll-title"><i class="fa fa-globe fa-fw"></i>
+      Links
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <a href="https://pan.lm379.cn/" title="https:&#x2F;&#x2F;pan.lm379.cn" rel="noopener" target="_blank">Alist云盘</a>
+        </li>
+    </ul>
+  </div>
+
+        </div>
+      </div>
+      
+      <link rel="stylesheet" href="/dist/APlayer.min.css">
+      <div id="aplayer"></div>
+      <script type="text/javascript" src="/dist/APlayer.min.js"></script>
+      <script type="text/javascript" src="/dist/music.js"></script>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://lm379.cn/2024/05/02/%E5%A4%B4%E6%AD%8CC%E8%AF%AD%E8%A8%80%E5%AE%9E%E9%AA%8C/%E5%A4%B4%E6%AD%8CC%E8%AF%AD%E8%A8%80%E5%AE%9E%E9%AA%8C-%E7%BB%83%E4%B9%A010%EF%BC%9A%E6%95%B0%E7%BB%84%E4%B8%8E%E5%AD%97%E7%AC%A6%E4%B8%B2/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://r2.lm379.cn/2024/05/4e267962f6254f01166242c803cd488f.jpg">
+      <meta itemprop="name" content="lm379">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="lm379のBlog">
+      <meta itemprop="description" content="记录个人的折腾之旅">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="头歌C语言实验 练习10：数组与字符串 | lm379のBlog">
+      <meta itemprop="description" content="Educoder C语言程序设计实验题">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          头歌C语言实验 练习10：数组与字符串
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2024-05-02 00:00:29 / 修改时间：00:43:43" itemprop="dateCreated datePublished" datetime="2024-05-02T00:00:29+08:00">2024-05-02</time>
+    </span>
+
+  
+</div>
+
+            <div class="post-description">Educoder C语言程序设计实验题</div>
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h2 id="第1关：成绩排序"><a href="#第1关：成绩排序" class="headerlink" title="第1关：成绩排序"></a>第1关：成绩排序</h2><p>问题描述<br>在一个班上最多有50名学生。<br>期末考试结束后，班主任张老师需要对班上学生的成绩按照从高到低的顺序排序，以便可以查看班上考得最好的前几名同学的成绩。<br>聪明的你，能利用所学的知识，编写一段程序，帮助辛苦的张老师完成这个任务吗？</p>
+<p>输入<br>输入包括两行：<br>输入的第一行包括若干个浮点数的百分制成绩，最后以一个负数作为结束标记。<br>输入的第二行只有一个整数n，表示张老师需要查看成绩最高的前n个成绩。</p>
+<p>提示：输入数据的第一行最多可能有51个浮点数。</p>
+<p>输出<br>按照从高到低的顺序输出成绩最高的前m个成绩，每个成绩保留1位小数，并且单独占一行输出。</p>
+<p>提示：输入的n可能大于实际成绩个数，此时应该按照实际成绩个数输出。</p>
+<p>输入示例<br>93.65 87.46 56.3 97.37 93.5 89.6 78.3 89.63 95 48.42 96.54 -4<br>5</p>
+<p>输出示例<br>97.4<br>96.5<br>95.0<br>93.7<br>93.5</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="type">void</span> <span class="title function_">sort</span><span class="params">(<span class="type">double</span> score[], <span class="type">int</span> n)</span>;</span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span> &#123;</span><br><span class="line">    <span class="type">int</span> n, i = <span class="number">0</span>, num = <span class="number">0</span>; </span><br><span class="line">    <span class="type">double</span> score[<span class="number">51</span>];</span><br><span class="line">    <span class="type">double</span> t;</span><br><span class="line">    <span class="keyword">while</span> (<span class="number">1</span>) &#123;</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">&quot;%lf&quot;</span>, &amp;t);</span><br><span class="line">        <span class="keyword">if</span> (t &gt;= <span class="number">0</span>) &#123;</span><br><span class="line">            score[i] = t;</span><br><span class="line">            i++;</span><br><span class="line">            num++; </span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>, &amp;n);</span><br><span class="line">    sort(score, num);</span><br><span class="line">    <span class="keyword">if</span> (n &gt; num) &#123;</span><br><span class="line">        n = num;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; n; i++) &#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;%.1lf\n&quot;</span>, score[i]);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 冒泡排序</span></span><br><span class="line"><span class="type">void</span> <span class="title function_">sort</span><span class="params">(<span class="type">double</span> score[], <span class="type">int</span> n)</span> &#123;</span><br><span class="line">    <span class="type">int</span> i,j;</span><br><span class="line">    <span class="type">double</span> t;</span><br><span class="line">    <span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;n;i++)&#123;</span><br><span class="line">        <span class="keyword">for</span>(j=<span class="number">0</span>;j&lt;n;j++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(score[j]&lt;score[j+<span class="number">1</span>])&#123;</span><br><span class="line">                t=score[j];</span><br><span class="line">                score[j]=score[j+<span class="number">1</span>];</span><br><span class="line">                score[j+<span class="number">1</span>]=t;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="第2关：计算字符串长度"><a href="#第2关：计算字符串长度" class="headerlink" title="第2关：计算字符串长度"></a>第2关：计算字符串长度</h2><p>问题描述<br>字符串长度是指字符串中实际包含的字符个数。在C语言中，按照C语言中字符串的规范，字符串的长度可以定义为：“<font color=green>字符数组中第一个‘\0’字符之前的字符的个数</font>”。<br>请编写一个自定义函数，不调用系统库函数strlen()，计算字符串的长度。自定义函数可以声明为：<br>int getStrLen(char str[]);<br>主函数中由用户输入一个长度不超过100的字符串（可能包含空格），调用自定义函数得到字符串长度后输出。</p>
+<p>输入<br>一行字符串，使用gets(str)方法读取此行字符串。</p>
+<p>输出<br>一个非负整数，表示字符串的长度。</p>
+<p>输入示例<br>I am a dreamer on air.</p>
+<p>输出示例<br>22</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="comment">/* 函数声明 */</span></span><br><span class="line"><span class="type">int</span> <span class="title function_">getStrLen</span><span class="params">(<span class="type">char</span> str[])</span>;</span><br><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span> &#123;</span><br><span class="line">    <span class="comment">/* 在这里补充代码完成整个程序的功能 */</span></span><br><span class="line">    <span class="type">char</span> str[<span class="number">101</span>];</span><br><span class="line">    <span class="type">int</span> len;</span><br><span class="line">    gets(str);</span><br><span class="line">    len=getStrLen(str);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;%d&quot;</span>,len);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/* 函数实现 */</span></span><br><span class="line"><span class="type">int</span> <span class="title function_">getStrLen</span><span class="params">(<span class="type">char</span> str[])</span> &#123;</span><br><span class="line">    <span class="comment">/* 请在下面补充你的代码实现函数功能 */</span></span><br><span class="line">    <span class="type">int</span> i;</span><br><span class="line">    <span class="keyword">for</span>(i=<span class="number">0</span>;str[i]!=<span class="string">&#x27;\0&#x27;</span>;i++);</span><br><span class="line">    <span class="keyword">return</span> i;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="第3关：字符替换"><a href="#第3关：字符替换" class="headerlink" title="第3关：字符替换"></a>第3关：字符替换</h2><p>问题描述<br>把一个字符串中特定的字符用给定的字符替换，得到一个新的字符串。</p>
+<p>输入<br>输入数据有多行，第一行是要处理的字符串的数目n。<br>其余各行中每行内容由一个空格分开的三个部分组成：<br>第一个部分是一个字符串，即需要替换字符的字符串，字符串中没有空格并且长度小于等于30个字符；<br>第二个部分是一个字符，即原字符串中需要被替换的字符；<br>第三个部分是一个字符，即用于替换的新字符。</p>
+<p>输出<br>有多行，每行输出对应的替换后的字符串。</p>
+<p>输入示例<br>1<br>hello-how-are-you o O</p>
+<p>输出示例<br>hellO-hOw-are-yOu</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="type">void</span> <span class="title function_">replace</span><span class="params">(<span class="type">char</span> str[],<span class="type">char</span> a,<span class="type">char</span> b)</span>&#123;</span><br><span class="line">    <span class="type">int</span> i;</span><br><span class="line">    <span class="keyword">for</span>(i=<span class="number">0</span>;str[i]!=<span class="string">&#x27;\0&#x27;</span>;i++)&#123;</span><br><span class="line">        <span class="keyword">if</span>(str[i]==a)&#123;</span><br><span class="line">            str[i]=b;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span>&#123;</span><br><span class="line">    <span class="type">int</span> n,i,j;</span><br><span class="line">    <span class="type">char</span> str[<span class="number">31</span>];</span><br><span class="line">    <span class="type">char</span> a,b;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>,&amp;n);</span><br><span class="line">    <span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;n;i++)&#123;</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">&quot;%s %c %c&quot;</span>,&amp;str,&amp;a,&amp;b);</span><br><span class="line">        replace(str,a,b);</span><br><span class="line">        <span class="keyword">for</span>(j=<span class="number">0</span>;str[j]!=<span class="string">&#x27;\0&#x27;</span>;j++)&#123;</span><br><span class="line">            <span class="built_in">printf</span>(<span class="string">&quot;%c&quot;</span>,str[j]);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;\n&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="第4关：统计字符数"><a href="#第4关：统计字符数" class="headerlink" title="第4关：统计字符数"></a>第4关：统计字符数</h2><p>问题描述<br>判断一个由a~z这26个小写字母组成的字符串中哪个字母出现的次数最多。</p>
+<p>输入<br>第一行是测试数据的组数n，接下来的每组测试数据单独占1行，是一个由a~z这26个小写字母组成的字符串，每行数据不超过1000个字符且非空。<br>提示：每个字符串中不会包含空格。</p>
+<p>输出<br>n行，每行输出对应一个输入，包括出现次数最多的字符和该字符出现的次数，中间是一个空格。如果有多个字符出现的次数相同且最多，那么输出ASCII码最小的那一个字符。</p>
+<p>输入示例<br>2<br>abbccc<br>adfadffasdf</p>
+<p>输出示例<br>c 3<br>f 4</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="type">void</span> <span class="title function_">Count</span><span class="params">(<span class="type">char</span> str[],<span class="type">int</span> count[])</span>&#123;</span><br><span class="line">    <span class="type">int</span> i;</span><br><span class="line">    <span class="keyword">for</span>(i=<span class="number">0</span>;str[i]!=<span class="string">&#x27;\0&#x27;</span>;i++)&#123;</span><br><span class="line">        count[str[i]-<span class="string">&#x27;a&#x27;</span>]++;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="type">int</span> <span class="title function_">Findmax</span><span class="params">(<span class="type">int</span> count[])</span>&#123;</span><br><span class="line">    <span class="type">int</span> max=<span class="number">0</span>;</span><br><span class="line">    <span class="type">int</span> i;</span><br><span class="line">    <span class="type">int</span> maxalpha=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;<span class="number">26</span>;i++)&#123;</span><br><span class="line">        <span class="keyword">if</span>(count[i]&gt;max)&#123;</span><br><span class="line">            max=count[i];</span><br><span class="line">            maxalpha=i;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> maxalpha;</span><br><span class="line">&#125;</span><br><span class="line"><span class="type">void</span> <span class="title function_">ArrtoZero</span><span class="params">(<span class="type">int</span> arr[],<span class="type">int</span> n)</span>&#123;</span><br><span class="line">    <span class="type">int</span> i;</span><br><span class="line">    <span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;n;i++)&#123;</span><br><span class="line">        arr[i]=<span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span>&#123;</span><br><span class="line">    <span class="type">int</span> i,n,max;</span><br><span class="line">    <span class="type">int</span> count[<span class="number">26</span>]=&#123;<span class="number">0</span>&#125;;</span><br><span class="line">    <span class="type">char</span> str[<span class="number">1001</span>];</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>,&amp;n);</span><br><span class="line">    <span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;n;i++)&#123;</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">&quot;%s&quot;</span>,&amp;str);</span><br><span class="line">        Count(str,count);</span><br><span class="line">        max=Findmax(count);</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;%c %d\n&quot;</span>,<span class="string">&#x27;a&#x27;</span>+max,count[max]);</span><br><span class="line">        ArrtoZero(count,<span class="number">26</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="第5关：浮点数格式"><a href="#第5关：浮点数格式" class="headerlink" title="第5关：浮点数格式"></a>第5关：浮点数格式</h2><p>问题描述<br>输入n（0＜n≤50）个浮点数，要求把这n个浮点数重新排列（并非排序，而是对齐）后再输出。每个浮点数中都有小数点且总长度不超过50位。</p>
+<p>输入<br>第1行是一个正整数n（n≤50），后面n行每行一个浮点数，每个浮点数中都保证小数点会出现。浮点数的长度不超过50位，注意这里的浮点数会超过系统标准浮点数的表示范围。</p>
+<p>输出<br>n行，每行对应一个输入。要求每个浮点数的小数点在同一列上，同时要求首列上不会全部是空格。</p>
+<p>输入示例<br>2<br>-0.34345<br>4545.232</p>
+<p>输出示例<br>  -0.34345<br>4545.232</p>
+<p>提示<br>输入的浮点数位数很长，远远超过了float甚至double类型所能表示的范围。并且这些浮点数不需要参与算数运算，因此可以把它们考虑为字符串进行处理。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdlib.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;string.h&gt;</span></span></span><br><span class="line"><span class="type">void</span> <span class="title function_">FindPoint</span><span class="params">(<span class="type">char</span> str[][<span class="number">51</span>], <span class="type">int</span> *point, <span class="type">int</span> *beforepoint, <span class="type">int</span> n)</span>&#123;</span><br><span class="line">    <span class="type">int</span> i, j;</span><br><span class="line">    <span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; n; i++)&#123;</span><br><span class="line">        <span class="keyword">for</span> (j = <span class="number">0</span>; str[i][j] != <span class="string">&#x27;\0&#x27;</span>; j++)&#123;</span><br><span class="line">            <span class="keyword">if</span> (str[i][j] == <span class="string">&#x27;.&#x27;</span>)&#123;</span><br><span class="line">                point[i] = j;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span>&#123;</span><br><span class="line">                beforepoint[i]++;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="type">int</span> <span class="title function_">Findmax</span><span class="params">(<span class="type">int</span> *point, <span class="type">int</span> n)</span>&#123;</span><br><span class="line">    <span class="type">int</span> max = point[<span class="number">0</span>];</span><br><span class="line">    <span class="type">int</span> i;</span><br><span class="line">    <span class="keyword">for</span> (i = <span class="number">1</span>; i &lt; n; i++)&#123;</span><br><span class="line">        <span class="keyword">if</span> (point[i] &gt; max)</span><br><span class="line">            max = point[i];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> max;</span><br><span class="line">&#125;</span><br><span class="line"><span class="type">void</span> <span class="title function_">Printstr</span><span class="params">(<span class="type">char</span> str[][<span class="number">51</span>], <span class="type">int</span> *beforepoint, <span class="type">int</span> n, <span class="type">int</span> max)</span>&#123;</span><br><span class="line">    <span class="type">int</span> i, j;</span><br><span class="line">    <span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; n; i++)&#123;</span><br><span class="line">        <span class="keyword">for</span> (j = <span class="number">0</span>; j &lt; max - beforepoint[i]; j++)&#123;</span><br><span class="line">            <span class="built_in">printf</span>(<span class="string">&quot; &quot;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">puts</span>(str[i]);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span>&#123;</span><br><span class="line">    <span class="type">int</span> n, i, max;</span><br><span class="line">    <span class="type">int</span> *point;</span><br><span class="line">    <span class="type">int</span> beforepoint[<span class="number">50</span>]=&#123;<span class="number">0</span>&#125;;</span><br><span class="line">    <span class="type">char</span> str[<span class="number">50</span>][<span class="number">51</span>];</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>, &amp;n);</span><br><span class="line">    point=(<span class="type">int</span>*)<span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(<span class="type">int</span>)*n);</span><br><span class="line">    <span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; n; i++)&#123;</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">&quot;%50s&quot;</span>, str[i]);</span><br><span class="line">    &#125;</span><br><span class="line">    FindPoint(str, point, beforepoint, n);</span><br><span class="line">    max = Findmax(point, n);</span><br><span class="line">    Printstr(str, beforepoint, n, max);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="reward-container">
+  <div>Buy me a coffee</div>
+  <button>
+    赞赏
+  </button>
+  <div class="post-reward">
+      <div>
+        <img src="https://r2.lm379.cn/2024/04/f597f96be857f5d530a787c8b81731da.jpg" alt="lm379 支付宝">
+        <span>支付宝</span>
+      </div>
+
+  </div>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/Educoder/" rel="tag"><i class="fa fa-tag"></i> Educoder</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2024/05/02/%E5%A4%B4%E6%AD%8CC%E8%AF%AD%E8%A8%80%E5%AE%9E%E9%AA%8C/%E5%A4%B4%E6%AD%8CC%E8%AF%AD%E8%A8%80%E5%AE%9E%E9%AA%8C-%E8%BE%85%E5%8A%A9%E7%BB%83%E4%B9%A010%EF%BC%9A%E4%BD%BF%E7%94%A8%E5%AD%97%E7%AC%A6%E4%B8%B2/" rel="prev" title="头歌C语言实验 辅助练习10：使用字符串">
+                  <i class="fa fa-chevron-left"></i> 头歌C语言实验 辅助练习10：使用字符串
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2024/05/02/%E5%A4%B4%E6%AD%8CC%E8%AF%AD%E8%A8%80%E5%AE%9E%E9%AA%8C/%E5%A4%B4%E6%AD%8CC%E8%AF%AD%E8%A8%80%E5%AE%9E%E9%AA%8C-%E8%BE%85%E5%8A%A9%E7%BB%83%E4%B9%A08%EF%BC%9A%E8%87%AA%E5%AE%9A%E4%B9%89%E5%87%BD%E6%95%B0/" rel="next" title="头歌C语言实验 辅助练习8：自定义函数">
+                  头歌C语言实验 辅助练习8：自定义函数 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="beian"><a href="https://beian.miit.gov.cn/" rel="noopener" target="_blank">蜀ICP备2022016740号-1 </a>
+  </div>
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2024</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">lm379</span>
+</div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://mirrors.sustech.edu.cn/cdnjs/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="https://mirrors.sustech.edu.cn/cdnjs/ajax/libs/hexo-theme-next/8.12.2/comments.min.js"></script><script src="https://mirrors.sustech.edu.cn/cdnjs/ajax/libs/hexo-theme-next/8.12.2/utils.min.js"></script><script src="https://mirrors.sustech.edu.cn/cdnjs/ajax/libs/hexo-theme-next/8.12.2/motion.min.js"></script><script src="https://mirrors.sustech.edu.cn/cdnjs/ajax/libs/hexo-theme-next/8.12.2/schemes/muse.min.js"></script><script src="https://mirrors.sustech.edu.cn/cdnjs/ajax/libs/hexo-theme-next/8.12.2/next-boot.min.js"></script>
+
+  
+<script src="https://mirrors.sustech.edu.cn/cdnjs/ajax/libs/hexo-generator-searchdb/1.4.0/search.js" integrity="sha256-vXZMYLEqsROAXkEw93GGIvaB2ab+QW6w3+1ahD9nXXA=" crossorigin="anonymous"></script>
+<script src="https://mirrors.sustech.edu.cn/cdnjs/ajax/libs/hexo-theme-next/8.12.2/third-party/search/local-search.min.js"></script>
+
+
+
+
+  <script src="https://mirrors.sustech.edu.cn/cdnjs/ajax/libs/hexo-theme-next/8.12.2/third-party/pace.min.js"></script>
+
+  
+
+
+
+
+
+
+  <script type="text/javascript" src="\js\FunnyTitle.js"></script>
+
+</body>
+</html>

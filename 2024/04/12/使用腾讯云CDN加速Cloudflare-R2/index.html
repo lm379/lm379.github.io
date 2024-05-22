@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#000"><meta name="generator" content="Hexo 7.2.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#000">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://mirrors.sustech.edu.cn/cdnjs/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha256-DfWjNxDkM94fVBWx1H5BMMp0Zq7luBlV8QRcSES7s+0=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://mirrors.sustech.edu.cn/cdnjs/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://mirrors.sustech.edu.cn/cdnjs/ajax/libs/pace/1.2.4/themes/blue/pace-theme-minimal.css">
+  <script src="https://mirrors.sustech.edu.cn/cdnjs/ajax/libs/pace/1.2.4/pace.min.js" integrity="sha256-gqd7YTjg/BtfqWSwsJOvndl0Bxc8gFImLEkXQT8+qj0=" crossorigin="anonymous"></script>
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"lm379.cn","root":"/","images":"/images","scheme":"Muse","darkmode":false,"version":"8.12.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":true}}</script><script src="https://mirrors.sustech.edu.cn/cdnjs/ajax/libs/hexo-theme-next/8.12.2/config.min.js"></script>
+
+    <meta name="description" content="为Cloudflare提供的对象存储启用CDN加速">
+<meta property="og:type" content="article">
+<meta property="og:title" content="使用腾讯云CDN加速Cloudflare R2">
+<meta property="og:url" content="http://lm379.cn/2024/04/12/%E4%BD%BF%E7%94%A8%E8%85%BE%E8%AE%AF%E4%BA%91CDN%E5%8A%A0%E9%80%9FCloudflare-R2/index.html">
+<meta property="og:site_name" content="lm379のBlog">
+<meta property="og:description" content="为Cloudflare提供的对象存储启用CDN加速">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://r2.lm379.cn/2024%2F03%2F11a8baf42d6804470d7766d0e3b681a5.png">
+<meta property="og:image" content="https://r2.lm379.cn/2024/04/b08396ba1c00b276314fbca50fc8a22d.png">
+<meta property="og:image" content="https://r2.lm379.cn/2024/04/258a25bcbfa324e35920ba477a6cb2a2.png">
+<meta property="og:image" content="https://r2.lm379.cn/2024/04/b0dd69ca8dc8fec01e496f3ffdaf759e.png">
+<meta property="og:image" content="https://r2.lm379.cn/2024/04/5dd50dbea8fb92e3cb50feb9ee2e9dae.png">
+<meta property="og:image" content="https://r2.lm379.cn/2024/04/11b880d1e3769b2fb3621a7fbf299308.png">
+<meta property="og:image" content="https://r2.lm379.cn/2024/04/46d08664bd44ce3dcb5e048b7cb2ce5a.png">
+<meta property="og:image" content="https://r2.lm379.cn/2024/04/575bce19d4e2f310e60e1427f78c0c38.png">
+<meta property="og:image" content="https://r2.lm379.cn/2024/04/3ad368de42bb6102f40dfaf1a7c8847f.png">
+<meta property="og:image" content="https://r2.lm379.cn/2024/04/27b39b10cdadd23ff0c1e09b92dc3564.png">
+<meta property="og:image" content="https://r2.lm379.cn/2024/04/469c1b5d0bb8a1ee20fa0e79fe9faa1e.png">
+<meta property="og:image" content="https://r2.lm379.cn/2024/04/9fd379fe1c425a359622e3a489977f7e.png">
+<meta property="article:published_time" content="2024-04-12T11:50:36.000Z">
+<meta property="article:modified_time" content="2024-05-21T09:33:31.305Z">
+<meta property="article:author" content="lm379">
+<meta property="article:tag" content="hexo">
+<meta property="article:tag" content="图床">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://r2.lm379.cn/2024%2F03%2F11a8baf42d6804470d7766d0e3b681a5.png">
+
+
+<link rel="canonical" href="http://lm379.cn/2024/04/12/%E4%BD%BF%E7%94%A8%E8%85%BE%E8%AE%AF%E4%BA%91CDN%E5%8A%A0%E9%80%9FCloudflare-R2/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://lm379.cn/2024/04/12/%E4%BD%BF%E7%94%A8%E8%85%BE%E8%AE%AF%E4%BA%91CDN%E5%8A%A0%E9%80%9FCloudflare-R2/","path":"2024/04/12/使用腾讯云CDN加速Cloudflare-R2/","title":"使用腾讯云CDN加速Cloudflare R2"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>使用腾讯云CDN加速Cloudflare R2 | lm379のBlog</title>
+  
+
+
+
+  <script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{&quot;token&quot;: &quot;5a58651dc232489989204bf6775afe7a&quot;}'></script>
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">lm379のBlog</p>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">10</span></a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">2</span></a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">29</span></a></li><li class="menu-item menu-item-commonweal"><a href="/404/" rel="section"><i class="fa fa-heartbeat fa-fw"></i>公益 404</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8%E8%85%BE%E8%AE%AF%E4%BA%91CDN%E5%8A%A0%E9%80%9FCloudflare-R2"><span class="nav-number">1.</span> <span class="nav-text">使用腾讯云CDN加速Cloudflare R2</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BB%80%E4%B9%88%E6%98%AFCloudflare-R2"><span class="nav-number">1.1.</span> <span class="nav-text">什么是Cloudflare R2</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%88%9B%E5%BB%BAR2-API%E4%BB%A4%E7%89%8C"><span class="nav-number">1.2.</span> <span class="nav-text">创建R2 API令牌</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%90%AF%E7%94%A8%E8%85%BE%E8%AE%AF%E4%BA%91CDN%E5%8A%A0%E9%80%9F"><span class="nav-number">1.3.</span> <span class="nav-text">启用腾讯云CDN加速</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#R2%E6%B7%BB%E5%8A%A0%E7%A4%BA%E4%BE%8B%EF%BC%9APicGo"><span class="nav-number">1.4.</span> <span class="nav-text">R2添加示例：PicGo</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="lm379"
+      src="https://r2.lm379.cn/2024/05/4e267962f6254f01166242c803cd488f.jpg">
+  <p class="site-author-name" itemprop="name">lm379</p>
+  <div class="site-description" itemprop="description">记录个人的折腾之旅</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">29</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">10</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/lm379" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;lm379" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:lm379@foxmail.com" title="E-Mail → mailto:lm379@foxmail.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://weibo.com/u/6997206595" title="Weibo → https:&#x2F;&#x2F;weibo.com&#x2F;u&#x2F;6997206595" rel="noopener" target="_blank"><i class="fab fa-weibo fa-fw"></i>Weibo</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://space.bilibili.com/299502822" title="B站 → https:&#x2F;&#x2F;space.bilibili.com&#x2F;299502822" rel="noopener" target="_blank"><i class="fa bilibili fa-fw"></i>B站</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.zhihu.com/people/yi-ben-zheng-jing-1-19" title="知乎 → https:&#x2F;&#x2F;www.zhihu.com&#x2F;people&#x2F;yi-ben-zheng-jing-1-19" rel="noopener" target="_blank"><i class="fa zhihu fa-fw"></i>知乎</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="http://www.coolapk.com/u/3126124" title="酷安 → http:&#x2F;&#x2F;www.coolapk.com&#x2F;u&#x2F;3126124" rel="noopener" target="_blank"><i class="fa coolapk fa-fw"></i>酷安</a>
+      </span>
+  </div>
+
+
+  <div class="links-of-blogroll site-overview-item animated">
+    <div class="links-of-blogroll-title"><i class="fa fa-globe fa-fw"></i>
+      Links
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <a href="https://pan.lm379.cn/" title="https:&#x2F;&#x2F;pan.lm379.cn" rel="noopener" target="_blank">Alist云盘</a>
+        </li>
+    </ul>
+  </div>
+
+        </div>
+      </div>
+      
+      <link rel="stylesheet" href="/dist/APlayer.min.css">
+      <div id="aplayer"></div>
+      <script type="text/javascript" src="/dist/APlayer.min.js"></script>
+      <script type="text/javascript" src="/dist/music.js"></script>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://lm379.cn/2024/04/12/%E4%BD%BF%E7%94%A8%E8%85%BE%E8%AE%AF%E4%BA%91CDN%E5%8A%A0%E9%80%9FCloudflare-R2/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://r2.lm379.cn/2024/05/4e267962f6254f01166242c803cd488f.jpg">
+      <meta itemprop="name" content="lm379">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="lm379のBlog">
+      <meta itemprop="description" content="记录个人的折腾之旅">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="使用腾讯云CDN加速Cloudflare R2 | lm379のBlog">
+      <meta itemprop="description" content="为Cloudflare提供的对象存储启用CDN加速">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          使用腾讯云CDN加速Cloudflare R2
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2024-04-12 19:50:36" itemprop="dateCreated datePublished" datetime="2024-04-12T19:50:36+08:00">2024-04-12</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2024-05-21 17:33:31" itemprop="dateModified" datetime="2024-05-21T17:33:31+08:00">2024-05-21</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/" itemprop="url" rel="index"><span itemprop="name">博客搭建</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+            <div class="post-description">为Cloudflare提供的对象存储启用CDN加速</div>
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h1 id="使用腾讯云CDN加速Cloudflare-R2"><a href="#使用腾讯云CDN加速Cloudflare-R2" class="headerlink" title="使用腾讯云CDN加速Cloudflare R2"></a>使用腾讯云CDN加速Cloudflare R2</h1><h2 id="什么是Cloudflare-R2"><a href="#什么是Cloudflare-R2" class="headerlink" title="什么是Cloudflare R2"></a>什么是Cloudflare R2</h2><p>Cloudflare R2，即Cloudflare推出的对象存储，兼容AWS S3协议，提供免费10G存储空间以及每月 <code>100万次写</code>，<code>1000万次读</code>操作，<code>无流量费用</code>，这点对个人用户来说基本是 <code>免费</code><br><img src="https://r2.lm379.cn/2024%2F03%2F11a8baf42d6804470d7766d0e3b681a5.png" alt="Clouflare R2官方介绍"><br>但是不出意外的，Cloudflare R2免费版没有提供 <code>中国大陆</code>的节点，虽然其 <code>亚太</code>地区节点访问速度还可以，但是架不住延迟还是挺高的，所以笔者想到了用境内CDN加速，并且试了下只需要更改自定义域名即可，其他什么操作都不用，还是很方便的</p>
+<h2 id="创建R2-API令牌"><a href="#创建R2-API令牌" class="headerlink" title="创建R2 API令牌"></a>创建R2 API令牌</h2><p>打开<a target="_blank" rel="noopener" href="https://dash.cloudflare.com/">Cloudflare控制台</a>，点击左侧的R2，首次打开需要验证开通，用外币信用卡或者 <code>Paypal绑定银联卡</code>即可，中国大陆的用户建议直接后者</p>
+<blockquote>
+<p><del>都2024年了，不会还有人不知道Paypal国区早就开放了吧</del><br>下面的内容需要你至少有 <code>一个存储桶</code>，没有存储桶的自己去创建，按下图来就行，区域最好选 <code>亚太地区</code><br><img src="https://r2.lm379.cn/2024/04/b08396ba1c00b276314fbca50fc8a22d.png"></p>
+</blockquote>
+<p>接着点击右侧管理 <code>API令牌</code>，点击 <code>管理R2 API令牌</code>去创建一个API令牌<br><img src="https://r2.lm379.cn/2024/04/258a25bcbfa324e35920ba477a6cb2a2.png"><br>名称随意，权限建议 <code>对象读和写</code>，可以指定存储桶，根据实际情况来<br><img src="https://r2.lm379.cn/2024/04/b0dd69ca8dc8fec01e496f3ffdaf759e.png"><br>创建好令牌会显示具体的密钥ID和访问密钥，以及调用API的网址，将这个密钥保存好，即下图的三个<br><img src="https://r2.lm379.cn/2024/04/5dd50dbea8fb92e3cb50feb9ee2e9dae.png"><br><code>&lt;a id=&quot;s3api&quot;&gt;&lt;/a&gt;</code><br>回到创建的 <code>存储桶</code>，点击设置<br><img src="https://r2.lm379.cn/2024/04/11b880d1e3769b2fb3621a7fbf299308.png"><br><code>&lt;a id=&quot;domain&quot;&gt;&lt;/a&gt;</code>往下翻找到 <code>自定义域名</code>，为存储桶添加一个自定义域名(后面要用到)</p>
+<blockquote>
+<p>这个域名需要托管在cloudflare，如果CF上没有域名或者不想改域名的DNS记录的，可以尝试启用 <code>r2.dev子域</code><br><img src="https://r2.lm379.cn/2024/04/46d08664bd44ce3dcb5e048b7cb2ce5a.png"></p>
+</blockquote>
+<h2 id="启用腾讯云CDN加速"><a href="#启用腾讯云CDN加速" class="headerlink" title="启用腾讯云CDN加速"></a>启用腾讯云CDN加速</h2><p>打开<a target="_blank" rel="noopener" href="https://console.cloud.tencent.com/cdn">腾讯云CDN控制台</a>，添加一个域名，加速中国大陆区域需要域名已经 <code>备案</code>，没有备案的选 <code>中国境外</code>即可实测腾讯云CDN境外节点在国内访问速度会比cloudflare快一些加速域名填自己的，托管dnspod的域名无需完成域名归属权验证，需要完成的根据提示来即可加速类型 <code>网页小文件</code>，源站类型 <code>第三方对象存储</code>，来源 <code>其他厂商对象存储</code>，协议 <code>HTTPS</code>，源站地址为上面绑定的<a href="#domain">自定义域名</a><img src="https://r2.lm379.cn/2024/04/575bce19d4e2f310e60e1427f78c0c38.png"><br>勾选 <code>私有存储桶访问</code>，点击填写<code>bucketname</code>对应之前创建的存储桶名称，<code>region</code>直接填写 <code>auto</code>即可，<code>访问ID</code>和 <code>密钥</code>一一对应填写即可，保存并确认添加<img src="https://r2.lm379.cn/2024/04/3ad368de42bb6102f40dfaf1a7c8847f.png"><br>缓存配置无脑下一步就行，<code>HTTPS</code>建议开启，下面的证书自己去腾讯云或者其他平台申请一本SSL证书就行，推荐腾讯云，免费一年</p>
+<blockquote>
+<p>ps: 虽然腾讯云CDN的HTTPS是付费的，但是实际上每个月是有免费300万次的额度的，对于个人用户300万次完全足够，详情可以参考<a target="_blank" rel="noopener" href="https://cloud.tencent.com/document/product/228/75563">腾讯云的官方文档</a><br><img src="https://r2.lm379.cn/2024/04/27b39b10cdadd23ff0c1e09b92dc3564.png"></p>
+</blockquote>
+<p>等待CDN的状态变为启用，就可以尝试将节点换成腾讯云CDN的链接了<br><img src="https://r2.lm379.cn/2024/04/469c1b5d0bb8a1ee20fa0e79fe9faa1e.png"></p>
+<h2 id="R2添加示例：PicGo"><a href="#R2添加示例：PicGo" class="headerlink" title="R2添加示例：PicGo"></a>R2添加示例：PicGo</h2><p>进去后找到Amazon S3，点击添加<br>注意下<a href="#s3api">自定义节点</a>是创建API后显示出来的那个域名(一般是以 <code>r2.cloudflarestorage.com</code>结尾)<br>或者在存储桶的 <code>设置页</code>也能看见，其他看图即可<br><img src="https://r2.lm379.cn/2024/04/9fd379fe1c425a359622e3a489977f7e.png"><br>如果需要换回cloudflare的cdn只需要修改自定义域名即可</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="reward-container">
+  <div>Buy me a coffee</div>
+  <button>
+    赞赏
+  </button>
+  <div class="post-reward">
+      <div>
+        <img src="https://r2.lm379.cn/2024/04/f597f96be857f5d530a787c8b81731da.jpg" alt="lm379 支付宝">
+        <span>支付宝</span>
+      </div>
+
+  </div>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/hexo/" rel="tag"><i class="fa fa-tag"></i> hexo</a>
+              <a href="/tags/%E5%9B%BE%E5%BA%8A/" rel="tag"><i class="fa fa-tag"></i> 图床</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2024/02/22/%E5%A4%A9%E7%BF%BC%E4%BA%91%E7%9B%98%E8%87%AA%E5%8A%A8%E7%AD%BE%E5%88%B0/" rel="prev" title="天翼云盘自动签到">
+                  <i class="fa fa-chevron-left"></i> 天翼云盘自动签到
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2024/04/16/%E5%A4%B4%E6%AD%8CC%E8%AF%AD%E8%A8%80%E5%AE%9E%E9%AA%8C/%E5%A4%B4%E6%AD%8CC%E8%AF%AD%E8%A8%80%E5%AE%9E%E9%AA%8C-%E7%BB%83%E4%B9%A01%EF%BC%9A%E8%B5%8B%E5%80%BC%E4%B8%8E%E8%A1%A8%E8%BE%BE%E5%BC%8F/" rel="next" title="头歌C语言实验 练习1：赋值与表达式">
+                  头歌C语言实验 练习1：赋值与表达式 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="beian"><a href="https://beian.miit.gov.cn/" rel="noopener" target="_blank">蜀ICP备2022016740号-1 </a>
+  </div>
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2024</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">lm379</span>
+</div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://mirrors.sustech.edu.cn/cdnjs/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="https://mirrors.sustech.edu.cn/cdnjs/ajax/libs/hexo-theme-next/8.12.2/comments.min.js"></script><script src="https://mirrors.sustech.edu.cn/cdnjs/ajax/libs/hexo-theme-next/8.12.2/utils.min.js"></script><script src="https://mirrors.sustech.edu.cn/cdnjs/ajax/libs/hexo-theme-next/8.12.2/motion.min.js"></script><script src="https://mirrors.sustech.edu.cn/cdnjs/ajax/libs/hexo-theme-next/8.12.2/schemes/muse.min.js"></script><script src="https://mirrors.sustech.edu.cn/cdnjs/ajax/libs/hexo-theme-next/8.12.2/next-boot.min.js"></script>
+
+  
+<script src="https://mirrors.sustech.edu.cn/cdnjs/ajax/libs/hexo-generator-searchdb/1.4.0/search.js" integrity="sha256-vXZMYLEqsROAXkEw93GGIvaB2ab+QW6w3+1ahD9nXXA=" crossorigin="anonymous"></script>
+<script src="https://mirrors.sustech.edu.cn/cdnjs/ajax/libs/hexo-theme-next/8.12.2/third-party/search/local-search.min.js"></script>
+
+
+
+
+  <script src="https://mirrors.sustech.edu.cn/cdnjs/ajax/libs/hexo-theme-next/8.12.2/third-party/pace.min.js"></script>
+
+  
+
+
+
+
+
+
+  <script type="text/javascript" src="\js\FunnyTitle.js"></script>
+
+</body>
+</html>
