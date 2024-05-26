@@ -3,7 +3,7 @@
   <entry>
     <title>Welcome to my Blog</title>
     <url>/2022/10/01/lm379-s-blog/</url>
-    <content><![CDATA[<h2 id="提示"><a href="#提示" class="headerlink" title="提示"></a>提示</h2><p>不建议来自<strong>中国大陆</strong>的用户使用<strong>国外公共DNS</strong>访问本站<br>由于本站采用境内腾讯云CDN+境外vercel的策略，使用部分国外公共DNS会导致IP解析到境外增加延迟，因此建议国内用户使用境内DNS   </p>
+    <content><![CDATA[<h2 id="提示"><a href="#提示" class="headerlink" title="提示"></a>提示</h2><p>不建议来自<strong>中国大陆</strong>的用户使用<strong>国外公共DNS</strong>访问本站由于本站采用境内腾讯云CDN+境外vercel的策略，使用部分国外公共DNS会导致IP解析到境外增加延迟，因此建议国内用户使用境内DNS</p>
 <blockquote>
 <p>这两个站点采用的方案为境内腾讯云CDN+境外Cloudflare加速<br>若使用1.1.1.1等DNS会直接解析到CF的CDN节点<br><a href="https://pan.lm379.cn/">https://pan.lm379.cn</a><br><a href="https://cloud.lm379.cn/">https://cloud.lm379.cn</a></p>
 </blockquote>
