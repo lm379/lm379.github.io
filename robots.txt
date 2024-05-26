@@ -1,0 +1,5 @@
+Disallow:/js
+Disallow:/css
+Disallow:/dist
+User-agent: *
+Disallow:
