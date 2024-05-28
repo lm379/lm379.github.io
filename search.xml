@@ -1708,7 +1708,9 @@
   <entry>
     <title>Hexo 腾讯云CDN自动刷新插件</title>
     <url>/2024/05/24/Hexo-%E8%85%BE%E8%AE%AF%E4%BA%91CDN%E8%87%AA%E5%8A%A8%E5%88%B7%E6%96%B0%E6%8F%92%E4%BB%B6/</url>
-    <content><![CDATA[<p>Github地址：<a href="https://github.com/lm379/hexo-cdn-Purge">lm379&#x2F;hexo-cdn-Purge: 用于提交时自动刷新腾讯云CDN的Hexo插件 (github.com)</a></p>
+    <content><![CDATA[<blockquote>
+<p>Github地址：<a href="https://github.com/lm379/hexo-cdn-Purge">lm379&#x2F;hexo-cdn-Purge: 用于提交时自动刷新腾讯云CDN的Hexo插件 (github.com)</a><br>Gitee地址：<a href="https://gitee.com/lm379/hexo-cdn-Purge">hexo-cdn-Purge: 用于提交时自动刷新腾讯云CDN的Hexo插件 (gitee.com)</a></p>
+</blockquote>
 <p>基于最新的腾讯云CDN API 3.0开发，解决API 2.0接口下线出现的问题</p>
 <p>支持两种刷新方式：变更资源和全部资源</p>
 <p>若你的CDN源站为Vercel,Netlify,Github Pages等，建议将timer字段设置为60000（1分钟）以上，以免刷新失败</p>
