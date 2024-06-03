@@ -1,11 +1,12 @@
 const ap = new APlayer({
     container: document.getElementById('aplayer'),
     "narrow": false,                          // （可选）播放器袖珍风格
+    "fixed": true,
     "autoplay": false,                         // （可选) 自动播放，移动端浏览器暂时不支持此功能
     "mode": "random",                         // （可选）曲目循环类型，有 'random'（随机播放）, 'single' (单曲播放), 'circulation' (循环播放), 'order' (列表播放)， 默认：'circulation' 
     "showlrc": 3,                             // （可选）歌词显示配置项，可选项有：1,2,3
     "mutex": true,                            // （可选）该选项开启时，如果同页面有其他 aplayer 播放，该播放器会暂停
-    "theme": "rgba(255,255,255,0)",	                      // （可选）播放器风格色彩设置，默认：#b7daff
+    "theme": "rgba(255,255,255,0)",	          // （可选）播放器风格色彩设置，默认：#b7daff
     "preload": "auto",                    // （可选）音乐文件预载入模式，可选项： 'none' 'metadata' 'auto', 默认: 'auto'
     "listmaxheight": "513px",                 // (可选) 该播放列表的最大长度
     "listFolded": true,                        // （可选）该播放列表是否折叠
@@ -48,6 +49,7 @@ const ap = new APlayer({
             "url": "https://r2.lm379.cn/files/Music/%E5%90%B4%E9%9D%92%E5%B3%B0%20-%20%E6%88%91%E4%BB%AC%E9%83%BD%E6%8B%A5%E6%9C%89%E6%B5%B7%E6%B4%8B.mp3",
             "pic": "https://r2.lm379.cn/files/pic/%E5%90%B4%E9%9D%92%E5%B3%B0%20-%20%E6%88%91%E4%BB%AC%E9%83%BD%E6%8B%A5%E6%9C%89%E6%B5%B7%E6%B4%8B.png",
             "lrc": "https://jsd.cdn.zzko.cn/gh/lm379s/files/lrc/%E5%90%B4%E9%9D%92%E5%B3%B0%20-%20%E6%88%91%E4%BB%AC%E9%83%BD%E6%8B%A5%E6%9C%89%E6%B5%B7%E6%B4%8B.lrc"
+            // "lrc": "https://cos.lm379.cn/Blog/%E5%90%B4%E9%9D%92%E5%B3%B0%20-%20%E6%88%91%E4%BB%AC%E9%83%BD%E6%8B%A5%E6%9C%89%E6%B5%B7%E6%B4%8B.lrc"
         },
         {
             "title": "三国恋",
@@ -71,11 +73,25 @@ const ap = new APlayer({
             "lrc": "https://jsd.onmicrosoft.cn/gh/lm379s/files/lrc/%E5%87%A4%E5%87%B0%E4%BC%A0%E5%A5%87%20-%20%E6%88%91%E4%BB%AC%E7%9A%84%E6%AD%8C%E8%B0%A3.lrc",
         },
         {
-            title: "最美的太阳",
-            author: "张杰",
-            url: "https://r2.lm379.cn/files%2FMusic%2F%E5%BC%A0%E6%9D%B0%20-%20%E6%9C%80%E7%BE%8E%E7%9A%84%E5%A4%AA%E9%98%B3.mp3",
-            lrc: "https://jsd.onmicrosoft.cn/gh/lm379s/files/lrc/%E5%BC%A0%E6%9D%B0%20-%20%E6%9C%80%E7%BE%8E%E7%9A%84%E5%A4%AA%E9%98%B3.lrc",
-            pic: "https://r2.lm379.cn/files%2Fpic%2F%E5%BC%A0%E6%9D%B0%20-%20%E6%9C%80%E7%BE%8E%E7%9A%84%E5%A4%AA%E9%98%B3.png"
+            "title": "最美的太阳",
+            "author": "张杰",
+            "url": "https://r2.lm379.cn/files%2FMusic%2F%E5%BC%A0%E6%9D%B0%20-%20%E6%9C%80%E7%BE%8E%E7%9A%84%E5%A4%AA%E9%98%B3.mp3",
+            "lrc": "https://jsd.onmicrosoft.cn/gh/lm379s/files/lrc/%E5%BC%A0%E6%9D%B0%20-%20%E6%9C%80%E7%BE%8E%E7%9A%84%E5%A4%AA%E9%98%B3.lrc",
+            "pic": "https://r2.lm379.cn/files%2Fpic%2F%E5%BC%A0%E6%9D%B0%20-%20%E6%9C%80%E7%BE%8E%E7%9A%84%E5%A4%AA%E9%98%B3.png"
+        },
+        {
+            "title": "我记得",
+            "author": "赵雷",
+            "url": "https://r2.lm379.cn/files%2FMusic%2F%E8%B5%B5%E9%9B%B7%20-%20%E6%88%91%E8%AE%B0%E5%BE%97.mp3",
+            "lrc": "https://jsd.onmicrosoft.cn/gh/lm379s/files/lrc/%E8%B5%B5%E9%9B%B7%20-%20%E6%88%91%E8%AE%B0%E5%BE%97.lrc",
+            "pic": "https://r2.lm379.cn/files%2Fpic%2F%E8%B5%B5%E9%9B%B7%20-%20%E6%88%91%E8%AE%B0%E5%BE%97.png"
+        },
+        {
+            "title": "悬溺",
+            "author": "葛东琪",
+            "url": "https://r2.lm379.cn/files/Music/%E8%91%9B%E4%B8%9C%E7%90%AA%20-%20%E6%82%AC%E6%BA%BA.mp3",
+            "pic": "https://r2.lm379.cn/files/pic/%E8%91%9B%E4%B8%9C%E7%90%AA%20-%20%E6%82%AC%E6%BA%BA.png",
+            "lrc": "https://jsd.onmicrosoft.cn/gh/lm379s/files/lrc/%E8%91%9B%E4%B8%9C%E7%90%AA%20-%20%E6%82%AC%E6%BA%BA.lrc"
         }
 	]
 });
