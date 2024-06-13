@@ -1653,15 +1653,22 @@ header.header {
   opacity: 0;
   transition: opacity 0.2s ease-in-out;
 }
-.back-to-top span {
-  display: none;
-}
 .back-to-top.back-to-top-on {
   cursor: pointer;
   opacity: 0.8;
 }
 .back-to-top.back-to-top-on:hover {
   opacity: 1;
+}
+.reading-progress-bar {
+  --progress: 0;
+  background: #37c6c0;
+  height: 3px;
+  position: fixed;
+  z-index: 50;
+  width: var(--progress);
+  left: 0;
+  bottom: 0;
 }
 .rtl.post-body p,
 .rtl.post-body a,
@@ -2652,7 +2659,7 @@ mark.search-keyword {
   vertical-align: middle;
 }
 .links-of-author a::before {
-  background: #e8701b;
+  background: #ff17e8;
   display: inline-block;
   margin-right: 3px;
   transform: translateY(-2px);
@@ -2671,6 +2678,10 @@ mark.search-keyword {
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+}
+.giscus {
+  max-width: unset;
+  box-sizing: border-box;
 }
 .bilibili {
   background-image: url("/images/bilibili.svg");
