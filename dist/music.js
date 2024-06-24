@@ -20,13 +20,13 @@ const ap = new APlayer({
             "url": "https://r2.lm379.cn/files/Music/%E4%B9%B0%E8%BE%A3%E6%A4%92%E4%B9%9F%E7%94%A8%E5%88%B8%20-%20%E8%B5%B7%E9%A3%8E%E4%BA%86.mp3",
             "pic": "https://y.qq.com/music/photo_new/T002R300x300M000003j3NMw1ZBpsv_2.jpg?max_age=2592000",
             // "lrc": "https://oss.lm379.cf/files%2Flrc%2F%E4%B9%B0%E8%BE%A3%E6%A4%92%E4%B9%9F%E7%94%A8%E5%88%B8%20-%20%E8%B5%B7%E9%A3%8E%E4%BA%86.lrc"
-            "lrc": "https://jsd.onmicrosoft.cn/gh/lm379s/files/lrc/%E4%B9%B0%E8%BE%A3%E6%A4%92%E4%B9%9F%E7%94%A8%E5%88%B8%20-%20%E8%B5%B7%E9%A3%8E%E4%BA%86.lrc"
+            "lrc": "https://cdn.jsdmirror.com/gh/lm379s/files/lrc/%E4%B9%B0%E8%BE%A3%E6%A4%92%E4%B9%9F%E7%94%A8%E5%88%B8%20-%20%E8%B5%B7%E9%A3%8E%E4%BA%86.lrc"
         },
         {
             "title": "溯 (Reverse)",
             "author": "CORSAK胡梦周、马吟吟",
             "url": "https://r2.lm379.cn/files/Music/CORSAK%E8%83%A1%E6%A2%A6%E5%91%A8%E3%80%81%E9%A9%AC%E5%90%9F%E5%90%9F%20-%20%E6%BA%AF%20(Reverse).mp3",
-            "lrc": "https://jsd.cdn.zzko.cn/gh/lm379s/files/lrc/CORSAK%E8%83%A1%E6%A2%A6%E5%91%A8%E3%80%81%E9%A9%AC%E5%90%9F%E5%90%9F%20-%20%E6%BA%AF%20(Reverse).lrc",
+            "lrc": "https://cdn.jsdmirror.com/gh/lm379s/files/lrc/CORSAK%E8%83%A1%E6%A2%A6%E5%91%A8%E3%80%81%E9%A9%AC%E5%90%9F%E5%90%9F%20-%20%E6%BA%AF%20(Reverse).lrc",
             "pic": "https://r2.lm379.cn/files%2Fpic%2FCORSAK%E8%83%A1%E6%A2%A6%E5%91%A8%E3%80%81%E9%A9%AC%E5%90%9F%E5%90%9F%20-%20%E6%BA%AF%20(Reverse).png"
         },
         {
@@ -34,21 +34,21 @@ const ap = new APlayer({
             "author": "DAOKO、米津玄師",
             "url": "https://r2.lm379.cn/files/Music/DAOKO%E3%80%81%E7%B1%B3%E6%B4%A5%E7%8E%84%E5%B8%AB%20-%20%E6%89%93%E4%B8%8A%E8%8A%B1%E7%81%AB.mp3",
             "pic": "https://r2.lm379.cn/files%2Fpic%2FDAOKO%E3%80%81%E7%B1%B3%E6%B4%A5%E7%8E%84%E5%B8%AB%20-%20%E6%89%93%E4%B8%8A%E8%8A%B1%E7%81%AB.png",
-            "lrc": "https://jsd.onmicrosoft.cn/gh/lm379s/files/lrc/%E7%B1%B3%E6%B4%A5%E7%8E%84%E5%B8%AB%E3%80%81DAOKO%20-%20%E6%89%93%E4%B8%8A%E8%8A%B1%E7%81%AB.lrc"
+            "lrc": "https://cdn.jsdmirror.com/gh/lm379s/files/lrc/%E7%B1%B3%E6%B4%A5%E7%8E%84%E5%B8%AB%E3%80%81DAOKO%20-%20%E6%89%93%E4%B8%8A%E8%8A%B1%E7%81%AB.lrc"
         },
         {
             "title": "错位时空",
             "author": "艾辰",
             "url": "https://r2.lm379.cn/files/Music/%E8%89%BE%E8%BE%B0%20-%20%E9%94%99%E4%BD%8D%E6%97%B6%E7%A9%BA.mp3",
             "pic": "https://r2.lm379.cn/files%2Fpic%2F%E8%89%BE%E8%BE%B0%20-%20%E9%94%99%E4%BD%8D%E6%97%B6%E7%A9%BA%20.png",
-            "lrc": "https://jsd.onmicrosoft.cn/gh/lm379s/files/lrc/%E8%89%BE%E8%BE%B0%20-%20%E9%94%99%E4%BD%8D%E6%97%B6%E7%A9%BA.lrc"
+            "lrc": "https://cdn.jsdmirror.com/gh/lm379s/files/lrc/%E8%89%BE%E8%BE%B0%20-%20%E9%94%99%E4%BD%8D%E6%97%B6%E7%A9%BA.lrc"
         },
         {
             "title": "我们都拥有海洋",
             "author": "吴青峰",
             "url": "https://r2.lm379.cn/files/Music/%E5%90%B4%E9%9D%92%E5%B3%B0%20-%20%E6%88%91%E4%BB%AC%E9%83%BD%E6%8B%A5%E6%9C%89%E6%B5%B7%E6%B4%8B.mp3",
             "pic": "https://r2.lm379.cn/files/pic/%E5%90%B4%E9%9D%92%E5%B3%B0%20-%20%E6%88%91%E4%BB%AC%E9%83%BD%E6%8B%A5%E6%9C%89%E6%B5%B7%E6%B4%8B.png",
-            "lrc": "https://jsd.cdn.zzko.cn/gh/lm379s/files/lrc/%E5%90%B4%E9%9D%92%E5%B3%B0%20-%20%E6%88%91%E4%BB%AC%E9%83%BD%E6%8B%A5%E6%9C%89%E6%B5%B7%E6%B4%8B.lrc"
+            "lrc": "https://cdn.jsdmirror.com/gh/lm379s/files/lrc/%E5%90%B4%E9%9D%92%E5%B3%B0%20-%20%E6%88%91%E4%BB%AC%E9%83%BD%E6%8B%A5%E6%9C%89%E6%B5%B7%E6%B4%8B.lrc"
             // "lrc": "https://cos.lm379.cn/Blog/%E5%90%B4%E9%9D%92%E5%B3%B0%20-%20%E6%88%91%E4%BB%AC%E9%83%BD%E6%8B%A5%E6%9C%89%E6%B5%B7%E6%B4%8B.lrc"
         },
         {
@@ -63,27 +63,27 @@ const ap = new APlayer({
             "author": "凤凰传奇",
             "url": "https://r2.lm379.cn/files/Music/%E5%87%A4%E5%87%B0%E4%BC%A0%E5%A5%87%20-%20%E5%85%89%E8%8A%92.mp3",
             "pic": "https://r2.lm379.cn/files/pic/%E5%87%A4%E5%87%B0%E4%BC%A0%E5%A5%87%20-%20%E5%85%89%E8%8A%92.png",
-            "lrc": "https://jsd.onmicrosoft.cn/gh/lm379s/files/lrc/%E5%87%A4%E5%87%B0%E4%BC%A0%E5%A5%87%20-%20%E5%85%89%E8%8A%92.lrc",
+            "lrc": "https://cdn.jsdmirror.com/gh/lm379s/files/lrc/%E5%87%A4%E5%87%B0%E4%BC%A0%E5%A5%87%20-%20%E5%85%89%E8%8A%92.lrc",
         },
         {
             "title": "我们的歌谣",
             "author": "凤凰传奇",
             "url": "https://r2.lm379.cn/files/Music/%E5%87%A4%E5%87%B0%E4%BC%A0%E5%A5%87%20-%20%E6%88%91%E4%BB%AC%E7%9A%84%E6%AD%8C%E8%B0%A3.mp3",
             "pic": "https://r2.lm379.cn/files/pic/%E5%87%A4%E5%87%B0%E4%BC%A0%E5%A5%87%20-%20%E6%88%91%E4%BB%AC%E7%9A%84%E6%AD%8C%E8%B0%A3.png",
-            "lrc": "https://jsd.onmicrosoft.cn/gh/lm379s/files/lrc/%E5%87%A4%E5%87%B0%E4%BC%A0%E5%A5%87%20-%20%E6%88%91%E4%BB%AC%E7%9A%84%E6%AD%8C%E8%B0%A3.lrc",
+            "lrc": "https://cdn.jsdmirror.com/gh/lm379s/files/lrc/%E5%87%A4%E5%87%B0%E4%BC%A0%E5%A5%87%20-%20%E6%88%91%E4%BB%AC%E7%9A%84%E6%AD%8C%E8%B0%A3.lrc",
         },
         {
             "title": "最美的太阳",
             "author": "张杰",
             "url": "https://r2.lm379.cn/files%2FMusic%2F%E5%BC%A0%E6%9D%B0%20-%20%E6%9C%80%E7%BE%8E%E7%9A%84%E5%A4%AA%E9%98%B3.mp3",
-            "lrc": "https://jsd.onmicrosoft.cn/gh/lm379s/files/lrc/%E5%BC%A0%E6%9D%B0%20-%20%E6%9C%80%E7%BE%8E%E7%9A%84%E5%A4%AA%E9%98%B3.lrc",
+            "lrc": "https://cdn.jsdmirror.com/gh/lm379s/files/lrc/%E5%BC%A0%E6%9D%B0%20-%20%E6%9C%80%E7%BE%8E%E7%9A%84%E5%A4%AA%E9%98%B3.lrc",
             "pic": "https://r2.lm379.cn/files%2Fpic%2F%E5%BC%A0%E6%9D%B0%20-%20%E6%9C%80%E7%BE%8E%E7%9A%84%E5%A4%AA%E9%98%B3.png"
         },
         {
             "title": "我记得",
             "author": "赵雷",
             "url": "https://r2.lm379.cn/files%2FMusic%2F%E8%B5%B5%E9%9B%B7%20-%20%E6%88%91%E8%AE%B0%E5%BE%97.mp3",
-            "lrc": "https://jsd.onmicrosoft.cn/gh/lm379s/files/lrc/%E8%B5%B5%E9%9B%B7%20-%20%E6%88%91%E8%AE%B0%E5%BE%97.lrc",
+            "lrc": "https://cdn.jsdmirror.com/gh/lm379s/files/lrc/%E8%B5%B5%E9%9B%B7%20-%20%E6%88%91%E8%AE%B0%E5%BE%97.lrc",
             "pic": "https://r2.lm379.cn/files%2Fpic%2F%E8%B5%B5%E9%9B%B7%20-%20%E6%88%91%E8%AE%B0%E5%BE%97.png"
         },
         {
@@ -91,7 +91,7 @@ const ap = new APlayer({
             "author": "葛东琪",
             "url": "https://r2.lm379.cn/files/Music/%E8%91%9B%E4%B8%9C%E7%90%AA%20-%20%E6%82%AC%E6%BA%BA.mp3",
             "pic": "https://r2.lm379.cn/files/pic/%E8%91%9B%E4%B8%9C%E7%90%AA%20-%20%E6%82%AC%E6%BA%BA.png",
-            "lrc": "https://jsd.onmicrosoft.cn/gh/lm379s/files/lrc/%E8%91%9B%E4%B8%9C%E7%90%AA%20-%20%E6%82%AC%E6%BA%BA.lrc"
+            "lrc": "https://cdn.jsdmirror.com/gh/lm379s/files/lrc/%E8%91%9B%E4%B8%9C%E7%90%AA%20-%20%E6%82%AC%E6%BA%BA.lrc"
         }
 	]
 });
