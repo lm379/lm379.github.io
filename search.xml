@@ -163,6 +163,7 @@
 <blockquote>
 <p>消息来源：狐妖小红娘官方微博 <a href="https://weibo.com/5616549369/OkKVtBlJ4">微博正文</a></p>
 </blockquote>
+<p>镜花缘篇已更新，可自行前往alist站获取（建议通过webdav挂载获取，详情自己查看主站下的说明）   </p>
 <hr>
 <h2 id="腾讯视频（全集）"><a href="#腾讯视频（全集）" class="headerlink" title="腾讯视频（全集）"></a>腾讯视频（全集）</h2><p><a href="https://v.qq.com/x/cover/0sdnyl7h86atoyt/f0157y2e83y.html">https://v.qq.com/x/cover/0sdnyl7h86atoyt/f0157y2e83y.html</a></p>
 <h2 id="Bilibili（下沙到南国）"><a href="#Bilibili（下沙到南国）" class="headerlink" title="Bilibili（下沙到南国）"></a>Bilibili（下沙到南国）</h2><p><a href="https://www.bilibili.com/bangumi/play/ep63725">https://www.bilibili.com/bangumi/play/ep63725</a></p>
@@ -2093,6 +2094,11 @@
       <tags>
         <tag>Redmi Note12 Turbo</tag>
       </tags>
+  </entry>
+  <entry>
+    <title>Alist 别名功能介绍</title>
+    <url>/2024/07/09/Alist-%E5%88%AB%E5%90%8D%E5%8A%9F%E8%83%BD%E4%BB%8B%E7%BB%8D/</url>
+    <content><![CDATA[]]></content>
   </entry>
   <entry>
     <title>使用Cloudflare saas接入cloudflare cdn保护我们的网站</title>
