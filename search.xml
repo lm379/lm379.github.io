@@ -2258,7 +2258,7 @@
     <content><![CDATA[<h2 id="系统"><a href="#系统" class="headerlink" title="系统"></a>系统</h2><p>使用的固件为<strong>Armbian-unofficial 24.5.1 Jammy with Linux 6.6.32-current-meson</strong></p>
 <p>该固件基于 <code>Ubuntu 22.04</code> 版本，当然你也可以选择别的，下载输入固件时只需要下载后缀带有 <code>burn</code> 的即可直接通过晶晨烧录工具刷入，刷机教程可参考这篇文章：<a href="../../15/%E7%8E%A9%E5%AE%A2%E4%BA%91%E5%88%B7%E5%85%A5openwrt%E7%B3%BB%E7%BB%9F">玩客云刷入openwrt系统</a></p>
 <p>Github地址: <a href="https://github.com/hzyitc/armbian-onecloud">hzyitc&#x2F;armbian-onecloud: Armbian for onecloud. 玩客云用armbian (github.com)</a></p>
-<p>本文使用的固件：<a href="https://pan.lm379.cn/d/%E5%88%B7%E6%9C%BA/onecloud/Armbian-unofficial_24.5.0-trunk_Onecloud_jammy_current_6.6.21.burn.img.xz">这里</a></p>
+<p>本文使用的固件：<a href="https://pan.lm379.cn/d/guest_dir/%E5%88%B7%E6%9C%BA/onecloud/Armbian-unofficial_24.5.0-trunk_Onecloud_jammy_current_6.6.21.burn.img.xz">这里</a></p>
 <h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><h3 id="更换镜像源"><a href="#更换镜像源" class="headerlink" title="更换镜像源"></a>更换镜像源</h3><p>因为本文使用的系统基于 <code>ubuntu</code> 构建，加上玩客云为arm架构，所以我们只需要将软件源更换为 <code>ubuntu-ports</code> 即可</p>
 <blockquote>
 <p>同理，基于 <code>debian</code> 则只需要更改为 <code>debian</code> 的镜像源即可</p>
