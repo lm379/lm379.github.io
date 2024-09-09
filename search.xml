@@ -199,7 +199,8 @@
   <entry>
     <title>玩客云刷入openwrt系统</title>
     <url>/2024/08/15/%E7%8E%A9%E5%AE%A2%E4%BA%91%E5%88%B7%E5%85%A5openwrt%E7%B3%BB%E7%BB%9F/</url>
-    <content><![CDATA[<h2 id="获取固件"><a href="#获取固件" class="headerlink" title="获取固件"></a>获取固件</h2><p>我这里是去<a href="https://openwrt.ai/">openwrt.ai</a>这个网站定制的固件，保留了我需要的ipk，设置为了旁路由模式，详细配置如下</p>
+    <content><![CDATA[<p><strong>这个固件刷入后似乎会扰乱局域网，我现在已经刷回 armbian 了，不建议继续使用本文的固件，教程可以参考</strong></p>
+<h2 id="获取固件"><a href="#获取固件" class="headerlink" title="获取固件"></a>获取固件</h2><p>我这里是去<a href="https://openwrt.ai/">openwrt.ai</a>这个网站定制的固件，保留了我需要的ipk，设置为了旁路由模式，详细配置如下</p>
 <p><img src="https://r2.lm379.cn/2024/08/21add1084585ee73b505bb745ad3fc2a.png"></p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">后台：192.168.31.134</span><br><span class="line">密码：password</span><br></pre></td></tr></table></figure>
 
@@ -230,6 +231,38 @@
 ]]></content>
       <tags>
         <tag>玩客云</tag>
+        <tag>openwrt</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Alist 别名功能介绍</title>
+    <url>/2024/07/09/Alist-%E5%88%AB%E5%90%8D%E5%8A%9F%E8%83%BD%E4%BB%8B%E7%BB%8D/</url>
+    <content><![CDATA[<p>基于别名功能，我们可以将网盘的资源聚合，  展示在同一个文件夹内，将 <code>guest</code> 账号根目录设置为这个文件夹即可</p>
+<p>不过，别名在文件夹内有相同命名的文件时，会按照规则进行覆盖，使用别名并不是<strong>负载均衡</strong>，这点需要注意</p>
+<p>首先保证你别的存储已经挂载</p>
+<p>我这里挂载了两个存储，一个名字为 <code>Book</code> 专门防止电子书，另一个为<code>OneDrive</code> 是将整个盘都挂载了出来</p>
+<p><img src="https://r2.lm379.cn/2024/09/0c197a2aac257f4ae67836770f4847a8.png" alt="image.png"></p>
+<p>在Book目录下面，存储的东西如下图</p>
+<p><img src="https://r2.lm379.cn/2024/09/7c905b37742e3c6d3863eed722dfdd5e.png" alt="image.png"></p>
+<p>而在<code>OneDrive</code>的 <code>电子书</code>目录下，也存储了如下的文件</p>
+<p><img src="https://r2.lm379.cn/2024/09/99f67b1a809da52bb21d32a0c2f52a96.png" alt="image.png"></p>
+<p>如果我想把这两个目录中的所有文件聚合起来，放在同一个目录下展示，就只需要添加一个别名存储，类型选择别名，挂载路径随意吧</p>
+<p><img src="https://r2.lm379.cn/2024/09/6e918c8b5ad8bf2369443ba54a35f8da.png" alt="image.png"></p>
+<p>其他选项按需配置，重点来了，我们看下面的路径部分<br>假设我想将上面的两个目录聚合在一起用<code>Book</code>表示，我就可以在路径部分填写</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">Book:/Book</span><br><span class="line">Book:/OneDrive/电子书</span><br></pre></td></tr></table></figure>
+<p>其中，<code>:/</code> 前面的部分表示在<code>挂载路径</code>下面展示的文件夹名称，后面的为真实路径，也就是挂载的存储的路径</p>
+<p>比如上面这个例子，我想在<code>guest_dir</code>中将其展示为<code>书籍</code>，只需要修改路径为</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">书籍:/Book</span><br><span class="line">书籍:/OneDrive/电子书</span><br></pre></td></tr></table></figure>
+
+<p>最终合并后的效果就是这样</p>
+<p><img src="https://r2.lm379.cn/2024/09/35570f5b7d33bad19f86868a24dcfc8f.png" alt="image.png"></p>
+]]></content>
+      <categories>
+        <category>AList系列教程</category>
+      </categories>
+      <tags>
+        <tag>Alist</tag>
+        <tag>教程</tag>
       </tags>
   </entry>
   <entry>
@@ -2309,18 +2342,6 @@
 ]]></content>
       <tags>
         <tag>Redmi Note12 Turbo</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Alist 别名功能介绍</title>
-    <url>/2024/07/09/Alist-%E5%88%AB%E5%90%8D%E5%8A%9F%E8%83%BD%E4%BB%8B%E7%BB%8D/</url>
-    <content><![CDATA[]]></content>
-      <categories>
-        <category>AList系列教程</category>
-      </categories>
-      <tags>
-        <tag>Alist</tag>
-        <tag>教程</tag>
       </tags>
   </entry>
   <entry>
