@@ -89,7 +89,7 @@
 
 
 <nav class="site-nav">
-  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">30</span></a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">5</span></a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">40</span></a></li><li class="menu-item menu-item-commonweal"><a href="/404/" rel="section"><i class="fa fa-heartbeat fa-fw"></i>公益 404</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li>
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">32</span></a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">5</span></a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">43</span></a></li><li class="menu-item menu-item-commonweal"><a href="/404/" rel="section"><i class="fa fa-heartbeat fa-fw"></i>公益 404</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li>
       <li class="menu-item menu-item-search">
         <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
         </a>
@@ -161,7 +161,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">40</span>
+          <span class="site-state-item-count">43</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -172,7 +172,7 @@
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
-        <span class="site-state-item-count">30</span>
+        <span class="site-state-item-count">32</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -195,6 +195,9 @@
       </span>
       <span class="links-of-author-item">
         <a href="http://www.coolapk.com/u/3126124" title="酷安 → http:&#x2F;&#x2F;www.coolapk.com&#x2F;u&#x2F;3126124" rel="noopener" target="_blank"><i class="fa coolapk fa-fw"></i>酷安</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.xiaohongshu.com/user/profile/6306019b0000000012001f11" title="小红书 → https:&#x2F;&#x2F;www.xiaohongshu.com&#x2F;user&#x2F;profile&#x2F;6306019b0000000012001f11" rel="noopener" target="_blank"><i class="fa xiaohongshu fa-fw"></i>小红书</a>
       </span>
   </div>
 
@@ -299,45 +302,61 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        <h2 id="第1关：计算圆的面积"><a href="#第1关：计算圆的面积" class="headerlink" title="第1关：计算圆的面积"></a>第1关：计算圆的面积</h2><p>问题描述<br>编写一个函数，函数的功能是根据指定的半径r，计算圆的面积S，圆周率π取值3.14。<br>主函数中由用户输入半径r，然后调用函数计算圆的面积并输出圆的面积。</p>
-<p>输入<br>一个浮点数r，表示圆的半径。</p>
-<p>输出<br>按照格式“半径为r的圆的面积为：s。”的格式输出圆的面积，其中r和s为实际的浮点数，保留2位小数。</p>
-<p>输入示例<br>5.0</p>
-<p>输出示例<br>半径为5.00的圆的面积为78.50。</p>
-<p>提示<br>设计函数时重点关注函数自身的功能，而不要考虑整个<br>程序的功能。</p>
+        <h2 id="第1关：计算圆的面积">第1关：计算圆的面积</h2>
+<p>问题描述编写一个函数，函数的功能是根据指定的半径r，计算圆的面积S，圆周率π取值3.14。主函数中由用户输入半径r，然后调用函数计算圆的面积并输出圆的面积。</p>
+<p>输入一个浮点数r，表示圆的半径。</p>
+<p>输出按照格式“半径为r的圆的面积为：s。”的格式输出圆的面积，其中r和s为实际的浮点数，保留2位小数。</p>
+<p>输入示例<br>
+5.0</p>
+<p>输出示例半径为5.00的圆的面积为78.50。</p>
+<p>提示设计函数时重点关注函数自身的功能，而不要考虑整个程序的功能。</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> PI 3.14</span></span><br><span class="line"></span><br><span class="line"><span class="type">float</span> <span class="title function_">GetArea</span><span class="params">(<span class="type">float</span> r)</span>;</span><br><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span> &#123;</span><br><span class="line">    <span class="comment">/* Write your code here */</span></span><br><span class="line">    <span class="type">float</span> r;</span><br><span class="line">    <span class="type">float</span> s;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">&quot;%f&quot;</span>,&amp;r);</span><br><span class="line">    s=GetArea(r);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;半径为%.2f的圆的面积为%.2f。&quot;</span>,r,s);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="type">float</span> <span class="title function_">GetArea</span><span class="params">(<span class="type">float</span> r)</span> &#123;</span><br><span class="line">    <span class="comment">/* Write your code here */</span></span><br><span class="line"><span class="keyword">return</span> PI*r*r;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="第2关：排列与组合"><a href="#第2关：排列与组合" class="headerlink" title="第2关：排列与组合"></a>第2关：排列与组合</h2><p>问题描述<br>请分别设计并编写三个函数，分别实现以下功能：<br>函数1：用于计算非负整数n的阶乘，注意0! &#x3D; 1! &#x3D; 1。<br>函数2：根据排列公式计算排列Amn。<br>函数3：根据组合公式计算组合Cmn。<br>其中，排列A和组合C的计算公式如下：<br>,<br>主函数中由用户输入两个非负整数m和n（为确保在计算阶乘的过程中不会产生溢出，假定用户输入的m和n值不会超过15），调用函数计算并输出排列Amn和组合Cmn的值。</p>
-<p>输入<br>用一个空格分开的两个两个非负整数m和n，输入数据保证0≤n≤m≤15。</p>
-<p>输出<br>参照示例分两行分别输出排列和组合的值。</p>
-<p>输入示例<br>5 2</p>
-<p>输出示例<br>A(5,2)&#x3D;20<br>C(5,2)&#x3D;10</p>
-<p>提示<br>设计函数时重点关注函数自身的功能，而不要考虑整个<br>程序的功能。</p>
+<h2 id="第2关：排列与组合">第2关：排列与组合</h2>
+<p>问题描述请分别设计并编写三个函数，分别实现以下功能：函数1：用于计算非负整数n的阶乘，注意0! = 1! = 1。函数2：根据排列公式计算排列Amn。函数3：根据组合公式计算组合Cmn。其中，排列A和组合C的计算公式如下：<br>
+,<br>
+主函数中由用户输入两个非负整数m和n（为确保在计算阶乘的过程中不会产生溢出，假定用户输入的m和n值不会超过15），调用函数计算并输出排列Amn和组合Cmn的值。</p>
+<p>输入用一个空格分开的两个两个非负整数m和n，输入数据保证0≤n≤m≤15。</p>
+<p>输出参照示例分两行分别输出排列和组合的值。</p>
+<p>输入示例<br>
+5 2</p>
+<p>输出示例<br>
+A(5,2)=20<br>
+C(5,2)=10</p>
+<p>提示设计函数时重点关注函数自身的功能，而不要考虑整个程序的功能。</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="type">int</span> <span class="title function_">GetFactorial</span><span class="params">(<span class="type">int</span> n)</span>;</span><br><span class="line"><span class="type">int</span> <span class="title function_">GetArray</span><span class="params">(<span class="type">int</span> m,<span class="type">int</span> n)</span>;</span><br><span class="line"><span class="type">int</span> <span class="title function_">GetCombine</span><span class="params">(<span class="type">int</span> m,<span class="type">int</span> n)</span>;</span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span>&#123;</span><br><span class="line">    <span class="type">int</span> m,n,Array,Combine;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">&quot;%d %d&quot;</span>,&amp;m,&amp;n);</span><br><span class="line">    Array=GetArray(m,n);</span><br><span class="line">    Combine=GetCombine(m,n);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;A(%d,%d)=%d\nC(%d,%d)=%d&quot;</span>,m,n,Array,m,n,Combine);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="type">int</span> <span class="title function_">GetFactorial</span><span class="params">(<span class="type">int</span> n)</span>&#123;</span><br><span class="line">    <span class="type">int</span> i,Factorial=<span class="number">1</span>;</span><br><span class="line">    <span class="keyword">if</span>(n!=<span class="number">0</span>&amp;&amp;n!=<span class="number">1</span>)&#123;</span><br><span class="line">        <span class="keyword">for</span>(i=<span class="number">2</span>;i&lt;=n;i++)&#123;</span><br><span class="line">            Factorial*=i;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> Factorial;</span><br><span class="line">&#125;</span><br><span class="line"><span class="type">int</span> <span class="title function_">GetArray</span><span class="params">(<span class="type">int</span> m,<span class="type">int</span> n)</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> GetFactorial(m)/GetFactorial(m-n);</span><br><span class="line">&#125;</span><br><span class="line"><span class="type">int</span> <span class="title function_">GetCombine</span><span class="params">(<span class="type">int</span> m,<span class="type">int</span> n)</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> GetFactorial(m)/(GetFactorial(n)*GetFactorial(m-n));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="第3关：费波拉契数列"><a href="#第3关：费波拉契数列" class="headerlink" title="第3关：费波拉契数列"></a>第3关：费波拉契数列</h2><p>问题描述<br>设计并编写一个函数，用迭代的方法计算费波拉契数列的第n（n≥1）项。<br>主函数中读入由用户输入的整数n，利用循环反复调用函数计算并输出费波拉契数列的前n项。</p>
-<p>输入<br>一个正整数n（n≥1）。</p>
-<p>输出<br>分n行输出费波拉契数列的前n项。</p>
-<p>输入示例<br>5</p>
-<p>输出示例<br>Fib(1) &#x3D; 1<br>Fib(2) &#x3D; 1<br>Fib(3) &#x3D; 2<br>Fib(4) &#x3D; 3<br>Fib(5) &#x3D; 5</p>
-<p>提示<br>设计函数时重点关注函数自身的功能，而不要考虑整个程序的功能。</p>
+<h2 id="第3关：费波拉契数列">第3关：费波拉契数列</h2>
+<p>问题描述设计并编写一个函数，用迭代的方法计算费波拉契数列的第n（n≥1）项。主函数中读入由用户输入的整数n，利用循环反复调用函数计算并输出费波拉契数列的前n项。</p>
+<p>输入一个正整数n（n≥1）。</p>
+<p>输出分n行输出费波拉契数列的前n项。</p>
+<p>输入示例<br>
+5</p>
+<p>输出示例<br>
+Fib(1) = 1<br>
+Fib(2) = 1<br>
+Fib(3) = 2<br>
+Fib(4) = 3<br>
+Fib(5) = 5</p>
+<p>提示设计函数时重点关注函数自身的功能，而不要考虑整个程序的功能。</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="type">void</span> <span class="title function_">GetFib</span><span class="params">(<span class="type">int</span> n)</span>;</span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span>&#123;</span><br><span class="line">    <span class="type">int</span> n;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>,&amp;n);</span><br><span class="line">    GetFib(n);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="type">void</span> <span class="title function_">GetFib</span><span class="params">(<span class="type">int</span> n)</span>&#123;</span><br><span class="line">    <span class="type">int</span> i;</span><br><span class="line">    <span class="type">int</span> Fn=<span class="number">0</span>,F1=<span class="number">1</span>,F2=<span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;n;i++)&#123;</span><br><span class="line">        <span class="keyword">if</span>(i==<span class="number">0</span>||i==<span class="number">1</span>)</span><br><span class="line">            <span class="built_in">printf</span>(<span class="string">&quot;Fib(%d) = %d\n&quot;</span>,i+<span class="number">1</span>,F1);</span><br><span class="line">        <span class="keyword">else</span>&#123;</span><br><span class="line">            Fn=F1+F2;</span><br><span class="line">            <span class="built_in">printf</span>(<span class="string">&quot;Fib(%d) = %d\n&quot;</span>,i+<span class="number">1</span>,Fn);</span><br><span class="line">            F1=F2;</span><br><span class="line">            F2=Fn;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="第4关：加密字符串"><a href="#第4关：加密字符串" class="headerlink" title="第4关：加密字符串"></a>第4关：加密字符串</h2><p>问题描述<br>请设计并编写一个函数，用于加密单个字符，字符加密的规则是：</p>
-<p>对于任意的字母（包括大写和小写字母）字符，替换为其后的第3个字母，如a替换为d，而x则替换为a，y替换为b，z替换为c；<br>对于非字母字符，不作任何处理。<br>主函数中使用循环依次读取用户输入的一行字符（“\n”是单行输入的结束标记），调用函数加密后输出加密后的字符。<br>提示：每次循环过程中只处理其中的单个字符。</p>
-<p>输入<br>一行字符串。</p>
-<p>输出<br>加密后的一行字符串。</p>
-<p>输入示例<br>I went to the zoo with Marry last Sunday.</p>
-<p>输出示例<br>L zhqw wr wkh crr zlwk Pduub odvw Vxqgdb.</p>
-<p>提示<br>设计函数时重点关注函数自身的功能，而不要考虑整个程序的功能。</p>
+<h2 id="第4关：加密字符串">第4关：加密字符串</h2>
+<p>问题描述请设计并编写一个函数，用于加密单个字符，字符加密的规则是：</p>
+<p>对于任意的字母（包括大写和小写字母）字符，替换为其后的第3个字母，如a替换为d，而x则替换为a，y替换为b，z替换为c；对于非字母字符，不作任何处理。主函数中使用循环依次读取用户输入的一行字符（“\n”是单行输入的结束标记），调用函数加密后输出加密后的字符。提示：每次循环过程中只处理其中的单个字符。</p>
+<p>输入一行字符串。</p>
+<p>输出加密后的一行字符串。</p>
+<p>输入示例<br>
+I went to the zoo with Marry last Sunday.</p>
+<p>输出示例<br>
+L zhqw wr wkh crr zlwk Pduub odvw Vxqgdb.</p>
+<p>提示设计函数时重点关注函数自身的功能，而不要考虑整个程序的功能。</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;string.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdlib.h&gt;</span></span></span><br><span class="line"><span class="type">char</span>* <span class="title function_">encrypt</span><span class="params">(<span class="type">char</span> str[<span class="number">100</span>])</span>;</span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span>&#123;</span><br><span class="line">    <span class="type">char</span> str[<span class="number">100</span>],str1[<span class="number">100</span>];</span><br><span class="line">    <span class="type">char</span> ch;</span><br><span class="line">    <span class="type">int</span> i=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">while</span>((ch=getchar())!=<span class="string">&#x27;\n&#x27;</span>)&#123;</span><br><span class="line">        str[i]=ch;</span><br><span class="line">        i++;</span><br><span class="line">    &#125;</span><br><span class="line">    str[i]=<span class="string">&#x27;\0&#x27;</span>;</span><br><span class="line">    <span class="built_in">strcpy</span>(str1,encrypt(str));</span><br><span class="line">    <span class="keyword">for</span>(i=<span class="number">0</span>;str1[i]!=<span class="string">&#x27;\0&#x27;</span>;i++)&#123;</span><br><span class="line">        <span class="built_in">putchar</span>(str1[i]);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="type">char</span>* <span class="title function_">encrypt</span><span class="params">(<span class="type">char</span> str[<span class="number">100</span>])</span>&#123;</span><br><span class="line">    <span class="type">int</span> i=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">while</span>(str[i]!=<span class="string">&#x27;\0&#x27;</span>)&#123;</span><br><span class="line">        <span class="keyword">if</span>(str[i]&gt;=<span class="string">&#x27;a&#x27;</span> &amp;&amp; str[i]&lt;=<span class="string">&#x27;w&#x27;</span>||str[i]&gt;=<span class="string">&#x27;A&#x27;</span> &amp;&amp; str[i]&lt;=<span class="string">&#x27;W&#x27;</span>)&#123;</span><br><span class="line">            str[i]+=<span class="number">3</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span>(str[i]&gt;=<span class="string">&#x27;x&#x27;</span> &amp;&amp; str[i]&lt;=<span class="string">&#x27;z&#x27;</span>||str[i]&gt;=<span class="string">&#x27;X&#x27;</span> &amp;&amp; str[i]&lt;=<span class="string">&#x27;Z&#x27;</span>)&#123;</span><br><span class="line">            str[i]=str[i]-(<span class="string">&#x27;x&#x27;</span>-<span class="string">&#x27;a&#x27;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        i++;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> str;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="第5关：水仙花数"><a href="#第5关：水仙花数" class="headerlink" title="第5关：水仙花数"></a>第5关：水仙花数</h2><p>问题描述<br>水仙花数是指一个三位数，其百位数、十位数和个位数的立方和就等于该数本身，例如153就是一个水仙花数，因为13+53+33&#x3D;153。<br>请设计并编写一个函数，其功能是判定一个整数是否是水仙花数。<br>主函数中负责找到并输出所有的水仙花数。</p>
-<p>输入<br>无。</p>
-<p>输出<br>输出所有的水仙花数，每两个水仙花数之间用一个空格分开。</p>
-<p>输入示例<br>无。</p>
-<p>输出示例<br>153 370 371 407</p>
-<p>提示<br>设计函数时重点关注函数自身的功能，而不要考虑整个程序的功能。</p>
+<h2 id="第5关：水仙花数">第5关：水仙花数</h2>
+<p>问题描述水仙花数是指一个三位数，其百位数、十位数和个位数的立方和就等于该数本身，例如153就是一个水仙花数，因为13+53+33=153。请设计并编写一个函数，其功能是判定一个整数是否是水仙花数。主函数中负责找到并输出所有的水仙花数。</p>
+<p>输入无。</p>
+<p>输出输出所有的水仙花数，每两个水仙花数之间用一个空格分开。</p>
+<p>输入示例无。</p>
+<p>输出示例<br>
+153 370 371 407</p>
+<p>提示设计函数时重点关注函数自身的功能，而不要考虑整个程序的功能。</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;math.h&gt;</span></span></span><br><span class="line"><span class="type">int</span> <span class="title function_">judgenum</span><span class="params">(<span class="type">int</span> num)</span>&#123;</span><br><span class="line">    <span class="type">int</span> i,a,b,c;</span><br><span class="line">    a=num/<span class="number">100</span>;</span><br><span class="line">    b=num%<span class="number">100</span>/<span class="number">10</span>;</span><br><span class="line">    c=num%<span class="number">10</span>;</span><br><span class="line">    <span class="keyword">if</span>(<span class="built_in">pow</span>(a,<span class="number">3</span>)+<span class="built_in">pow</span>(b,<span class="number">3</span>)+<span class="built_in">pow</span>(c,<span class="number">3</span>)==num)</span><br><span class="line">        <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span>&#123;</span><br><span class="line">    <span class="type">int</span> i;</span><br><span class="line">    <span class="keyword">for</span>(i=<span class="number">100</span>;i&lt;=<span class="number">999</span>;i++)&#123;</span><br><span class="line">        <span class="keyword">if</span>(judgenum(i))&#123;</span><br><span class="line">            <span class="built_in">printf</span>(<span class="string">&quot;%d &quot;</span>,i);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
     </div>
@@ -450,6 +469,12 @@
   <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 
 
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">true</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"none","js":{"url":"https://mirrors.sustech.edu.cn/cdnjs/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="https://mirrors.sustech.edu.cn/cdnjs/ajax/libs/hexo-theme-next/8.12.2/third-party/math/mathjax.min.js"></script>
 
 
 <script class="next-config" data-name="giscus" type="application/json">{"enable":true,"repo":"lm379/lm379.github.io","repo_id":"R_kgDOHoD2KA","category":"Announcements","category_id":"DIC_kwDOHoD2KM4CgEIm","mapping":"title","strict":0,"reactions_enabled":1,"emit_metadata":0,"theme":"light_tritanopia","lang":"zh-CN","crossorigin":"anonymous","input_position":"top","loading":"lazy"}</script>

@@ -89,7 +89,7 @@
 
 
 <nav class="site-nav">
-  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">30</span></a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">5</span></a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">40</span></a></li><li class="menu-item menu-item-commonweal"><a href="/404/" rel="section"><i class="fa fa-heartbeat fa-fw"></i>公益 404</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li>
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">32</span></a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">5</span></a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">43</span></a></li><li class="menu-item menu-item-commonweal"><a href="/404/" rel="section"><i class="fa fa-heartbeat fa-fw"></i>公益 404</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li>
       <li class="menu-item menu-item-search">
         <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
         </a>
@@ -161,7 +161,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">40</span>
+          <span class="site-state-item-count">43</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -172,7 +172,7 @@
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
-        <span class="site-state-item-count">30</span>
+        <span class="site-state-item-count">32</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -195,6 +195,9 @@
       </span>
       <span class="links-of-author-item">
         <a href="http://www.coolapk.com/u/3126124" title="酷安 → http:&#x2F;&#x2F;www.coolapk.com&#x2F;u&#x2F;3126124" rel="noopener" target="_blank"><i class="fa coolapk fa-fw"></i>酷安</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.xiaohongshu.com/user/profile/6306019b0000000012001f11" title="小红书 → https:&#x2F;&#x2F;www.xiaohongshu.com&#x2F;user&#x2F;profile&#x2F;6306019b0000000012001f11" rel="noopener" target="_blank"><i class="fa xiaohongshu fa-fw"></i>小红书</a>
       </span>
   </div>
 
@@ -299,39 +302,53 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        <h2 id="第1关：自然数双向求和"><a href="#第1关：自然数双向求和" class="headerlink" title="第1关：自然数双向求和"></a>第1关：自然数双向求和</h2><p>问题描述<br>在教材第104页的示例程序中，其功能是计算1+2+3+……+n的和。为了有效减少循环次数，程序中使用了两个循环变量，对1~n的自然数进行了双向求和。但这个程序是存在bug的，只有当输入的n为偶数时，程序才能计算出正确的结果。聪明的你，能在不改变双向求和的算法基础上，对原来的程序做出适当调整，以使得无论n为奇数或偶数时，程序都能计算出正确的结果吗？</p>
-<p>输入<br>一个正整数n。</p>
-<p>输出<br>按照输出示例的格式输出1+2+3+……+n的和。</p>
-<p>输入示例<br>100</p>
-<p>输出示例<br>sum&#x3D;5050</p>
+        <h2 id="第1关：自然数双向求和">第1关：自然数双向求和</h2>
+<p>问题描述在教材第104页的示例程序中，其功能是计算1+2+3+……+n的和。为了有效减少循环次数，程序中使用了两个循环变量，对1~n的自然数进行了双向求和。但这个程序是存在bug的，只有当输入的n为偶数时，程序才能计算出正确的结果。聪明的你，能在不改变双向求和的算法基础上，对原来的程序做出适当调整，以使得无论n为奇数或偶数时，程序都能计算出正确的结果吗？</p>
+<p>输入一个正整数n。</p>
+<p>输出按照输出示例的格式输出1+2+3+……+n的和。</p>
+<p>输入示例<br>
+100</p>
+<p>输出示例<br>
+sum=5050</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span>&#123;</span><br><span class="line">    <span class="type">int</span> i,j,n,sum=<span class="number">0</span>;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>,&amp;n);</span><br><span class="line">    <span class="keyword">for</span>(i=<span class="number">1</span>,j=n;i&lt;j;i++,j--)&#123;</span><br><span class="line">            sum=sum+i+j;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(n%<span class="number">2</span>!=<span class="number">0</span>)</span><br><span class="line">        sum=sum+n/<span class="number">2</span>+<span class="number">1</span>;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;sum=%d&quot;</span>,sum);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="第2关：勤奋-or-懒散"><a href="#第2关：勤奋-or-懒散" class="headerlink" title="第2关：勤奋 or 懒散"></a>第2关：勤奋 or 懒散</h2><p>问题描述<br>勤奋or懒散，这是一个问题。<br>如果用1表示原地踏步，则1×1×……×1代表每天停步不前，经过n天后，结果仍然是1。<br>如果用1+0.1表示勤奋一点点，则1.1×1.1×……×1.1代表每天进步一点点，那么经过n天后，你将会获得多大的收获呢？<br>如果用1-0.1表示每天懒散一点点，则0.9×0.9×……×0.9代表每天退步一点点，那么n天以后，你又会变成什么样呢？<br>我们要做一个积极的人，每天进步一点点。</p>
-<p>输入<br>一个正整数n，代表经过n天。</p>
-<p>输出<br>输出包括两行，第一行输出1.1的n次方，第二行输出0.9的n次方，输出结果保留3位小数。<br>输出格式和内容参见输出示例，其中的标点符号都是中文标点符号。</p>
-<p>提示<br>不要使用pow函数，使用循环计算累乘积。</p>
-<p>输入示例<br>30</p>
-<p>输出示例<br>每天勤奋一点点，30天后变成：17.449<br>每天懒散一点点，30天后变成：0.042</p>
+<h2 id="第2关：勤奋-or-懒散">第2关：勤奋 or 懒散</h2>
+<p>问题描述勤奋or懒散，这是一个问题。如果用1表示原地踏步，则1×1×……×1代表每天停步不前，经过n天后，结果仍然是1。如果用1+0.1表示勤奋一点点，则1.1×1.1×……×1.1代表每天进步一点点，那么经过n天后，你将会获得多大的收获呢？如果用1-0.1表示每天懒散一点点，则0.9×0.9×……×0.9代表每天退步一点点，那么n天以后，你又会变成什么样呢？我们要做一个积极的人，每天进步一点点。</p>
+<p>输入一个正整数n，代表经过n天。</p>
+<p>输出输出包括两行，第一行输出1.1的n次方，第二行输出0.9的n次方，输出结果保留3位小数。输出格式和内容参见输出示例，其中的标点符号都是中文标点符号。</p>
+<p>提示不要使用pow函数，使用循环计算累乘积。</p>
+<p>输入示例<br>
+30</p>
+<p>输出示例每天勤奋一点点，30天后变成：17.449<br>
+每天懒散一点点，30天后变成：0.042</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="type">float</span> a=<span class="number">1.1</span>,b=<span class="number">0.9</span>,c=<span class="number">1</span>;</span><br><span class="line">    <span class="type">int</span> n,i;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>,&amp;n);</span><br><span class="line">    <span class="keyword">for</span>(i=<span class="number">1</span>;i&lt;=n;i++)&#123;</span><br><span class="line">        c*=a;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;每天勤奋一点点，%d天后变成：%.3f\n&quot;</span>,n,c);</span><br><span class="line">    c=<span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span>(i=<span class="number">1</span>;i&lt;=n;i++)&#123;</span><br><span class="line">        c*=b;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;每天懒散一点点，%d天后变成：%.3f\n&quot;</span>,n,c);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="第3关：奇数偶数之和"><a href="#第3关：奇数偶数之和" class="headerlink" title="第3关：奇数偶数之和"></a>第3关：奇数偶数之和</h2><p>问题描述<br>计算从1开始到指定的整数n之间所有奇数之和以及偶数之和。</p>
-<p>输入<br>一个正整数n。</p>
-<p>输出<br>输出包括两行：<br>第一行按照“The sum of odd numbers is xxx”的格式输出所有奇数的和；<br>第二行按照“The sum of even numbers is xxx”的格式输出所有偶数的和。</p>
-<p>输入示例<br>100</p>
-<p>输出示例<br>The sum of odd numbers is 2500<br>The sum of even numbers is 2550</p>
+<h2 id="第3关：奇数偶数之和">第3关：奇数偶数之和</h2>
+<p>问题描述计算从1开始到指定的整数n之间所有奇数之和以及偶数之和。</p>
+<p>输入一个正整数n。</p>
+<p>输出输出包括两行：第一行按照“The sum of odd numbers is xxx”的格式输出所有奇数的和；第二行按照“The sum of even numbers is xxx”的格式输出所有偶数的和。</p>
+<p>输入示例<br>
+100</p>
+<p>输出示例<br>
+The sum of odd numbers is 2500<br>
+The sum of even numbers is 2550</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;stdlib.h&gt;</span></span></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="type">int</span> n,i,sum=<span class="number">0</span>,o=<span class="number">0</span>,e=<span class="number">0</span>;</span><br><span class="line">    <span class="type">int</span>* odd;</span><br><span class="line">    <span class="type">int</span>* even;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>,&amp;n);</span><br><span class="line">    odd=(<span class="type">int</span>*)<span class="built_in">malloc</span>(n*<span class="keyword">sizeof</span>(<span class="type">int</span>));</span><br><span class="line">    even=(<span class="type">int</span>*)<span class="built_in">malloc</span>(n*<span class="keyword">sizeof</span>(<span class="type">int</span>));</span><br><span class="line">    <span class="keyword">for</span>(i=<span class="number">1</span>;i&lt;=n;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span>(i%<span class="number">2</span>!=<span class="number">0</span>)</span><br><span class="line">            odd[o++]=i;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">            even[e++]=i;</span><br><span class="line">    &#125;</span><br><span class="line">        <span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;o;i++)&#123;</span><br><span class="line">        sum+=odd[i];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;The sum of odd numbers is %d\n&quot;</span>,sum);</span><br><span class="line">    <span class="keyword">for</span>(i=<span class="number">0</span>,sum=<span class="number">0</span>;i&lt;e;i++)&#123;</span><br><span class="line">        sum+=even[i];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;The sum of even numbers is %d\n&quot;</span>,sum);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="第4关：成绩统计-I"><a href="#第4关：成绩统计-I" class="headerlink" title="第4关：成绩统计 I"></a>第4关：成绩统计 I</h2><p>问题描述<br>张老师的班上共有n名学生。期末考试结束后，经过辛苦的阅卷，全班同学的考试成绩都出来了。张老师想要对全班同学的成绩进行统计，需要统计出全班同学的平均成绩以及不及格人数。但是张老师实在没有精神再连续工作下去了，聪明的你能够帮助张老师吗？</p>
-<p>输入<br>输入包括两行：<br>第一行是一个正整数n，表示张老师班上的总人数。<br>第二行共包括n个浮点数，每个浮点数表示一位同学的期末考试成绩。</p>
-<p>输出<br>输出共包括两行：<br>第一行输出全班同学的平均成绩，保留2位小数；<br>第二行输出不及格人数。<br>输出格式参照输出示例，注意其中的冒号是中文冒号。</p>
-<p>输入示例<br>12<br>85.6 83.47 45.8 96.3 100 37.4 68.9 96.6 88 84.6 94.7 78.8</p>
-<p>输出示例<br>平均成绩：80.01分<br>不及格人数：2人</p>
+<h2 id="第4关：成绩统计-I">第4关：成绩统计 I</h2>
+<p>问题描述张老师的班上共有n名学生。期末考试结束后，经过辛苦的阅卷，全班同学的考试成绩都出来了。张老师想要对全班同学的成绩进行统计，需要统计出全班同学的平均成绩以及不及格人数。但是张老师实在没有精神再连续工作下去了，聪明的你能够帮助张老师吗？</p>
+<p>输入输入包括两行：第一行是一个正整数n，表示张老师班上的总人数。第二行共包括n个浮点数，每个浮点数表示一位同学的期末考试成绩。</p>
+<p>输出输出共包括两行：第一行输出全班同学的平均成绩，保留2位小数；第二行输出不及格人数。输出格式参照输出示例，注意其中的冒号是中文冒号。</p>
+<p>输入示例<br>
+12<br>
+85.6 83.47 45.8 96.3 100 37.4 68.9 96.6 88 84.6 94.7 78.8</p>
+<p>输出示例平均成绩：80.01分不及格人数：2人</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;stdlib.h&gt;</span></span></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span>&#123;</span><br><span class="line">    <span class="type">int</span> n,i,j=<span class="number">0</span>;</span><br><span class="line">    <span class="type">float</span> avg;</span><br><span class="line">    <span class="type">float</span>* score;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>,&amp;n);</span><br><span class="line">    score=(<span class="type">float</span>*)<span class="built_in">malloc</span>(n*<span class="keyword">sizeof</span>(<span class="type">float</span>));</span><br><span class="line">    <span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;n;i++)&#123;</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">&quot;%f&quot;</span>,&amp;score[i]);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;n;i++)&#123;</span><br><span class="line">        avg+=score[i];</span><br><span class="line">        <span class="keyword">if</span>(score[i]&lt;<span class="number">60.0</span>)</span><br><span class="line">            j++;</span><br><span class="line">    &#125;</span><br><span class="line">    avg=avg/n;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;平均成绩：%.2f分\n不及格人数：%d人&quot;</span>,avg,j);</span><br><span class="line">    <span class="built_in">free</span>(score);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="第5关：打印温度转换表"><a href="#第5关：打印温度转换表" class="headerlink" title="第5关：打印温度转换表"></a>第5关：打印温度转换表</h2><p>问题描述<br>摄氏温度C和华氏温度F的转换公式为：<br>C&#x3D;<br>9<br>5</p>
-<p> ×(F−32)<br>请使用循环编写一段程序将摄氏温度-华氏温度转换表从300摄氏度到0摄氏度 ( 每20度打印一行 ) 打印出来。</p>
-<p>输入<br>无。</p>
-<p>输出<br>第一行是标题行，标题的“摄氏温度”和“华氏温度”之间用一个制表符键（‘\t’）隔开。<br>其后的每一行输出对应的摄氏温度值和华氏温度值，摄氏温度和华氏温度均为单精度浮点数，中间用两个制表符键（‘\t’）分开。摄氏温度占6个字符宽度，保留1位小数，华氏温度占3个字符宽度，不保留小数。</p>
+<h2 id="第5关：打印温度转换表">第5关：打印温度转换表</h2>
+<p>问题描述摄氏温度C和华氏温度F的转换公式为：<br>
+C=<br>
+9<br>
+5</p>
+<p>×(F−32)<br>
+请使用循环编写一段程序将摄氏温度-华氏温度转换表从300摄氏度到0摄氏度 ( 每20度打印一行 ) 打印出来。</p>
+<p>输入无。</p>
+<p>输出第一行是标题行，标题的“摄氏温度”和“华氏温度”之间用一个制表符键（‘\t’）隔开。其后的每一行输出对应的摄氏温度值和华氏温度值，摄氏温度和华氏温度均为单精度浮点数，中间用两个制表符键（‘\t’）分开。摄氏温度占6个字符宽度，保留1位小数，华氏温度占3个字符宽度，不保留小数。</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span>&#123;</span><br><span class="line">    <span class="type">float</span> F,C;</span><br><span class="line">    <span class="type">int</span> i;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;摄氏温度\t华氏温度\n&quot;</span>);</span><br><span class="line">    <span class="keyword">for</span>(i=<span class="number">300</span>;i&gt;=<span class="number">0</span>;i-=<span class="number">20</span>)&#123;</span><br><span class="line">        C=i;</span><br><span class="line">        F=(C*<span class="number">9.0</span>/<span class="number">5</span>)+<span class="number">32</span>;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;%6.1f\t\t%3.0f\n&quot;</span>,C,F);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
     </div>
@@ -444,6 +461,12 @@
   <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 
 
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">true</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"none","js":{"url":"https://mirrors.sustech.edu.cn/cdnjs/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="https://mirrors.sustech.edu.cn/cdnjs/ajax/libs/hexo-theme-next/8.12.2/third-party/math/mathjax.min.js"></script>
 
 
 <script class="next-config" data-name="giscus" type="application/json">{"enable":true,"repo":"lm379/lm379.github.io","repo_id":"R_kgDOHoD2KA","category":"Announcements","category_id":"DIC_kwDOHoD2KM4CgEIm","mapping":"title","strict":0,"reactions_enabled":1,"emit_metadata":0,"theme":"light_tritanopia","lang":"zh-CN","crossorigin":"anonymous","input_position":"top","loading":"lazy"}</script>

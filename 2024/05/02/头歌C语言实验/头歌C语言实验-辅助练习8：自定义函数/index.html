@@ -89,7 +89,7 @@
 
 
 <nav class="site-nav">
-  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">30</span></a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">5</span></a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">40</span></a></li><li class="menu-item menu-item-commonweal"><a href="/404/" rel="section"><i class="fa fa-heartbeat fa-fw"></i>公益 404</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li>
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">32</span></a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">5</span></a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">43</span></a></li><li class="menu-item menu-item-commonweal"><a href="/404/" rel="section"><i class="fa fa-heartbeat fa-fw"></i>公益 404</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li>
       <li class="menu-item menu-item-search">
         <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
         </a>
@@ -161,7 +161,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">40</span>
+          <span class="site-state-item-count">43</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -172,7 +172,7 @@
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
-        <span class="site-state-item-count">30</span>
+        <span class="site-state-item-count">32</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -195,6 +195,9 @@
       </span>
       <span class="links-of-author-item">
         <a href="http://www.coolapk.com/u/3126124" title="酷安 → http:&#x2F;&#x2F;www.coolapk.com&#x2F;u&#x2F;3126124" rel="noopener" target="_blank"><i class="fa coolapk fa-fw"></i>酷安</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.xiaohongshu.com/user/profile/6306019b0000000012001f11" title="小红书 → https:&#x2F;&#x2F;www.xiaohongshu.com&#x2F;user&#x2F;profile&#x2F;6306019b0000000012001f11" rel="noopener" target="_blank"><i class="fa xiaohongshu fa-fw"></i>小红书</a>
       </span>
   </div>
 
@@ -299,49 +302,56 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        <h2 id="第1关：素数判定-II"><a href="#第1关：素数判定-II" class="headerlink" title="第1关：素数判定 II"></a>第1关：素数判定 II</h2><p>问题描述<br>素数（Prime Number），又称为质数，它是不能被1和它本身以外的其它整数整除的正整数，按照这个定义，负数、0和1都不是素数。<br>请设计并编写一个函数，用于判定一个自然数是否是素数。<br>主函数中请用户输入一个正整数n，调用自定义函数进行判定，如果n是素数则输出Yes，否则输出No。</p>
-<p>输入<br>一个正整数n。</p>
-<p>输出<br>若n为素数输出Yes，否则输出No。</p>
-<p>输入示例<br>37</p>
-<p>输出示例<br>Yes</p>
-<p>提示<br>设计函数时重点关注函数自身的功能，而不要考虑整个程序的功能。</p>
+        <h2 id="第1关：素数判定-II">第1关：素数判定 II</h2>
+<p>问题描述素数（Prime Number），又称为质数，它是不能被1和它本身以外的其它整数整除的正整数，按照这个定义，负数、0和1都不是素数。请设计并编写一个函数，用于判定一个自然数是否是素数。主函数中请用户输入一个正整数n，调用自定义函数进行判定，如果n是素数则输出Yes，否则输出No。</p>
+<p>输入一个正整数n。</p>
+<p>输出若n为素数输出Yes，否则输出No。</p>
+<p>输入示例<br>
+37</p>
+<p>输出示例<br>
+Yes</p>
+<p>提示设计函数时重点关注函数自身的功能，而不要考虑整个程序的功能。</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="type">int</span> <span class="title function_">isPrime</span><span class="params">(<span class="type">int</span> n)</span>&#123;</span><br><span class="line">    <span class="type">int</span> i;</span><br><span class="line">    <span class="type">int</span> flag=<span class="number">1</span>;</span><br><span class="line">    <span class="keyword">if</span>(n==<span class="number">0</span>||n==<span class="number">1</span>||n&lt;<span class="number">0</span>)&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    &#125;<span class="keyword">else</span> <span class="keyword">if</span>(n==<span class="number">2</span>)</span><br><span class="line">        <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">else</span>&#123;</span><br><span class="line">        <span class="keyword">for</span>(i=<span class="number">2</span>;i&lt;n;i++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(n%i==<span class="number">0</span>)&#123;</span><br><span class="line">                flag=<span class="number">0</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> flag;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span>&#123;</span><br><span class="line">    <span class="type">int</span> n;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>,&amp;n);</span><br><span class="line">    <span class="keyword">if</span>(isPrime(n))</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;Yes&quot;</span>);</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;No&quot;</span>);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="第2关：静态变量求和"><a href="#第2关：静态变量求和" class="headerlink" title="第2关：静态变量求和"></a>第2关：静态变量求和</h2><p>问题描述<br>函数中的静态局部变量，在程序的整个执行过程中，其声明语句只会执行一次。</p>
+<h2 id="第2关：静态变量求和">第2关：静态变量求和</h2>
+<p>问题描述函数中的静态局部变量，在程序的整个执行过程中，其声明语句只会执行一次。</p>
 <p>请利用这个特点，参考教材上例7.1，编写一段程序，针对用户输入的正整数n，利用静态局部变量对1~n之间的所有能被3整除的整数求和并输出结果。</p>
-<p>输入<br>一个正整数n。</p>
-<p>输出<br>1~n之间的所有能被3整除的整数之和。</p>
-<p>输入示例<br>54</p>
-<p>输出示例<br>sum&#x3D;513</p>
+<p>输入一个正整数n。</p>
+<p>输出<br>
+1~n之间的所有能被3整除的整数之和。</p>
+<p>输入示例<br>
+54</p>
+<p>输出示例<br>
+sum=513</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="type">int</span> <span class="title function_">Func</span><span class="params">(<span class="type">int</span> i)</span>;</span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span>&#123;</span><br><span class="line">    <span class="type">int</span> n,i;</span><br><span class="line">    <span class="type">int</span> sum=<span class="number">0</span>;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>,&amp;n);</span><br><span class="line">    <span class="keyword">for</span>(i=<span class="number">1</span>;i&lt;=n;i++)&#123;</span><br><span class="line">        sum=Func(i);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;sum=%d&quot;</span>,sum);</span><br><span class="line">&#125;</span><br><span class="line"><span class="type">int</span> <span class="title function_">Func</span><span class="params">(<span class="type">int</span> i)</span>&#123;</span><br><span class="line">    <span class="type">static</span> <span class="type">int</span> sum=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">if</span>(i%<span class="number">3</span>==<span class="number">0</span>)</span><br><span class="line">        sum+=i;</span><br><span class="line">    <span class="keyword">return</span> sum;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="第3关：几位数-II"><a href="#第3关：几位数-II" class="headerlink" title="第3关：几位数 II"></a>第3关：几位数 II</h2><p>问题描述<br>对于用户输入的一个非负整数n，请使用递归的方法编程判断n是一个几位整数。<br>注意：0是1位数。</p>
-<p>相关知识<br>函数的递归调用<br>在调用一个函数的过程中又出现直接或间接地调用该函数本身，称为函数的递归调用。</p>
+<h2 id="第3关：几位数-II">第3关：几位数 II</h2>
+<p>问题描述对于用户输入的一个非负整数n，请使用递归的方法编程判断n是一个几位整数。注意：0是1位数。</p>
+<p>相关知识函数的递归调用在调用一个函数的过程中又出现直接或间接地调用该函数本身，称为函数的递归调用。</p>
 <p>例如：</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> <span class="title function_">fun</span><span class="params">(<span class="type">int</span> x)</span>&#123;</span><br><span class="line">    <span class="type">int</span> y,z;</span><br><span class="line">    z = fun(y); <span class="comment">//在执行fun函数的过程中又要调用fun函数</span></span><br><span class="line">    <span class="keyword">return</span> (<span class="number">2</span>*z)；</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 <p>在调用 f 函数的过程中，又要调用 f 函数，这就是直接调用。如果在调用 f1 函数的过程中又要调用 f2 函数，而在调用 f2 函数过程中又要调用 f1 函数，这就是间接调用本函数。</p>
 <p>上面的例子中，递归调用是无终止的自身调用。显然，程序中不应出现这种无终止的递归调用，而只应出现有限次数的、有终止的递归调用，这可以用 if 语句来控制，只有在某一条件成立时才继续执行递归调用，否则就不再继续。</p>
-<p>输入<br>一个任意的非负整数n，测试数据输入的n不会超过unsigned int所能表示的最大值（4294967295）。</p>
-<p>输出<br>参照示例按照“非负整数y是一个x位整数。”的格式输出判断结果，其中y和x要用实际数值代替。</p>
-<p>输入示例<br>8482</p>
-<p>输出示例<br>非负整数8482是一个4位整数。</p>
-<p>提示<br>对于任意整数，如果用它整除10可以去掉其个位数字。</p>
+<p>输入一个任意的非负整数n，测试数据输入的n不会超过unsigned int所能表示的最大值（4294967295）。</p>
+<p>输出参照示例按照“非负整数y是一个x位整数。”的格式输出判断结果，其中y和x要用实际数值代替。</p>
+<p>输入示例<br>
+8482</p>
+<p>输出示例非负整数8482是一个4位整数。</p>
+<p>提示对于任意整数，如果用它整除10可以去掉其个位数字。</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="type">int</span> <span class="title function_">Func</span><span class="params">(<span class="type">int</span> n,<span class="type">int</span> sum)</span>;</span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span>&#123;</span><br><span class="line">    <span class="type">int</span> n;</span><br><span class="line">    <span class="type">int</span> sum=<span class="number">1</span>;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>,&amp;n);</span><br><span class="line">    <span class="keyword">if</span>(n&gt;=<span class="number">10</span>)&#123;</span><br><span class="line">        sum=Func(n,sum);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;非负整数%d是一个%d位整数。&quot;</span>,n,sum);</span><br><span class="line">&#125;</span><br><span class="line"><span class="type">int</span> <span class="title function_">Func</span><span class="params">(<span class="type">int</span> n,<span class="type">int</span> sum)</span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(n/<span class="number">10</span>&gt;=<span class="number">10</span>)&#123;</span><br><span class="line">        sum++;</span><br><span class="line">        Func(n/<span class="number">10</span>,sum);</span><br><span class="line">    &#125;<span class="keyword">else</span></span><br><span class="line">        <span class="keyword">return</span> sum+<span class="number">1</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="第4关：整数分割输出"><a href="#第4关：整数分割输出" class="headerlink" title="第4关：整数分割输出"></a>第4关：整数分割输出</h2><p>问题描述<br>本关任务：用递归法将一个整数 n （任意位数的整数）分割成各位数字并输出，各个数字字符之间用空格隔开。</p>
+<h2 id="第4关：整数分割输出">第4关：整数分割输出</h2>
+<p>问题描述本关任务：用递归法将一个整数 n （任意位数的整数）分割成各位数字并输出，各个数字字符之间用空格隔开。</p>
 <p>例如，输入483，应输出字符串4 8 3。</p>
-<p>相关知识<br>函数的递归调用<br>在调用一个函数的过程中又出现直接或间接地调用该函数本身，称为函数的递归调用。</p>
+<p>相关知识函数的递归调用在调用一个函数的过程中又出现直接或间接地调用该函数本身，称为函数的递归调用。</p>
 <p>例如：</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> <span class="title function_">fun</span><span class="params">(<span class="type">int</span> x)</span>&#123;</span><br><span class="line">    <span class="type">int</span> y,z;</span><br><span class="line">    z = fun(y); <span class="comment">//在执行fun函数的过程中又要调用fun函数</span></span><br><span class="line">    <span class="keyword">return</span> (<span class="number">2</span>*z)；</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 <p>在调用 f 函数的过程中，又要调用 f 函数，这就是直接调用。如果在调用 f1 函数的过程中又要调用 f2 函数，而在调用 f2 函数过程中又要调用 f1 函数，这就是间接调用本函数。</p>
 <p>上面的例子中，递归调用是无终止的自身调用。显然，程序中不应出现这种无终止的递归调用，而只应出现有限次数的、有终止的递归调用，这可以用 if 语句来控制，只有在某一条件成立时才继续执行递归调用，否则就不再继续。</p>
-<p>输入<br>一个整数n。</p>
-<p>输出<br>从高位到低位的各位上的数字字符，每两个数字字符之间用一个空格分开。</p>
-<p>输入示例<br>1385</p>
-<p>输出示例<br>1 3 8 5</p>
-<p>提示<br>用户输入n可能是一个负数，此时可以把n转换为对应的正数继续处理，同时需要输出负号（-）。</p>
+<p>输入一个整数n。</p>
+<p>输出从高位到低位的各位上的数字字符，每两个数字字符之间用一个空格分开。</p>
+<p>输入示例<br>
+1385</p>
+<p>输出示例<br>
+1 3 8 5</p>
+<p>提示用户输入n可能是一个负数，此时可以把n转换为对应的正数继续处理，同时需要输出负号（-）。</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;math.h&gt;</span></span></span><br><span class="line"><span class="type">void</span> <span class="title function_">Func</span><span class="params">(<span class="type">int</span> n,<span class="type">int</span> m)</span>;</span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span>&#123;</span><br><span class="line">    <span class="type">int</span> n,t,m=<span class="number">0</span>;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>,&amp;n);</span><br><span class="line">    <span class="keyword">if</span>(n&lt;<span class="number">0</span>)&#123;</span><br><span class="line">        n=<span class="built_in">abs</span>(n);</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;- &quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(n&lt;<span class="number">10</span>)</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;%d&quot;</span>,n);</span><br><span class="line">    <span class="keyword">else</span>&#123;</span><br><span class="line">        t=n;</span><br><span class="line">        <span class="keyword">while</span>(t/<span class="number">10</span>!=<span class="number">0</span>)&#123;</span><br><span class="line">            t/=<span class="number">10</span>;</span><br><span class="line">            m++;</span><br><span class="line">        &#125;</span><br><span class="line">        Func(n,m);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="type">void</span> <span class="title function_">Func</span><span class="params">(<span class="type">int</span> n,<span class="type">int</span> m)</span>&#123;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;%d&quot;</span>,n/(<span class="type">int</span>)<span class="built_in">pow</span>(<span class="number">10</span>,m));</span><br><span class="line">    <span class="keyword">if</span>(m&gt;<span class="number">0</span>)&#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot; &quot;</span>);</span><br><span class="line">        Func(n%(<span class="type">int</span>)<span class="built_in">pow</span>(<span class="number">10</span>,m),m<span class="number">-1</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
     </div>
@@ -454,6 +464,12 @@
   <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 
 
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">true</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"none","js":{"url":"https://mirrors.sustech.edu.cn/cdnjs/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="https://mirrors.sustech.edu.cn/cdnjs/ajax/libs/hexo-theme-next/8.12.2/third-party/math/mathjax.min.js"></script>
 
 
 <script class="next-config" data-name="giscus" type="application/json">{"enable":true,"repo":"lm379/lm379.github.io","repo_id":"R_kgDOHoD2KA","category":"Announcements","category_id":"DIC_kwDOHoD2KM4CgEIm","mapping":"title","strict":0,"reactions_enabled":1,"emit_metadata":0,"theme":"light_tritanopia","lang":"zh-CN","crossorigin":"anonymous","input_position":"top","loading":"lazy"}</script>

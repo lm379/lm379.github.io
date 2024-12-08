@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#000"><meta name="generator" content="Hexo 7.2.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#000">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://mirrors.sustech.edu.cn/cdnjs/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha256-DfWjNxDkM94fVBWx1H5BMMp0Zq7luBlV8QRcSES7s+0=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://mirrors.sustech.edu.cn/cdnjs/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://mirrors.sustech.edu.cn/cdnjs/ajax/libs/pace/1.2.4/themes/blue/pace-theme-minimal.css">
+  <script src="https://mirrors.sustech.edu.cn/cdnjs/ajax/libs/pace/1.2.4/pace.min.js" integrity="sha256-gqd7YTjg/BtfqWSwsJOvndl0Bxc8gFImLEkXQT8+qj0=" crossorigin="anonymous"></script>
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"lm379.cn","root":"/","images":"/images","scheme":"Muse","darkmode":false,"version":"8.12.2","exturl":false,"sidebar":{"position":"right","display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":"mac"},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":true}}</script><script src="https://mirrors.sustech.edu.cn/cdnjs/ajax/libs/hexo-theme-next/8.12.2/config.min.js"></script>
+
+    <meta name="description" content="Educoder C语言程序设计实验题">
+<meta property="og:type" content="article">
+<meta property="og:title" content="头歌C语言实验 辅助练习6：循环结构 II">
+<meta property="og:url" content="https://lm379.cn/2024/12/09/%E5%A4%B4%E6%AD%8CC%E8%AF%AD%E8%A8%80%E5%AE%9E%E9%AA%8C/%E5%A4%B4%E6%AD%8CC%E8%AF%AD%E8%A8%80%E5%AE%9E%E9%AA%8C-%E8%BE%85%E5%8A%A9%E7%BB%83%E4%B9%A06%EF%BC%9A%E5%BE%AA%E7%8E%AF%E7%BB%93%E6%9E%84-II/index.html">
+<meta property="og:site_name" content="lm379のBlog">
+<meta property="og:description" content="Educoder C语言程序设计实验题">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2024-12-08T16:49:59.000Z">
+<meta property="article:modified_time" content="2024-12-08T16:58:20.446Z">
+<meta property="article:author" content="lm379">
+<meta property="article:tag" content="Educoder">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://lm379.cn/2024/12/09/%E5%A4%B4%E6%AD%8CC%E8%AF%AD%E8%A8%80%E5%AE%9E%E9%AA%8C/%E5%A4%B4%E6%AD%8CC%E8%AF%AD%E8%A8%80%E5%AE%9E%E9%AA%8C-%E8%BE%85%E5%8A%A9%E7%BB%83%E4%B9%A06%EF%BC%9A%E5%BE%AA%E7%8E%AF%E7%BB%93%E6%9E%84-II/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://lm379.cn/2024/12/09/%E5%A4%B4%E6%AD%8CC%E8%AF%AD%E8%A8%80%E5%AE%9E%E9%AA%8C/%E5%A4%B4%E6%AD%8CC%E8%AF%AD%E8%A8%80%E5%AE%9E%E9%AA%8C-%E8%BE%85%E5%8A%A9%E7%BB%83%E4%B9%A06%EF%BC%9A%E5%BE%AA%E7%8E%AF%E7%BB%93%E6%9E%84-II/","path":"2024/12/09/头歌C语言实验/头歌C语言实验-辅助练习6：循环结构-II/","title":"头歌C语言实验 辅助练习6：循环结构 II"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>头歌C语言实验 辅助练习6：循环结构 II | lm379のBlog</title>
+  
+
+
+
+  <script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{&quot;token&quot;: &quot;5a58651dc232489989204bf6775afe7a&quot;}'></script>
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">lm379のBlog</p>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">32</span></a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">5</span></a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">43</span></a></li><li class="menu-item menu-item-commonweal"><a href="/404/" rel="section"><i class="fa fa-heartbeat fa-fw"></i>公益 404</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC1%E5%85%B3%EF%BC%9A%E6%95%B0%E5%88%97%E6%B1%82%E5%92%8C"><span class="nav-number">1.</span> <span class="nav-text">第1关：数列求和</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%97%AE%E9%A2%98%E6%8F%8F%E8%BF%B0"><span class="nav-number">1.1.</span> <span class="nav-text">问题描述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BE%93%E5%85%A5"><span class="nav-number">1.2.</span> <span class="nav-text">输入</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BE%93%E5%87%BA"><span class="nav-number">1.3.</span> <span class="nav-text">输出</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BE%93%E5%85%A5%E7%A4%BA%E4%BE%8B"><span class="nav-number">1.4.</span> <span class="nav-text">输入示例</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BE%93%E5%87%BA%E7%A4%BA%E4%BE%8B"><span class="nav-number">1.5.</span> <span class="nav-text">输出示例</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC2%E5%85%B3%EF%BC%9A%E5%87%A0%E4%BD%8D%E6%95%B0"><span class="nav-number">2.</span> <span class="nav-text">第2关：几位数</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%97%AE%E9%A2%98%E6%8F%8F%E8%BF%B0-2"><span class="nav-number">2.1.</span> <span class="nav-text">问题描述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BE%93%E5%85%A5-2"><span class="nav-number">2.2.</span> <span class="nav-text">输入</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BE%93%E5%87%BA-2"><span class="nav-number">2.3.</span> <span class="nav-text">输出</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BE%93%E5%85%A5%E7%A4%BA%E4%BE%8B-2"><span class="nav-number">2.4.</span> <span class="nav-text">输入示例</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BE%93%E5%87%BA%E7%A4%BA%E4%BE%8B-2"><span class="nav-number">2.5.</span> <span class="nav-text">输出示例</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8F%90%E7%A4%BA"><span class="nav-number">2.6.</span> <span class="nav-text">提示</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC3%E5%85%B3%EF%BC%9A%E5%95%A4%E9%85%92%E8%8A%82"><span class="nav-number">3.</span> <span class="nav-text">第3关：啤酒节</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%97%AE%E9%A2%98%E6%8F%8F%E8%BF%B0-3"><span class="nav-number">3.1.</span> <span class="nav-text">问题描述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BE%93%E5%85%A5-3"><span class="nav-number">3.2.</span> <span class="nav-text">输入</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BE%93%E5%87%BA-3"><span class="nav-number">3.3.</span> <span class="nav-text">输出</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BE%93%E5%85%A5%E7%A4%BA%E4%BE%8B-3"><span class="nav-number">3.4.</span> <span class="nav-text">输入示例</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BE%93%E5%87%BA%E7%A4%BA%E4%BE%8B-3"><span class="nav-number">3.5.</span> <span class="nav-text">输出示例</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC4%E5%85%B3%EF%BC%9A%E7%BB%9F%E8%AE%A1%E5%AD%97%E7%AC%A6%E6%95%B0"><span class="nav-number">4.</span> <span class="nav-text">第4关：统计字符数</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%97%AE%E9%A2%98%E6%8F%8F%E8%BF%B0-4"><span class="nav-number">4.1.</span> <span class="nav-text">问题描述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BE%93%E5%85%A5-4"><span class="nav-number">4.2.</span> <span class="nav-text">输入</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BE%93%E5%87%BA-4"><span class="nav-number">4.3.</span> <span class="nav-text">输出</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BE%93%E5%85%A5%E7%A4%BA%E4%BE%8B-4"><span class="nav-number">4.4.</span> <span class="nav-text">输入示例</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BE%93%E5%87%BA%E7%A4%BA%E4%BE%8B-4"><span class="nav-number">4.5.</span> <span class="nav-text">输出示例</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8F%90%E7%A4%BA-2"><span class="nav-number">4.6.</span> <span class="nav-text">提示</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC5%E5%85%B3%EF%BC%9A%E8%AE%A1%E7%AE%97%E5%9C%86%E5%91%A8%E7%8E%87-II"><span class="nav-number">5.</span> <span class="nav-text">第5关：计算圆周率 II</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%97%AE%E9%A2%98%E6%8F%8F%E8%BF%B0-5"><span class="nav-number">5.1.</span> <span class="nav-text">问题描述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BE%93%E5%85%A5-5"><span class="nav-number">5.2.</span> <span class="nav-text">输入</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BE%93%E5%87%BA-5"><span class="nav-number">5.3.</span> <span class="nav-text">输出</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BE%93%E5%85%A5%E7%A4%BA%E4%BE%8B-5"><span class="nav-number">5.4.</span> <span class="nav-text">输入示例</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BE%93%E5%87%BA%E7%A4%BA%E4%BE%8B-5"><span class="nav-number">5.5.</span> <span class="nav-text">输出示例</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8F%90%E7%A4%BA-3"><span class="nav-number">5.6.</span> <span class="nav-text">提示</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC6%E5%85%B3%EF%BC%9A%E6%89%93%E5%8D%B0%E8%B4%A8%E6%95%B0"><span class="nav-number">6.</span> <span class="nav-text">第6关：打印质数</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%97%AE%E9%A2%98%E6%8F%8F%E8%BF%B0-6"><span class="nav-number">6.1.</span> <span class="nav-text">问题描述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BE%93%E5%85%A5-6"><span class="nav-number">6.2.</span> <span class="nav-text">输入</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BE%93%E5%87%BA-6"><span class="nav-number">6.3.</span> <span class="nav-text">输出</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BE%93%E5%85%A5%E7%A4%BA%E4%BE%8B-6"><span class="nav-number">6.4.</span> <span class="nav-text">输入示例</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BE%93%E5%87%BA%E7%A4%BA%E4%BE%8B-6"><span class="nav-number">6.5.</span> <span class="nav-text">输出示例</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8F%90%E7%A4%BA-4"><span class="nav-number">6.6.</span> <span class="nav-text">提示</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="lm379"
+      src="https://r2.lm379.cn/2024/05/4e267962f6254f01166242c803cd488f.jpg">
+  <p class="site-author-name" itemprop="name">lm379</p>
+  <div class="site-description" itemprop="description">记录个人的折腾之旅</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">43</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">32</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/lm379" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;lm379" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:lm379@foxmail.com" title="E-Mail → mailto:lm379@foxmail.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://weibo.com/u/6997206595" title="Weibo → https:&#x2F;&#x2F;weibo.com&#x2F;u&#x2F;6997206595" rel="noopener" target="_blank"><i class="fab fa-weibo fa-fw"></i>Weibo</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://space.bilibili.com/299502822" title="B站 → https:&#x2F;&#x2F;space.bilibili.com&#x2F;299502822" rel="noopener" target="_blank"><i class="fa bilibili fa-fw"></i>B站</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.zhihu.com/people/yi-ben-zheng-jing-1-19" title="知乎 → https:&#x2F;&#x2F;www.zhihu.com&#x2F;people&#x2F;yi-ben-zheng-jing-1-19" rel="noopener" target="_blank"><i class="fa zhihu fa-fw"></i>知乎</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="http://www.coolapk.com/u/3126124" title="酷安 → http:&#x2F;&#x2F;www.coolapk.com&#x2F;u&#x2F;3126124" rel="noopener" target="_blank"><i class="fa coolapk fa-fw"></i>酷安</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.xiaohongshu.com/user/profile/6306019b0000000012001f11" title="小红书 → https:&#x2F;&#x2F;www.xiaohongshu.com&#x2F;user&#x2F;profile&#x2F;6306019b0000000012001f11" rel="noopener" target="_blank"><i class="fa xiaohongshu fa-fw"></i>小红书</a>
+      </span>
+  </div>
+
+
+  <div class="links-of-blogroll site-overview-item animated">
+    <div class="links-of-blogroll-title"><i class="fa fa-globe fa-fw"></i>
+      Links
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <a href="https://pan.lm379.cn/" title="https:&#x2F;&#x2F;pan.lm379.cn" rel="noopener" target="_blank">Alist云盘</a>
+        </li>
+    </ul>
+  </div>
+
+        </div>
+      </div>
+        <div class="back-to-top animated" role="button" aria-label="返回顶部">
+          <i class="fa fa-arrow-up"></i>
+          <span>0%</span>
+        </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="reading-progress-bar"></div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://lm379.cn/2024/12/09/%E5%A4%B4%E6%AD%8CC%E8%AF%AD%E8%A8%80%E5%AE%9E%E9%AA%8C/%E5%A4%B4%E6%AD%8CC%E8%AF%AD%E8%A8%80%E5%AE%9E%E9%AA%8C-%E8%BE%85%E5%8A%A9%E7%BB%83%E4%B9%A06%EF%BC%9A%E5%BE%AA%E7%8E%AF%E7%BB%93%E6%9E%84-II/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://r2.lm379.cn/2024/05/4e267962f6254f01166242c803cd488f.jpg">
+      <meta itemprop="name" content="lm379">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="lm379のBlog">
+      <meta itemprop="description" content="记录个人的折腾之旅">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="头歌C语言实验 辅助练习6：循环结构 II | lm379のBlog">
+      <meta itemprop="description" content="Educoder C语言程序设计实验题">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          头歌C语言实验 辅助练习6：循环结构 II
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2024-12-09 00:49:59 / 修改时间：00:58:20" itemprop="dateCreated datePublished" datetime="2024-12-09T00:49:59+08:00">2024-12-09</time>
+    </span>
+
+  
+    <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+</div>
+
+            <div class="post-description">Educoder C语言程序设计实验题</div>
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h2 id="第1关：数列求和">第1关：数列求和</h2>
+<h3 id="问题描述">问题描述</h3>
+<p>对于用户从键盘输入的正整数a和n，编程计算s = a + aa + aaa + aaaa + aa…a（n个a）的值。 例如： 当a = 2，n = 5时，需要计算5个由2构成的整数的和：2 + 22 + 222 + 2222 + 22222。 若用户输入：5 3，则表示需要把3个由5构成的整数相加，即计算5 + 55 + 555的和，此时应该输出：615。 若用户输入：5 4，则表示需要计算5 + 55 + 555 + 5555的和，应该输出：6170。</p>
+<h3 id="输入">输入</h3>
+<p>两个用一个空格分开的正整数a和n，输入数据保证a和n的值都小于9。</p>
+<h3 id="输出">输出</h3>
+<p>一个正整数，即累加求和的结果。</p>
+<h3 id="输入示例">输入示例</h3>
+<p><code>5 3</code></p>
+<h3 id="输出示例">输出示例</h3>
+<p><code>615</code></p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span> &#123;</span><br><span class="line">    <span class="type">int</span> a, n, i, j;</span><br><span class="line">    <span class="type">int</span> s = <span class="number">0</span>, t = <span class="number">0</span>;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">&quot;%d %d&quot;</span>, &amp;a, &amp;n);</span><br><span class="line">    <span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; n; i++) &#123;</span><br><span class="line">        t = t * <span class="number">10</span> + a;</span><br><span class="line">        s += t;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;%d&quot;</span>, s);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="第2关：几位数">第2关：几位数</h2>
+<h3 id="问题描述-2">问题描述</h3>
+<p>对于用户输入的一个非负整数n，请使用循环编程判断n是一个几位整数。 **注意：**0是1位数。</p>
+<h3 id="输入-2">输入</h3>
+<p>一个任意的非负整数n，测试数据输入的n不会超过unsigned int所能表示的最大值（4294967295）。</p>
+<h3 id="输出-2">输出</h3>
+<p>参照示例按照“非负整数y是一个x位整数。”的格式输出判断结果，其中y和x要用实际数值代替。</p>
+<h3 id="输入示例-2">输入示例</h3>
+<p><code>8482</code></p>
+<h3 id="输出示例-2">输出示例</h3>
+<p><code>非负整数8482是一个4位整数。</code></p>
+<h3 id="提示">提示</h3>
+<p>对于任意整数，如果用它整除10可以去掉其个位数字。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span> &#123;</span><br><span class="line">    <span class="type">unsigned</span> <span class="type">int</span> number;</span><br><span class="line">    <span class="type">unsigned</span> <span class="type">int</span> originalNumber; </span><br><span class="line">    <span class="type">int</span> digitCount;</span><br><span class="line"></span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">&quot;%u&quot;</span>, &amp;number);</span><br><span class="line">    originalNumber = number; </span><br><span class="line">    digitCount = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">while</span> (number &gt;= <span class="number">10</span>) &#123;</span><br><span class="line">        number /= <span class="number">10</span>;</span><br><span class="line">        digitCount++;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;非负整数%d是一个%d位整数。\n&quot;</span>, originalNumber, digitCount);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="第3关：啤酒节">第3关：啤酒节</h2>
+<h3 id="问题描述-3">问题描述</h3>
+<p>一年一度的啤酒节又到了，这是一个值得欢庆的日子，各大啤酒厂商为了推广自己的啤酒品牌，纷纷开展了啤酒促销活动。某啤酒厂商的促销活动是这样的：针对购买该品牌啤酒的顾客，每两个空酒瓶能换一瓶啤酒，每四个瓶盖也能换一瓶啤酒。 例如，如果某个顾客最初购买了该品牌的3瓶啤酒，那么他的兑换过程如下：</p>
+<ol>
+<li class="lvl-3">
+<p>他喝完以后有3个空酒瓶和3个瓶盖，拿其中2个空酒瓶可以兑换1瓶啤酒，将这瓶啤酒喝完后，顾客现在还有3 - 2 + 1 = 2个空酒瓶和3 + 1 = 4个瓶盖；</p>
+</li>
+<li class="lvl-3">
+<p>那么现在手里的空酒瓶和瓶盖又可以兑换2瓶啤酒（2个空酒瓶和4个瓶盖兑换的）；</p>
+</li>
+<li class="lvl-3">
+<p>喝完第二次兑换的两瓶啤酒后，顾客此时有2个空酒瓶和2个瓶盖，可以继续拿2个空酒瓶兑换1瓶啤酒；</p>
+</li>
+<li class="lvl-3">
+<p>继续喝完第三次兑换的一瓶啤酒，现在顾客有1个空酒瓶和3个瓶盖，不能再继续兑换了。所以顾客最多可以喝到3 + 1 + 2 + 1 = 7瓶啤酒。</p>
+</li>
+</ol>
+<p>假定某位顾客最初购买了n瓶该品牌的啤酒，聪明的你能帮他算一算他最多能喝到多少瓶啤酒吗？</p>
+<h3 id="输入-3">输入</h3>
+<p>输入只有一个正整数n，表示顾客最初购买的啤酒瓶数。</p>
+<h3 id="输出-3">输出</h3>
+<p>参照示例该顾客最多能够喝到的啤酒瓶数。</p>
+<h3 id="输入示例-3">输入示例</h3>
+<p><code>4</code></p>
+<h3 id="输出示例-3">输出示例</h3>
+<p><code>最多能喝到11瓶啤酒</code></p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span> &#123;</span><br><span class="line">    <span class="type">int</span> n, total = <span class="number">0</span>, bottles = <span class="number">0</span>, caps = <span class="number">0</span>;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>, &amp;n);</span><br><span class="line">    total = bottles = n;</span><br><span class="line">    caps = n;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">while</span> (bottles &gt;= <span class="number">2</span> || caps &gt;= <span class="number">4</span>) &#123;</span><br><span class="line">        <span class="type">int</span> new_bottles = bottles / <span class="number">2</span> + caps / <span class="number">4</span>;</span><br><span class="line">        total += new_bottles;</span><br><span class="line">        bottles = bottles % <span class="number">2</span> + new_bottles;</span><br><span class="line">        caps = caps % <span class="number">4</span> + new_bottles;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;最多能喝到%d瓶啤酒\n&quot;</span>, total);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="第4关：统计字符数">第4关：统计字符数</h2>
+<h3 id="问题描述-4">问题描述</h3>
+<p>输入一行字符，分别统计出其中英文字母、数字、空格和其他字符的个数。</p>
+<h3 id="输入-4">输入</h3>
+<p>输入只有一行，其中包含若干个任意字符。</p>
+<h3 id="输出-4">输出</h3>
+<p>输出包括4行： 第一行输出其中的英文字母个数； 第二行输出其中的数字字符个数； 第三行输出其中的空格字符个数； 第四行输出其中的其它字符个数。</p>
+<h3 id="输入示例-4">输入示例</h3>
+<p><code>I am a student, I am 20 years old.</code></p>
+<h3 id="输出示例-4">输出示例</h3>
+<p><code>字母字符：22</code> <code>数字字符：2</code> <code>空格字符：8</code> <code>其它字符：2</code></p>
+<h3 id="提示-2">提示</h3>
+<p>当用户输入完一行字符并按下回车键后，所有字符包括最后的回车键产生的换行符（‘\n’）都会依次进入输入缓冲区排队等待读取，因此可以使用循环依次从缓冲区中读取其中的每个字符，并且在最后的由回车键产生的换行符（‘\n’）就是输入一行字符的结束标记。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;ctype.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span> &#123;</span><br><span class="line">    <span class="type">char</span> c;</span><br><span class="line">    <span class="type">int</span> letters = <span class="number">0</span>, digits = <span class="number">0</span>, spaces = <span class="number">0</span>, others = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">while</span> ((c = getchar()) != <span class="string">&#x27;\n&#x27;</span> &amp;&amp; c != EOF) &#123;</span><br><span class="line">        <span class="keyword">if</span> (<span class="built_in">isalpha</span>(c)) &#123;</span><br><span class="line">            letters++;</span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (<span class="built_in">isdigit</span>(c)) &#123;</span><br><span class="line">            digits++;</span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (<span class="built_in">isspace</span>(c)) &#123;</span><br><span class="line">            spaces++;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            others++;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;字母字符：%d\n&quot;</span>, letters);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;数字字符：%d\n&quot;</span>, digits);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;空格字符：%d\n&quot;</span>, spaces);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;其它字符：%d\n&quot;</span>, others);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="第5关：计算圆周率-II">第5关：计算圆周率 II</h2>
+<h3 id="问题描述-5">问题描述</h3>
+<p>众所周知，可以使用级数展开公式近似计算圆周率π，下面的这个公式可以算是其中最简单的一个： π/4=1-1/3+1/5-1/7+1/9-… 请编写程序根据上述公式近似计算圆周率π的值，要求一直计算直到某个求和项的绝对值小于m时为止。m的值由用户从键盘输入，例如1e-6，1e-10等。</p>
+<h3 id="输入-5">输入</h3>
+<p>一个浮点数m。</p>
+<h3 id="输出-5">输出</h3>
+<p>一个浮点数，表示圆周率π的近似值，精确到小数点后8位。</p>
+<h3 id="输入示例-5">输入示例</h3>
+<p><code>1e-4</code></p>
+<h3 id="输出示例-5">输出示例</h3>
+<p><code>3.14139265</code></p>
+<h3 id="提示-3">提示</h3>
+<p>为保证数据精度准确无误，涉及到实数的变量请使用double类型。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;math.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span> &#123;</span><br><span class="line">    <span class="type">double</span> m, piover4 = <span class="number">0.0</span>, term = <span class="number">1.0</span>;</span><br><span class="line">    <span class="type">int</span> i = <span class="number">0</span>;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">&quot;%lf&quot;</span>, &amp;m);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">while</span> (<span class="built_in">fabs</span>(term) &gt; m) &#123;</span><br><span class="line">        piover4 += term;</span><br><span class="line">        i++;</span><br><span class="line">        term = <span class="built_in">pow</span>(<span class="number">-1</span>, i) / (<span class="number">2</span> * i + <span class="number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;%.8f\n&quot;</span>, piover4 * <span class="number">4</span>);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="第6关：打印质数">第6关：打印质数</h2>
+<h3 id="问题描述-6">问题描述</h3>
+<p>质数是不能被1和它本身以外的其它整数整除的正整数，按照这个定义，负数、0和1都不是素数。 请编写一段程序，对于用户输入的两个任意的整数a和b，在屏幕上打印出a和b之间的所有质数。</p>
+<h3 id="输入-6">输入</h3>
+<p>两个用空格分开的任意整数a和b。</p>
+<h3 id="输出-6">输出</h3>
+<p>输出a和b之间的所有质数。 输出可能包含多行，每行最多输出5个质数，输出每个质数时指定宽度为5，并且按右对齐的方式输出，不要输出多余的空格。</p>
+<h3 id="输入示例-6">输入示例</h3>
+<p><code>3 40</code></p>
+<h3 id="输出示例-6">输出示例</h3>
+<p><code>3 5 7 11 13</code> <code>17 19 23 29 31</code> <code>37</code></p>
+<h3 id="提示-4">提示</h3>
+<p>注意a和b都可以是任意的整数（负数、0和正数），并且a和b的大小关系也是不确定的。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdbool.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="type">bool</span> <span class="title function_">is_prime</span><span class="params">(<span class="type">int</span> n)</span> &#123;</span><br><span class="line">    <span class="type">int</span> i;</span><br><span class="line">    <span class="keyword">if</span> (n &lt;= <span class="number">1</span>) <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    <span class="keyword">for</span> (i = <span class="number">2</span>; i * i &lt;= n; i++) &#123;</span><br><span class="line">        <span class="keyword">if</span> (n % i == <span class="number">0</span>) <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span> &#123;</span><br><span class="line">    <span class="type">int</span> a, b, start, end, i, count;</span><br><span class="line">    count = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">&quot;%d %d&quot;</span>, &amp;a, &amp;b);</span><br><span class="line">    <span class="keyword">if</span> (a &gt; b) &#123;</span><br><span class="line">        start = b &gt; <span class="number">2</span> ? b : <span class="number">2</span>;</span><br><span class="line">        end = a;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        start = a &gt; <span class="number">2</span> ? a : <span class="number">2</span>;</span><br><span class="line">        end = b;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> (i = start; i &lt;= end; i++) &#123;</span><br><span class="line">        <span class="keyword">if</span> (is_prime(i)) &#123;</span><br><span class="line">            <span class="built_in">printf</span>(<span class="string">&quot;%5d&quot;</span>, i);</span><br><span class="line">            count++;</span><br><span class="line">            <span class="keyword">if</span> (count % <span class="number">5</span> == <span class="number">0</span>) &#123;</span><br><span class="line">                <span class="built_in">printf</span>(<span class="string">&quot;\n&quot;</span>);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (count % <span class="number">5</span> != <span class="number">0</span>) &#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;\n&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="reward-container">
+  <div>打赏</div>
+  <button>
+    赞赏
+  </button>
+  <div class="post-reward">
+      <div>
+        <img src="https://r2.lm379.cn/2024/04/f597f96be857f5d530a787c8b81731da.jpg" alt="lm379 支付宝">
+        <span>支付宝</span>
+      </div>
+
+  </div>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/Educoder/" rel="tag"><i class="fa fa-tag"></i> Educoder</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2024/12/08/%E5%A4%B4%E6%AD%8CC%E8%AF%AD%E8%A8%80%E5%AE%9E%E9%AA%8C/%E5%A4%B4%E6%AD%8CC%E8%AF%AD%E8%A8%80%E5%AE%9E%E9%AA%8C-%E7%BB%83%E4%B9%A04%EF%BC%9A%E9%80%89%E6%8B%A9%E7%BB%93%E6%9E%84-II/" rel="prev" title="头歌C语言实验 练习4：选择结构 II">
+                  <i class="fa fa-chevron-left"></i> 头歌C语言实验 练习4：选择结构 II
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2024/12/09/%E5%A4%B4%E6%AD%8CC%E8%AF%AD%E8%A8%80%E5%AE%9E%E9%AA%8C/%E5%A4%B4%E6%AD%8CC%E8%AF%AD%E8%A8%80%E5%AE%9E%E9%AA%8C-%E8%BE%85%E5%8A%A9%E7%BB%83%E4%B9%A07%EF%BC%9A%E5%A4%9A%E8%A1%8C%E5%A4%9A%E5%88%97%E7%9A%84%E5%9B%BE%E5%BD%A2%E8%BE%93%E5%87%BA/" rel="next" title="头歌C语言实验 辅助练习7：多行多列的图形输出">
+                  头歌C语言实验 辅助练习7：多行多列的图形输出 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    
+  
+  <div class="comments giscus-container">
+  </div>
+  
+  
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="beian"><a href="https://beian.miit.gov.cn/" rel="noopener" target="_blank">蜀ICP备2022016740号-1 </a>
+  </div>
+
+<div class="copyright">
+  &copy; 2022 – 
+  <span itemprop="copyrightYear">2024</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">lm379. All Rights Reserved.</span>
+</div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://mirrors.sustech.edu.cn/cdnjs/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="https://mirrors.sustech.edu.cn/cdnjs/ajax/libs/hexo-theme-next/8.12.2/comments.min.js"></script><script src="https://mirrors.sustech.edu.cn/cdnjs/ajax/libs/hexo-theme-next/8.12.2/utils.min.js"></script><script src="https://mirrors.sustech.edu.cn/cdnjs/ajax/libs/hexo-theme-next/8.12.2/motion.min.js"></script><script src="https://mirrors.sustech.edu.cn/cdnjs/ajax/libs/hexo-theme-next/8.12.2/schemes/muse.min.js"></script><script src="https://mirrors.sustech.edu.cn/cdnjs/ajax/libs/hexo-theme-next/8.12.2/next-boot.min.js"></script>
+
+  
+<script src="https://mirrors.sustech.edu.cn/cdnjs/ajax/libs/hexo-generator-searchdb/1.4.0/search.js" integrity="sha256-vXZMYLEqsROAXkEw93GGIvaB2ab+QW6w3+1ahD9nXXA=" crossorigin="anonymous"></script>
+<script src="https://mirrors.sustech.edu.cn/cdnjs/ajax/libs/hexo-theme-next/8.12.2/third-party/search/local-search.min.js"></script>
+
+
+
+
+  <script src="https://mirrors.sustech.edu.cn/cdnjs/ajax/libs/hexo-theme-next/8.12.2/third-party/pace.min.js"></script>
+
+  
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">true</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"none","js":{"url":"https://mirrors.sustech.edu.cn/cdnjs/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="https://mirrors.sustech.edu.cn/cdnjs/ajax/libs/hexo-theme-next/8.12.2/third-party/math/mathjax.min.js"></script>
+
+
+<script class="next-config" data-name="giscus" type="application/json">{"enable":true,"repo":"lm379/lm379.github.io","repo_id":"R_kgDOHoD2KA","category":"Announcements","category_id":"DIC_kwDOHoD2KM4CgEIm","mapping":"title","strict":0,"reactions_enabled":1,"emit_metadata":0,"theme":"light_tritanopia","lang":"zh-CN","crossorigin":"anonymous","input_position":"top","loading":"lazy"}</script>
+
+<script>
+document.addEventListener('page:loaded', () => {
+  if (!CONFIG.page.comments) return;
+
+  NexT.utils.loadComments('.giscus-container')
+    .then(() => NexT.utils.getScript('https://giscus.app/client.js', {
+      attributes: {
+        async                   : true,
+        crossOrigin             : 'anonymous',
+        'data-repo'             : CONFIG.giscus.repo,
+        'data-repo-id'          : CONFIG.giscus.repo_id,
+        'data-category'         : CONFIG.giscus.category,
+        'data-category-id'      : CONFIG.giscus.category_id,
+        'data-mapping'          : CONFIG.giscus.mapping,
+        'data-strict'           : CONFIG.giscus.strict,
+        'data-reactions-enabled': CONFIG.giscus.reactions_enabled,
+        'data-emit-metadata'    : CONFIG.giscus.emit_metadata,
+        'data-theme'            : CONFIG.giscus.theme,
+        'data-lang'             : CONFIG.giscus.lang,
+        'data-input-position'   : CONFIG.giscus.input_position,
+        'data-loading'          : CONFIG.giscus.loading
+      },
+      parentNode: document.querySelector('.giscus-container')
+    }));
+});
+</script>
+
+
+  <link rel="stylesheet" href="/dist/APlayer.min.css">
+  <div id="aplayer"></div>
+  <script type="text/javascript" src="/dist/APlayer.min.js"></script>
+  <script type="text/javascript" src="/dist/music.js"></script>  
+
+  <script type="text/javascript" src="\js\FunnyTitle.js"></script>
+
+</body>
+</html>

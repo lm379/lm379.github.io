@@ -97,7 +97,7 @@
 
 
 <nav class="site-nav">
-  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">30</span></a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">5</span></a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">40</span></a></li><li class="menu-item menu-item-commonweal"><a href="/404/" rel="section"><i class="fa fa-heartbeat fa-fw"></i>公益 404</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li>
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">32</span></a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">5</span></a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">43</span></a></li><li class="menu-item menu-item-commonweal"><a href="/404/" rel="section"><i class="fa fa-heartbeat fa-fw"></i>公益 404</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li>
       <li class="menu-item menu-item-search">
         <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
         </a>
@@ -169,7 +169,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">40</span>
+          <span class="site-state-item-count">43</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -180,7 +180,7 @@
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
-        <span class="site-state-item-count">30</span>
+        <span class="site-state-item-count">32</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -203,6 +203,9 @@
       </span>
       <span class="links-of-author-item">
         <a href="http://www.coolapk.com/u/3126124" title="酷安 → http:&#x2F;&#x2F;www.coolapk.com&#x2F;u&#x2F;3126124" rel="noopener" target="_blank"><i class="fa coolapk fa-fw"></i>酷安</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.xiaohongshu.com/user/profile/6306019b0000000012001f11" title="小红书 → https:&#x2F;&#x2F;www.xiaohongshu.com&#x2F;user&#x2F;profile&#x2F;6306019b0000000012001f11" rel="noopener" target="_blank"><i class="fa xiaohongshu fa-fw"></i>小红书</a>
       </span>
   </div>
 
@@ -301,56 +304,54 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        <h2 id="系统"><a href="#系统" class="headerlink" title="系统"></a>系统</h2><p>使用的固件为<strong>Armbian-unofficial 24.5.1 Jammy with Linux 6.6.32-current-meson</strong></p>
+        <h2 id="系统">系统</h2>
+<p>使用的固件为<strong>Armbian-unofficial 24.5.1 Jammy with Linux 6.6.32-current-meson</strong></p>
 <p>该固件基于 <code>Ubuntu 22.04</code> 版本，当然你也可以选择别的，下载输入固件时只需要下载后缀带有 <code>burn</code> 的即可直接通过晶晨烧录工具刷入，刷机教程可参考这篇文章：<a href="../../15/%E7%8E%A9%E5%AE%A2%E4%BA%91%E5%88%B7%E5%85%A5openwrt%E7%B3%BB%E7%BB%9F">玩客云刷入openwrt系统</a></p>
-<p>Github地址: <a target="_blank" rel="noopener" href="https://github.com/hzyitc/armbian-onecloud">hzyitc&#x2F;armbian-onecloud: Armbian for onecloud. 玩客云用armbian (github.com)</a></p>
+<p>Github地址: <a target="_blank" rel="noopener" href="https://github.com/hzyitc/armbian-onecloud">hzyitc/armbian-onecloud: Armbian for onecloud. 玩客云用armbian (github.com)</a></p>
 <p>本文使用的固件：<a target="_blank" rel="noopener" href="https://pan.lm379.cn/d/guest_dir/%E5%88%B7%E6%9C%BA/onecloud/Armbian-unofficial_24.5.0-trunk_Onecloud_jammy_current_6.6.21.burn.img.xz">这里</a></p>
-<h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><h3 id="更换镜像源"><a href="#更换镜像源" class="headerlink" title="更换镜像源"></a>更换镜像源</h3><p>因为本文使用的系统基于 <code>ubuntu</code> 构建，加上玩客云为arm架构，所以我们只需要将软件源更换为 <code>ubuntu-ports</code> 即可</p>
+<h2 id="正文">正文</h2>
+<h3 id="更换镜像源">更换镜像源</h3>
+<p>因为本文使用的系统基于 <code>ubuntu</code> 构建，加上玩客云为arm架构，所以我们只需要将软件源更换为 <code>ubuntu-ports</code> 即可</p>
 <blockquote>
 <p>同理，基于 <code>debian</code> 则只需要更改为 <code>debian</code> 的镜像源即可</p>
 </blockquote>
 <p>以<a target="_blank" rel="noopener" href="https://mirrors.ustc.edu.cn/">中科大镜像源</a>为例</p>
-<h4 id="一行命令修改镜像源"><a href="#一行命令修改镜像源" class="headerlink" title="一行命令修改镜像源"></a>一行命令修改镜像源</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo sed -i -e <span class="string">&#x27;s@//ports.ubuntu.com/\? @//ports.ubuntu.com/ubuntu-ports @g&#x27;</span> \</span><br><span class="line">            -e <span class="string">&#x27;s@//ports.ubuntu.com@//mirrors.ustc.edu.cn@g&#x27;</span> \</span><br><span class="line">            /etc/apt/sources.list</span><br></pre></td></tr></table></figure>
-
-<h4 id="或手动修改"><a href="#或手动修改" class="headerlink" title="或手动修改"></a>或手动修改</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nano /etc/apt/sources.list</span><br></pre></td></tr></table></figure>
-
+<h4 id="一行命令修改镜像源">一行命令修改镜像源</h4>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo sed -i -e <span class="string">&#x27;s@//ports.ubuntu.com/\? @//ports.ubuntu.com/ubuntu-ports @g&#x27;</span> \</span><br><span class="line">            -e <span class="string">&#x27;s@//ports.ubuntu.com@//mirrors.ustc.edu.cn@g&#x27;</span> \</span><br><span class="line">            /etc/apt/sources.list</span><br></pre></td></tr></table></figure>
+<h4 id="或手动修改">或手动修改</h4>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nano /etc/apt/sources.list</span><br></pre></td></tr></table></figure>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">deb http://mirrors.ustc.edu.cn/ubuntu-ports jammy main restricted universe multiverse</span><br><span class="line">#deb-src http://mirrors.ustc.edu.cn/ubuntu-ports jammy main restricted universe multiverse</span><br><span class="line"></span><br><span class="line">deb http://mirrors.ustc.edu.cn/ubuntu-ports jammy-security main restricted universe multiverse</span><br><span class="line">#deb-src http://mirrors.ustc.edu.cn/ubuntu-ports jammy-security main restricted universe multiverse</span><br><span class="line"></span><br><span class="line">deb http://mirrors.ustc.edu.cn/ubuntu-ports jammy-updates main restricted universe multiverse</span><br><span class="line">#deb-src http://mirrors.ustc.edu.cn/ubuntu-ports jammy-updates main restricted universe multiverse</span><br><span class="line"></span><br><span class="line">deb http://mirrors.ustc.edu.cn/ubuntu-ports jammy-backports main restricted universe multiverse</span><br><span class="line">#deb-src http://mirrors.ustc.edu.cn/ubuntu-ports jammy-backports main restricted universe multiverse</span><br></pre></td></tr></table></figure>
-
 <p>如果是其他的 <code>ubuntu</code> 系统，更换到这里也就完事了，但是 armbian 还有一步操作</p>
-<h4 id="手动添加公钥"><a href="#手动添加公钥" class="headerlink" title="手动添加公钥"></a>手动添加公钥</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl -fsSL https://mirrors.ustc.edu.cn/armbian/armbian.key | gpg --dearmor -o /usr/share/keyrings/armbian-archive-keyring.gpg</span><br></pre></td></tr></table></figure>
-
+<h4 id="手动添加公钥">手动添加公钥</h4>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl -fsSL https://mirrors.ustc.edu.cn/armbian/armbian.key | gpg --dearmor -o /usr/share/keyrings/armbian-archive-keyring.gpg</span><br></pre></td></tr></table></figure>
 <p>编辑 <code>/etc/apt/sources.list.d/armbian.list</code></p>
 <p>在 <code>deb</code> 和后面的链接中插入</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[signed-by=/usr/share/keyrings/armbian-archive-keyring.gpg]</span><br></pre></td></tr></table></figure>
-
 <p>并将 <code>apt.armbian.com</code> 修改为 <code>https://mirrors.ustc.edu.cn/armbian</code></p>
 <p>整个配置类似</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">deb [signed-by=/usr/share/keyrings/armbian-archive-keyring.gpg] https://mirrors.ustc.edu.cn/armbian jammy main jammy-utils jammy-desktop</span><br></pre></td></tr></table></figure>
-
 <blockquote>
 <p>除非你使用了和本文相同的镜像，否则不建议你直接复制上面的配置，而是请手动修改文件</p>
 </blockquote>
-<h4 id="更新软件源"><a href="#更新软件源" class="headerlink" title="更新软件源"></a>更新软件源</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get update &amp;&amp; apt-get upgrade -y</span><br></pre></td></tr></table></figure>
-
-<h3 id="安装并配置zerotier"><a href="#安装并配置zerotier" class="headerlink" title="安装并配置zerotier"></a>安装并配置zerotier</h3><p>这里直接使用官方脚本一键安装</p>
+<h4 id="更新软件源">更新软件源</h4>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get update &amp;&amp; apt-get upgrade -y</span><br></pre></td></tr></table></figure>
+<h3 id="安装并配置zerotier">安装并配置zerotier</h3>
+<p>这里直接使用官方脚本一键安装</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl -s https://install.zerotier.com | sudo bash</span><br></pre></td></tr></table></figure>
-
 <p>为了后续更新方便，这里也可以将 zerotier 软件源更换为中科大镜像</p>
 <p>编辑 <code>/etc/apt/sources.list.d/zerotier.list</code></p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo sed -i <span class="string">&#x27;s|http://download.zerotier.com|https://mirrors.ustc.edu.cn/zerotier|g&#x27;</span> /etc/apt/sources.list.d/zerotier.list</span><br><span class="line">sudo apt update</span><br></pre></td></tr></table></figure>
-
 <p>修改为的文件如下</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">deb [signed-by=/usr/share/keyrings/zerotier-debian-package-key.gpg] https://mirrors.ustc.edu.cn/zerotier/debian/jammy jammy main</span><br></pre></td></tr></table></figure>
-
-<p>首先前往 <a target="_blank" rel="noopener" href="https://my.zerotier.com/">zerotier</a>创建一个 NetWork并记录网络id<br><img src="https://r2.lm379.cn/2024/08/ac6c5766f03b9dbd7ed137237cb1f2ce.png"></p>
+<p>首先前往 <a target="_blank" rel="noopener" href="https://my.zerotier.com/">zerotier</a>创建一个 NetWork并记录网络id<br>
+<img src="https://r2.lm379.cn/2024/08/ac6c5766f03b9dbd7ed137237cb1f2ce.png" alt=""></p>
 <p>然后输入(自行替换下面的id为你自己的)</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo zerotier-cli <span class="built_in">join</span> &lt;<span class="built_in">id</span>&gt;</span><br></pre></td></tr></table></figure>
-
 <p>会提示 <code>200 join OK</code></p>
 <p>然后回到网页，找到网络下的 <code>Members</code> ，给玩客云授权</p>
-<p><img src="https://r2.lm379.cn/2024/08/72d9f652f18f5542cc934722584b623b.png"></p>
+<p><img src="https://r2.lm379.cn/2024/08/72d9f652f18f5542cc934722584b623b.png" alt=""></p>
 <p>稍等一下回到终端，输入 <code>ifconfig</code> 会显示虚拟网卡和虚拟ip地址，记录下这两个值</p>
-<p><img src="https://r2.lm379.cn/2024/08/a9931b138045cecc57d8bc8a1442fa31.png"></p>
+<p><img src="https://r2.lm379.cn/2024/08/a9931b138045cecc57d8bc8a1442fa31.png" alt=""></p>
 <p>比如我的就是 <code>ztk4jctlrp</code> 和 <code>10.243.185.19</code></p>
 <p>同时可以找到我的物理网卡为 <code>eth0</code></p>
 <blockquote>
@@ -358,10 +359,8 @@
 </blockquote>
 <p>开启ip转发功能</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sysctl -w net.ipv4.ip_forward=1</span><br></pre></td></tr></table></figure>
-
 <p>配置防火墙</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">sudo iptables -t nat -A POSTROUTING -o eth0 -j MASQUERADE</span><br><span class="line">sudo iptables -A FORWARD -i eth0 -o ztk4jctlrp -m state --state RELATED,ESTABLISHED -j ACCEPT</span><br><span class="line">sudo iptables -A FORWARD -i ztk4jctlrp -o eth0 -j ACCEPT</span><br><span class="line">bash -c iptables-save &gt; /etc/iptables/rules.v4</span><br></pre></td></tr></table></figure>
-
 <blockquote>
 <p>注意，请自行修改其中的 <code>ztk4jctlrp</code> 为你的虚拟网卡，<code>eth0</code> 为你的物理网卡</p>
 </blockquote>
@@ -369,7 +368,7 @@
 <blockquote>
 <p>需要先知道你本地的ip地址，一般家里ip为 <code>192.168.x</code> 开头，前面的目的地址即填写 <code>192.168.x.0/24</code> ，后面的路由填写玩客云的虚拟ip地址，如下</p>
 </blockquote>
-<p><img src="https://r2.lm379.cn/2024/08/730f87b8f9e71cb1731258e92ae767df.png"></p>
+<p><img src="https://r2.lm379.cn/2024/08/730f87b8f9e71cb1731258e92ae767df.png" alt=""></p>
 <p>然后在手机或者其他设备上下载 zerotier 客户端，用流量尝试 ping 一下内网的ip，或者访问下内网的设备，能访问或者ping通即成功</p>
 <p><img src="https://r2.lm379.cn/2024/08/175df677304abb079f2f9323efa667e8.png" alt="img"></p>
 
@@ -485,6 +484,12 @@
   <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 
 
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">true</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"none","js":{"url":"https://mirrors.sustech.edu.cn/cdnjs/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="https://mirrors.sustech.edu.cn/cdnjs/ajax/libs/hexo-theme-next/8.12.2/third-party/math/mathjax.min.js"></script>
 
 
 <script class="next-config" data-name="giscus" type="application/json">{"enable":true,"repo":"lm379/lm379.github.io","repo_id":"R_kgDOHoD2KA","category":"Announcements","category_id":"DIC_kwDOHoD2KM4CgEIm","mapping":"title","strict":0,"reactions_enabled":1,"emit_metadata":0,"theme":"light_tritanopia","lang":"zh-CN","crossorigin":"anonymous","input_position":"top","loading":"lazy"}</script>
