@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width">
-<meta name="theme-color" content="#000"><meta name="generator" content="Hexo 7.2.0">
+<meta name="theme-color" content="#000"><meta name="generator" content="Hexo 7.3.0">
 
 
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
@@ -30,7 +30,7 @@
 <meta property="og:description" content="部分自建+公共服务镜像">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2024-06-14T05:21:08.000Z">
-<meta property="article:modified_time" content="2024-12-06T07:20:08.335Z">
+<meta property="article:modified_time" content="2024-12-25T18:03:28.294Z">
 <meta property="article:author" content="lm379">
 <meta property="article:tag" content="docker">
 <meta property="article:tag" content="镜像">
@@ -93,7 +93,7 @@
 
 
 <nav class="site-nav">
-  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">32</span></a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">5</span></a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">43</span></a></li><li class="menu-item menu-item-commonweal"><a href="/404/" rel="section"><i class="fa fa-heartbeat fa-fw"></i>公益 404</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li>
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">34</span></a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">6</span></a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">45</span></a></li><li class="menu-item menu-item-commonweal"><a href="/404/" rel="section"><i class="fa fa-heartbeat fa-fw"></i>公益 404</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li>
       <li class="menu-item menu-item-search">
         <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
         </a>
@@ -150,7 +150,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%87%AA%E5%BB%BA%E9%95%9C%E5%83%8F"><span class="nav-number">1.</span> <span class="nav-text">自建镜像</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%AC%E5%85%B1%E9%95%9C%E5%83%8F"><span class="nav-number">2.</span> <span class="nav-text">公共镜像</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#npm"><span class="nav-number">2.1.</span> <span class="nav-text">npm</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#pypi"><span class="nav-number">2.2.</span> <span class="nav-text">pypi</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#docker"><span class="nav-number">2.3.</span> <span class="nav-text">docker</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#jsdelivr"><span class="nav-number">2.4.</span> <span class="nav-text">jsdelivr</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#cdnjs"><span class="nav-number">2.5.</span> <span class="nav-text">cdnjs</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%B3%BB%E7%BB%9F%E9%95%9C%E5%83%8F%E6%BA%90"><span class="nav-number">2.6.</span> <span class="nav-text">系统镜像源</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%BF%AB%E9%80%9F%E6%8D%A2%E6%BA%90"><span class="nav-number">2.6.1.</span> <span class="nav-text">快速换源</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%89%8B%E5%8A%A8%E6%8D%A2%E6%BA%90"><span class="nav-number">2.6.2.</span> <span class="nav-text">手动换源</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%B6%E4%BB%96%E9%95%9C%E5%83%8F%E6%BA%90%E7%AB%99"><span class="nav-number">3.</span> <span class="nav-text">其他镜像源站</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%87%AA%E5%BB%BA%E9%95%9C%E5%83%8F"><span class="nav-number">1.</span> <span class="nav-text"> 自建镜像</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%AC%E5%85%B1%E9%95%9C%E5%83%8F"><span class="nav-number">2.</span> <span class="nav-text"> 公共镜像</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#npm"><span class="nav-number">2.1.</span> <span class="nav-text"> npm</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#pypi"><span class="nav-number">2.2.</span> <span class="nav-text"> pypi</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#docker"><span class="nav-number">2.3.</span> <span class="nav-text"> docker</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#jsdelivr"><span class="nav-number">2.4.</span> <span class="nav-text"> jsdelivr</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#cdnjs"><span class="nav-number">2.5.</span> <span class="nav-text"> cdnjs</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%B3%BB%E7%BB%9F%E9%95%9C%E5%83%8F%E6%BA%90"><span class="nav-number">2.6.</span> <span class="nav-text"> 系统镜像源</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%BF%AB%E9%80%9F%E6%8D%A2%E6%BA%90"><span class="nav-number">2.6.1.</span> <span class="nav-text"> 快速换源</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%89%8B%E5%8A%A8%E6%8D%A2%E6%BA%90"><span class="nav-number">2.6.2.</span> <span class="nav-text"> 手动换源</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%B6%E4%BB%96%E9%95%9C%E5%83%8F%E6%BA%90%E7%AB%99"><span class="nav-number">3.</span> <span class="nav-text"> 其他镜像源站</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -165,18 +165,18 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">43</span>
+          <span class="site-state-item-count">45</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
           <a href="/categories/">
-        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-count">6</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
-        <span class="site-state-item-count">32</span>
+        <span class="site-state-item-count">34</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -285,7 +285,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-12-06 15:20:08" itemprop="dateModified" datetime="2024-12-06T15:20:08+08:00">2024-12-06</time>
+      <time title="修改时间：2024-12-26 02:03:28" itemprop="dateModified" datetime="2024-12-26T02:03:28+08:00">2024-12-26</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -315,155 +315,122 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        <h2 id="自建镜像">自建镜像</h2>
+        <h2 id="自建镜像"><a class="markdownIt-Anchor" href="#自建镜像"></a> 自建镜像</h2>
 <blockquote>
-<p>最近新买了个域名，也就把大部分基于Cloudflare和Vercel自建的镜像都迁移到了这个域名下以后各种乱七八糟的API和杂七杂八的网站都会慢慢迁移到这个域名下，主域名lm379.cn只放一些需要备案的东西和主要的网站。</p>
+<p>最近新买了个域名，也就把大部分基于Cloudflare和Vercel自建的镜像都迁移到了这个域名下<br />
+以后各种乱七八糟的API和杂七杂八的网站都会慢慢迁移到这个域名下，主域名lm379.cn只放一些需要备案的东西和主要的网站。</p>
 </blockquote>
-<ul class="lvl-0">
-<li class="lvl-2">
+<ul>
+<li>
 <p>短网址：<a target="_blank" rel="noopener" href="https://w12.top">https://w12.top</a></p>
 </li>
-<li class="lvl-2">
+<li>
 <p>github加速：<a target="_blank" rel="noopener" href="https://gh.w12.top">https://gh.w12.top</a></p>
 </li>
-<li class="lvl-2">
+<li>
 <p>docker镜像源：<a target="_blank" rel="noopener" href="https://docker.w12.top">https://docker.w12.top</a></p>
 </li>
-<li class="lvl-2">
+<li>
 <p>网站反代：<a target="_blank" rel="noopener" href="https://proxy.w12.top">https://proxy.w12.top</a></p>
 <blockquote>
 <p>注意：部分网站会触发跨域错误</p>
 </blockquote>
 </li>
-<li class="lvl-2">
+<li>
 <p>PotPlayer B站插件弹幕服务：<a target="_blank" rel="noopener" href="https://danmu.w12.top">https://danmu.w12.top</a></p>
 </li>
-<li class="lvl-2">
+<li>
 <p>IP查询API：</p>
-<ul class="lvl-2">
-<li class="lvl-4">IPV4/IPV6：<a target="_blank" rel="noopener" href="https://ip.w12.top">https://ip.w12.top</a></li>
-<li class="lvl-4">IPV4 Only：<a target="_blank" rel="noopener" href="https://v4.w12.top">https://v4.w12.top</a></li>
-<li class="lvl-4">IPV6 Only：<a target="_blank" rel="noopener" href="https://v6.w12.top">https://v6.w12.top</a></li>
-<li class="lvl-4">geo格式：<a target="_blank" rel="noopener" href="https://ip.w12.top/geo">https://ip.w12.top/geo</a></li>
+<ul>
+<li>IPV4/IPV6：<a target="_blank" rel="noopener" href="https://ip.w12.top">https://ip.w12.top</a></li>
+<li>IPV4 Only：<a target="_blank" rel="noopener" href="https://v4.w12.top">https://v4.w12.top</a></li>
+<li>IPV6 Only：<a target="_blank" rel="noopener" href="https://v6.w12.top">https://v6.w12.top</a></li>
+<li>geo格式：<a target="_blank" rel="noopener" href="https://ip.w12.top/geo">https://ip.w12.top/geo</a></li>
 </ul>
 </li>
 </ul>
-<h2 id="公共镜像">公共镜像</h2>
-<h3 id="npm">npm</h3>
-<ul class="lvl-0">
-<li class="lvl-2">
-<p>阿里云：<a target="_blank" rel="noopener" href="https://registry.npmmirror.com">https://registry.npmmirror.com</a></p>
-</li>
-<li class="lvl-2">
-<p>腾讯云：<a target="_blank" rel="noopener" href="https://mirrors.cloud.tencent.com/npm">https://mirrors.cloud.tencent.com/npm</a></p>
-</li>
-<li class="lvl-2">
-<p>腾讯云内网：<a target="_blank" rel="noopener" href="https://mirrors.tencentyun.com/npm">https://mirrors.tencentyun.com/npm</a></p>
-</li>
-<li class="lvl-2">
-<p>华为云：<a target="_blank" rel="noopener" href="https://mirrors.huaweicloud.com/repository/npm/">https://mirrors.huaweicloud.com/repository/npm/</a></p>
-</li>
-<li class="lvl-2">
-<p>饿了么：<a target="_blank" rel="noopener" href="https://npm.elemecdn.com/">https://npm.elemecdn.com/</a></p>
-</li>
-<li class="lvl-2">
-<p>Zkeq：<a target="_blank" rel="noopener" href="https://npm.onmicrosoft.cn">https://npm.onmicrosoft.cn</a></p>
-</li>
+<h2 id="公共镜像"><a class="markdownIt-Anchor" href="#公共镜像"></a> 公共镜像</h2>
+
+<div class="callout" data-callout="warning">
+<div class="callout-title">
+<div class="callout-title-icon">
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-alert-triangle"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z"/><path d="M12 9v4"/><path d="M12 17h.01"/></svg>
+</div>
+<div class="callout-title-inner">提示</div>
+</div>
+<div class="callout-content"><p>以下所有云内网镜像仅限各家厂商云服务器内网使用，并且需要搭配云内网DNS<br />
+修改DNS为任何公共DNS会直接无法使用</p>
+</div></div><h3 id="npm"><a class="markdownIt-Anchor" href="#npm"></a> npm</h3>
+<ul>
+<li>阿里云：<a target="_blank" rel="noopener" href="https://registry.npmmirror.com">https://registry.npmmirror.com</a></li>
+<li>腾讯云：<a target="_blank" rel="noopener" href="https://mirrors.cloud.tencent.com/npm">https://mirrors.cloud.tencent.com/npm</a></li>
+<li>腾讯云内网：<a target="_blank" rel="noopener" href="https://mirrors.tencentyun.com/npm">https://mirrors.tencentyun.com/npm</a></li>
+<li>华为云：<a target="_blank" rel="noopener" href="https://mirrors.huaweicloud.com/repository/npm/">https://mirrors.huaweicloud.com/repository/npm/</a></li>
+<li>华为云内网：<a target="_blank" rel="noopener" href="https://repo.huaweicloud.com/repository/npm/">https://repo.huaweicloud.com/repository/npm/</a></li>
+<li>饿了么：<a target="_blank" rel="noopener" href="https://npm.elemecdn.com/">https://npm.elemecdn.com/</a></li>
+<li>Zkeq：<a target="_blank" rel="noopener" href="https://npm.onmicrosoft.cn">https://npm.onmicrosoft.cn</a></li>
 </ul>
-<p>使用方法：以阿里云镜像为例</p>
+<p>使用方法：<br />
+以阿里云镜像为例</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm config <span class="built_in">set</span> registry https://registry.npmmirror.com</span><br></pre></td></tr></table></figure>
 <p>恢复默认：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm config <span class="built_in">set</span> registry https://registry.npmjs.org/</span><br></pre></td></tr></table></figure>
-<h3 id="pypi">pypi</h3>
-<ul class="lvl-0">
-<li class="lvl-2">
-<p>阿里云：<a target="_blank" rel="noopener" href="https://mirrors.aliyun.com/pypi/simple/">https://mirrors.aliyun.com/pypi/simple/</a></p>
-</li>
-<li class="lvl-2">
-<p>阿里云内网：<a target="_blank" rel="noopener" href="https://mirrors.cloud.aliyuncs.com/pypi/simple/">https://mirrors.cloud.aliyuncs.com/pypi/simple/</a></p>
-</li>
-<li class="lvl-2">
-<p>腾讯云：<a target="_blank" rel="noopener" href="https://mirrors.cloud.tencent.com/pypi/simple/">https://mirrors.cloud.tencent.com/pypi/simple/</a></p>
-</li>
-<li class="lvl-2">
-<p>腾讯云内网：<a target="_blank" rel="noopener" href="https://mirrors.tencentyun.com/pypi/simple/">https://mirrors.tencentyun.com/pypi/simple/</a></p>
-</li>
-<li class="lvl-2">
-<p>华为云: <a target="_blank" rel="noopener" href="http://mirrors.huaweicloud.com/pypi/simple">http://mirrors.huaweicloud.com/pypi/simple</a></p>
-</li>
-<li class="lvl-2">
-<p>华为云内网：<a target="_blank" rel="noopener" href="http://mirrors.myhuaweicloud.com/pypi/web/simple">http://mirrors.myhuaweicloud.com/pypi/web/simple</a></p>
-</li>
-<li class="lvl-2">
-<p>清华大学：<a target="_blank" rel="noopener" href="https://pypi.tuna.tsinghua.edu.cn/simple/">https://pypi.tuna.tsinghua.edu.cn/simple/</a></p>
-</li>
+<h3 id="pypi"><a class="markdownIt-Anchor" href="#pypi"></a> pypi</h3>
+<ul>
+<li>阿里云：<a target="_blank" rel="noopener" href="https://mirrors.aliyun.com/pypi/simple/">https://mirrors.aliyun.com/pypi/simple/</a></li>
+<li>阿里云内网：<a target="_blank" rel="noopener" href="https://mirrors.cloud.aliyuncs.com/pypi/simple/">https://mirrors.cloud.aliyuncs.com/pypi/simple/</a></li>
+<li>腾讯云：<a target="_blank" rel="noopener" href="https://mirrors.cloud.tencent.com/pypi/simple/">https://mirrors.cloud.tencent.com/pypi/simple/</a></li>
+<li>腾讯云内网：<a target="_blank" rel="noopener" href="https://mirrors.tencentyun.com/pypi/simple/">https://mirrors.tencentyun.com/pypi/simple/</a></li>
+<li>华为云: <a target="_blank" rel="noopener" href="http://mirrors.huaweicloud.com/pypi/simple">http://mirrors.huaweicloud.com/pypi/simple</a></li>
+<li>华为云内网：<a target="_blank" rel="noopener" href="http://mirrors.myhuaweicloud.com/pypi/web/simple">http://mirrors.myhuaweicloud.com/pypi/web/simple</a></li>
+<li>清华大学：<a target="_blank" rel="noopener" href="https://pypi.tuna.tsinghua.edu.cn/simple/">https://pypi.tuna.tsinghua.edu.cn/simple/</a></li>
 </ul>
-<p>使用方法：以清华源为例</p>
+<p>使用方法：<br />
+以清华源为例</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">pip config <span class="built_in">set</span> global.index-url https://pypi.tuna.tsinghua.edu.cn/simple</span><br><span class="line">pip config <span class="built_in">set</span> install.trusted-host pypi.tuna.tsinghua.edu.cn</span><br></pre></td></tr></table></figure>
-<h3 id="docker">docker</h3>
-<ul class="lvl-0">
-<li class="lvl-2">
-<p>腾讯云内网：<a target="_blank" rel="noopener" href="https://mirror.ccs.tencentyun.com">https://mirror.ccs.tencentyun.com</a></p>
-</li>
-<li class="lvl-2">
-<p>本站提供的镜像：<a target="_blank" rel="noopener" href="https://docker.w12.top">https://docker.w12.top</a></p>
-</li>
-<li class="lvl-2">
-<p>DaoCloud: <a target="_blank" rel="noopener" href="https://docker.m.daocloud.io">https://docker.m.daocloud.io</a></p>
-</li>
-<li class="lvl-2">
-<p>1毫秒: <a target="_blank" rel="noopener" href="https://docker.1ms.run">https://docker.1ms.run</a></p>
-</li>
+<h3 id="docker"><a class="markdownIt-Anchor" href="#docker"></a> docker</h3>
+<ul>
+<li>腾讯云内网：<a target="_blank" rel="noopener" href="https://mirror.ccs.tencentyun.com">https://mirror.ccs.tencentyun.com</a></li>
+<li>本站提供的镜像：<a target="_blank" rel="noopener" href="https://docker.w12.top">https://docker.w12.top</a></li>
+<li>DaoCloud: <a target="_blank" rel="noopener" href="https://docker.m.daocloud.io">https://docker.m.daocloud.io</a></li>
+<li>1毫秒: <a target="_blank" rel="noopener" href="https://docker.1ms.run">https://docker.1ms.run</a></li>
 </ul>
 <p>使用方法：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nano /etc/docker/daemon.json</span><br></pre></td></tr></table></figure>
 <p>修改为：</p>
 <figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">   <span class="attr">&quot;registry-mirrors&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span></span><br><span class="line">   <span class="string">&quot;https://docker.w12.top&quot;</span></span><br><span class="line">  <span class="punctuation">]</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
-<h3 id="jsdelivr">jsdelivr</h3>
-<ul class="lvl-0">
-<li class="lvl-2">
-<p>官方源(cloudflare)：<a target="_blank" rel="noopener" href="https://cdn.jsdelivr.net">https://cdn.jsdelivr.net</a></p>
-</li>
-<li class="lvl-2">
-<p>官方源(fastly)：<a target="_blank" rel="noopener" href="https://fastly.jsdelivr.net/">https://fastly.jsdelivr.net</a></p>
-</li>
-<li class="lvl-2">
-<p>Zkeq：<a target="_blank" rel="noopener" href="https://jsd.onmicrosoft.cn">https://jsd.onmicrosoft.cn</a></p>
-</li>
-<li class="lvl-2">
-<p>jsd mirror：<a target="_blank" rel="noopener" href="https://jsd.cdn.zzko.cn">https://jsd.cdn.zzko.cn</a> |  <a target="_blank" rel="noopener" href="https://cdn.jsdmirror.com">https://cdn.jsdmirror.com</a></p>
-</li>
+<h3 id="jsdelivr"><a class="markdownIt-Anchor" href="#jsdelivr"></a> jsdelivr</h3>
+<ul>
+<li>官方源(cloudflare)：<a target="_blank" rel="noopener" href="https://cdn.jsdelivr.net">https://cdn.jsdelivr.net</a></li>
+<li>官方源(fastly)：<a target="_blank" rel="noopener" href="https://fastly.jsdelivr.net/">https://fastly.jsdelivr.net</a></li>
+<li>Zkeq：<a target="_blank" rel="noopener" href="https://jsd.onmicrosoft.cn">https://jsd.onmicrosoft.cn</a></li>
+<li>jsd mirror：<a target="_blank" rel="noopener" href="https://jsd.cdn.zzko.cn">https://jsd.cdn.zzko.cn</a> |  <a target="_blank" rel="noopener" href="https://cdn.jsdmirror.com">https://cdn.jsdmirror.com</a></li>
 </ul>
-<h3 id="cdnjs">cdnjs</h3>
-<ul class="lvl-0">
-<li class="lvl-2">
-<p>官方源(cloudflare)：<a target="_blank" rel="noopener" href="https://cdnjs.cloudflare.com/ajax/libs">https://cdnjs.cloudflare.com</a></p>
-</li>
-<li class="lvl-2">
-<p>南方科技大学：<a target="_blank" rel="noopener" href="https://mirrors.sustech.edu.cn/cdnjs">https://mirrors.sustech.edu.cn/cdnjs</a></p>
-</li>
-<li class="lvl-2">
-<p>字节跳动：<a target="_blank" rel="noopener" href="https://cdn.bytedance.com">https://cdn.bytedance.com</a></p>
-</li>
+<h3 id="cdnjs"><a class="markdownIt-Anchor" href="#cdnjs"></a> cdnjs</h3>
+<ul>
+<li>官方源(cloudflare)：<a target="_blank" rel="noopener" href="https://cdnjs.cloudflare.com/ajax/libs">https://cdnjs.cloudflare.com</a></li>
+<li>南方科技大学：<a target="_blank" rel="noopener" href="https://mirrors.sustech.edu.cn/cdnjs">https://mirrors.sustech.edu.cn/cdnjs</a></li>
+<li>字节跳动：<a target="_blank" rel="noopener" href="https://cdn.bytedance.com">https://cdn.bytedance.com</a></li>
 </ul>
-<h3 id="系统镜像源">系统镜像源</h3>
-<h4 id="快速换源">快速换源</h4>
+<h3 id="系统镜像源"><a class="markdownIt-Anchor" href="#系统镜像源"></a> 系统镜像源</h3>
+<h4 id="快速换源"><a class="markdownIt-Anchor" href="#快速换源"></a> 快速换源</h4>
 <p>这里推荐一个项目<a target="_blank" rel="noopener" href="https://gitee.com/RubyMetric/chsrc">chsrc</a>，项目的readme已经把教程写的挺清楚了</p>
 <p>以Ubuntu x86_64为例</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">curl -L https://gitee.com/RubyMetric/chsrc/releases/download/pre/chsrc-x64-linux -o chsrc; chmod +x ./chsrc</span><br><span class="line">./chsrc set ubuntu</span><br></pre></td></tr></table></figure>
-<p>如果报错找不到 <code>curl</code><br>
+<p>如果报错找不到 <code>curl</code><br />
 先执行</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install curl</span><br></pre></td></tr></table></figure>
-<h4 id="手动换源">手动换源</h4>
+<h4 id="手动换源"><a class="markdownIt-Anchor" href="#手动换源"></a> 手动换源</h4>
 <p>下面提供了一些公共镜像源，其中云内网仅限<strong>云厂商自家服务器</strong>使用，<strong>外网无法使用</strong></p>
-<p>以 <code>Ubuntu</code> 更换为中科大镜像源为例一行命令直接换源:</p>
+<p>以 <code>Ubuntu</code> 更换为中科大镜像源为例<br />
+一行命令直接换源:</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo sed -i &#x27;s@//.*archive.ubuntu.com@//mirrors.ustc.edu.cn@g&#x27; /etc/apt/sources.list</span><br></pre></td></tr></table></figure>
 <p>或者手动修改文件</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo nano /etc/apt/sources.list</span><br></pre></td></tr></table></figure>
 <p>将文件中的 <code>http://archive.ubuntu.com/</code> 全部替换为你想更换的镜像源，比如中科大的 <code>https://mirror.ustc.edu.cn</code></p>
 <p>如 <code>ubuntu 22.04</code> 的是</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"># 默认注释了源码仓库，如有需要可自行取消注释</span><br><span class="line">deb https://mirrors.ustc.edu.cn/ubuntu/ jammy main restricted universe multiverse</span><br><span class="line"># deb-src https://mirrors.ustc.edu.cn/ubuntu/ jammy main restricted universe multiverse</span><br><span class="line"></span><br><span class="line">deb https://mirrors.ustc.edu.cn/ubuntu/ jammy-security main restricted universe multiverse</span><br><span class="line"># deb-src https://mirrors.ustc.edu.cn/ubuntu/ jammy-security main restricted universe multiverse</span><br><span class="line"></span><br><span class="line">deb https://mirrors.ustc.edu.cn/ubuntu/ jammy-updates main restricted universe multiverse</span><br><span class="line"># deb-src https://mirrors.ustc.edu.cn/ubuntu/ jammy-updates main restricted universe multiverse</span><br><span class="line"></span><br><span class="line">deb https://mirrors.ustc.edu.cn/ubuntu/ jammy-backports main restricted universe multiverse</span><br><span class="line"># deb-src https://mirrors.ustc.edu.cn/ubuntu/ jammy-backports main restricted universe multiverse</span><br><span class="line"></span><br><span class="line"># 预发布软件源，不建议启用</span><br><span class="line"># deb https://mirrors.ustc.edu.cn/ubuntu/ jammy-proposed main restricted universe multiverse</span><br><span class="line"># deb-src https://mirrors.ustc.edu.cn/ubuntu/ jammy-proposed main restricted universe multiverse</span><br></pre></td></tr></table></figure>
-<h2 id="其他镜像源站">其他镜像源站</h2>
+<h2 id="其他镜像源站"><a class="markdownIt-Anchor" href="#其他镜像源站"></a> 其他镜像源站</h2>
 <p>这类镜像站挺多的，国内还有很多大学都建立了自己的镜像站，有些镜像站只能内网访问(如仅限校园网环境下)，故没有列出，下面列出了部分支持公网使用的镜像站</p>
 <table>
 <thead>
@@ -490,7 +457,7 @@
 <tr>
 <td>华为云</td>
 <td style="text-align:left"><a target="_blank" rel="noopener" href="https://mirrors.huaweicloud.com/">https://mirrors.huaweicloud.com/</a></td>
-<td style="text-align:left"><a target="_blank" rel="noopener" href="https://mirrors.myhuaweicloud.com/">https://mirrors.myhuaweicloud.com/</a></td>
+<td style="text-align:left"><a target="_blank" rel="noopener" href="http://mirrors.myhuaweicloud.com/">http://mirrors.myhuaweicloud.com/</a></td>
 <td style="text-align:center">🟢</td>
 </tr>
 <tr>
@@ -674,8 +641,9 @@
 
   
 
-  <script class="next-config" data-name="enableMath" type="application/json">true</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"none","js":{"url":"https://mirrors.sustech.edu.cn/cdnjs/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
-<script src="https://mirrors.sustech.edu.cn/cdnjs/ajax/libs/hexo-theme-next/8.12.2/third-party/math/mathjax.min.js"></script>
+  <script class="next-config" data-name="enableMath" type="application/json">true</script><link rel="stylesheet" href="https://mirrors.sustech.edu.cn/cdnjs/ajax/libs/KaTeX/0.16.0/katex.min.css" integrity="sha256-uik/hNqHWZldXh/0K35nqOSCff9F61/ZOFReqNOBgB0=" crossorigin="anonymous">
+  <script class="next-config" data-name="katex" type="application/json">{"copy_tex_js":{"url":"https://mirrors.sustech.edu.cn/cdnjs/ajax/libs/KaTeX/0.16.0/contrib/copy-tex.min.js","integrity":"sha256-Us54+rSGDSTvIhKKUs4kygE2ipA0RXpWWh0/zLqw3bs="}}</script>
+  <script src="https://mirrors.sustech.edu.cn/cdnjs/ajax/libs/hexo-theme-next/8.12.2/third-party/math/katex.min.js"></script>
 
 
 <script class="next-config" data-name="giscus" type="application/json">{"enable":true,"repo":"lm379/lm379.github.io","repo_id":"R_kgDOHoD2KA","category":"Announcements","category_id":"DIC_kwDOHoD2KM4CgEIm","mapping":"title","strict":0,"reactions_enabled":1,"emit_metadata":0,"theme":"light_tritanopia","lang":"zh-CN","crossorigin":"anonymous","input_position":"top","loading":"lazy"}</script>
