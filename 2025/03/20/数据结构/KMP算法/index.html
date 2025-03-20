@@ -1,0 +1,686 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#000"><meta name="generator" content="Hexo 7.3.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#000">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://mirrors.sustech.edu.cn/cdnjs/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha256-DfWjNxDkM94fVBWx1H5BMMp0Zq7luBlV8QRcSES7s+0=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://mirrors.sustech.edu.cn/cdnjs/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://mirrors.sustech.edu.cn/cdnjs/ajax/libs/pace/1.2.4/themes/blue/pace-theme-minimal.css">
+  <script src="https://mirrors.sustech.edu.cn/cdnjs/ajax/libs/pace/1.2.4/pace.min.js" integrity="sha256-gqd7YTjg/BtfqWSwsJOvndl0Bxc8gFImLEkXQT8+qj0=" crossorigin="anonymous"></script>
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"lm379.cn","root":"/","images":"/images","scheme":"Muse","darkmode":false,"version":"8.12.2","exturl":false,"sidebar":{"position":"right","display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":"mac"},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":true}}</script><script src="https://mirrors.sustech.edu.cn/cdnjs/ajax/libs/hexo-theme-next/8.12.2/config.min.js"></script>
+
+    <meta name="description" content="字符串模式匹配算法解析">
+<meta property="og:type" content="article">
+<meta property="og:title" content="KMP算法">
+<meta property="og:url" content="https://lm379.cn/2025/03/20/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/KMP%E7%AE%97%E6%B3%95/index.html">
+<meta property="og:site_name" content="lm379のBlog">
+<meta property="og:description" content="字符串模式匹配算法解析">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://r2.lm379.cn/2025/03/5228dc4fe647d2775c10f04330c2cd45.png">
+<meta property="og:image" content="https://r2.lm379.cn/2025/03/8ea542fa5c99aac91a5536ff072abf12.png">
+<meta property="og:image" content="https://r2.lm379.cn/2025/03/5d536c483e5776dd12097527757814c4.png">
+<meta property="og:image" content="https://r2.lm379.cn/2025/03/22341a574c0c34bab48ee2fa902c9c7b.png">
+<meta property="og:image" content="https://r2.lm379.cn/2025/03/48e659c4ec56fa6f0882d20fea552de8.png">
+<meta property="og:image" content="https://r2.lm379.cn/2025/03/6a6a0cd600f5789ac7c18188972e650f.png">
+<meta property="og:image" content="https://r2.lm379.cn/2025/03/48e659c4ec56fa6f0882d20fea552de8.png">
+<meta property="og:image" content="https://r2.lm379.cn/2025/03/d0f3c580f31d31fdd45ba6a49fa17da7.png">
+<meta property="og:image" content="https://r2.lm379.cn/2025/03/16ef0c9d9f77d466868d116cc88cf1fe.png">
+<meta property="og:image" content="https://r2.lm379.cn/2025/03/d0f3c580f31d31fdd45ba6a49fa17da7.png">
+<meta property="og:image" content="https://r2.lm379.cn/2025/03/264d89e982771d07c8b0b37efb4207a8.png">
+<meta property="og:image" content="https://r2.lm379.cn/2025/03/96f7d16eac0a5653a1a685c86405c1ea.png">
+<meta property="og:image" content="https://r2.lm379.cn/2025/03/c61872bb0cf5bc9d77796e518ae0b0f0.png">
+<meta property="og:image" content="https://r2.lm379.cn/2025/03/1d3cb40f32583f6f8808094f274132ad.png">
+<meta property="article:published_time" content="2025-03-20T02:51:48.000Z">
+<meta property="article:modified_time" content="2025-03-20T11:36:57.266Z">
+<meta property="article:author" content="lm379">
+<meta property="article:tag" content="算法">
+<meta property="article:tag" content="动态规划">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://r2.lm379.cn/2025/03/5228dc4fe647d2775c10f04330c2cd45.png">
+
+
+<link rel="canonical" href="https://lm379.cn/2025/03/20/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/KMP%E7%AE%97%E6%B3%95/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://lm379.cn/2025/03/20/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/KMP%E7%AE%97%E6%B3%95/","path":"2025/03/20/数据结构/KMP算法/","title":"KMP算法"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>KMP算法 | lm379のBlog</title>
+  
+
+
+
+  <script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{&quot;token&quot;: &quot;5a58651dc232489989204bf6775afe7a&quot;}'></script>
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">lm379のBlog</p>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">40</span></a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">7</span></a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">49</span></a></li><li class="menu-item menu-item-commonweal"><a href="/404/" rel="section"><i class="fa fa-heartbeat fa-fw"></i>公益 404</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AE%80%E5%8D%95%E6%9A%B4%E5%8A%9B%E7%AE%97%E6%B3%95"><span class="nav-number">1.</span> <span class="nav-text"> 简单暴力算法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#kmp%E7%AE%97%E6%B3%95"><span class="nav-number">2.</span> <span class="nav-text"> KMP算法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%AE%97%E6%B3%95%E5%88%86%E6%9E%90"><span class="nav-number">2.1.</span> <span class="nav-text"> 算法分析</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%B1%82%E8%A7%A3next%E6%95%B0%E7%BB%84"><span class="nav-number">2.2.</span> <span class="nav-text"> 求解Next数组</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#kmp%E4%BB%A3%E7%A0%81"><span class="nav-number">2.3.</span> <span class="nav-text"> KMP代码</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="lm379"
+      src="https://r2.lm379.cn/2024/05/4e267962f6254f01166242c803cd488f.jpg">
+  <p class="site-author-name" itemprop="name">lm379</p>
+  <div class="site-description" itemprop="description">记录个人的折腾之旅</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">49</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">40</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/lm379" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;lm379" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:lm379@foxmail.com" title="E-Mail → mailto:lm379@foxmail.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://weibo.com/u/6997206595" title="Weibo → https:&#x2F;&#x2F;weibo.com&#x2F;u&#x2F;6997206595" rel="noopener" target="_blank"><i class="fab fa-weibo fa-fw"></i>Weibo</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://space.bilibili.com/299502822" title="B站 → https:&#x2F;&#x2F;space.bilibili.com&#x2F;299502822" rel="noopener" target="_blank"><i class="fa bilibili fa-fw"></i>B站</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.zhihu.com/people/lm379" title="知乎 → https:&#x2F;&#x2F;www.zhihu.com&#x2F;people&#x2F;lm379" rel="noopener" target="_blank"><i class="fa zhihu fa-fw"></i>知乎</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="http://www.coolapk.com/u/3126124" title="酷安 → http:&#x2F;&#x2F;www.coolapk.com&#x2F;u&#x2F;3126124" rel="noopener" target="_blank"><i class="fa coolapk fa-fw"></i>酷安</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.xiaohongshu.com/user/profile/6306019b0000000012001f11" title="小红书 → https:&#x2F;&#x2F;www.xiaohongshu.com&#x2F;user&#x2F;profile&#x2F;6306019b0000000012001f11" rel="noopener" target="_blank"><i class="fa xiaohongshu fa-fw"></i>小红书</a>
+      </span>
+  </div>
+
+
+  <div class="links-of-blogroll site-overview-item animated">
+    <div class="links-of-blogroll-title"><i class="fa fa-globe fa-fw"></i>
+      Links
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <a href="https://pan.lm379.cn/" title="https:&#x2F;&#x2F;pan.lm379.cn" rel="noopener" target="_blank">Alist云盘</a>
+        </li>
+    </ul>
+  </div>
+
+        </div>
+      </div>
+        <div class="back-to-top animated" role="button" aria-label="返回顶部">
+          <i class="fa fa-arrow-up"></i>
+          <span>0%</span>
+        </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="reading-progress-bar"></div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://lm379.cn/2025/03/20/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/KMP%E7%AE%97%E6%B3%95/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://r2.lm379.cn/2024/05/4e267962f6254f01166242c803cd488f.jpg">
+      <meta itemprop="name" content="lm379">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="lm379のBlog">
+      <meta itemprop="description" content="记录个人的折腾之旅">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="KMP算法 | lm379のBlog">
+      <meta itemprop="description" content="字符串模式匹配算法解析">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          KMP算法
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2025-03-20 10:51:48 / 修改时间：19:36:57" itemprop="dateCreated datePublished" datetime="2025-03-20T10:51:48+08:00">2025-03-20</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" itemprop="url" rel="index"><span itemprop="name">数据结构</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+</div>
+
+            <div class="post-description">字符串模式匹配算法解析</div>
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <blockquote>
+<p>本部分如果想要视频解析，推荐看天勤的解析<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1jb411V78H/?spm_id_from=333.337.search-card.all.click">【天勤考研】KMP算法易懂版</a>，本人也是看了天勤的解析才写下本文</p>
+</blockquote>
+<p>KMP算法用于快速比较两个字符串，从主串中匹配一个给定的模式串，KMP算法解决了简单暴力算法中模式串指针的需要来回移动的问题，执行起来效率更高</p>
+
+<div class="callout" data-callout="warning">
+<div class="callout-title">
+<div class="callout-title-icon">
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-alert-triangle"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z"/><path d="M12 9v4"/><path d="M12 17h.01"/></svg>
+</div>
+<div class="callout-title-inner">提示</div>
+</div>
+<div class="callout-content"><p>本文中所有代码均默认串从1位置开始</p>
+</div></div><h2 id="简单暴力算法"><a class="markdownIt-Anchor" href="#简单暴力算法"></a> 简单暴力算法</h2>
+<p>为什么这么说呢，先来看一个暴力算法的例子</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="keyword">struct</span> &#123;</span><br><span class="line">	<span class="type">char</span> *ch;</span><br><span class="line">	<span class="type">int</span> length;</span><br><span class="line">&#125; Str;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">index</span><span class="params">(Str s, Str subs)</span> </span>&#123;</span><br><span class="line">	<span class="comment">// 定义三个指针，i j指向主串和模式串，k指向上一次主串中不相等的位置</span></span><br><span class="line">	<span class="comment">// 这里假设字符串都是从1位置开始</span></span><br><span class="line">    <span class="type">int</span> i = <span class="number">1</span>, j = <span class="number">1</span>, k = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">while</span>(i &lt;= s.length &amp;&amp; j &lt;= subs.length) &#123;</span><br><span class="line">	    <span class="comment">// 如果当前指针所指位置相等，指针后移一位</span></span><br><span class="line">	    <span class="keyword">if</span> (str.ch[i] == subs.ch[i]) &#123;</span><br><span class="line">		    i++;</span><br><span class="line">		    j++;</span><br><span class="line">	    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">		    <span class="comment">// 匹配失败，模式串相对主串后移一位</span></span><br><span class="line">		    i = ++k;</span><br><span class="line">		    <span class="comment">// 再次从模式串初始位置开始遍历</span></span><br><span class="line">		    j = <span class="number">1</span>;</span><br><span class="line">	    &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(j &gt; subs.length) <span class="keyword">return</span> k;  <span class="comment">// 匹配成功，返回模式串在主串中的位置</span></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>; <span class="comment">// 否则返回失败标记</span></span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
+<p>假设我们需要从串 <strong>“ABAABABBABAAABA”</strong> 中找到 <strong>ABBABA</strong> 所在的位置</p>
+<p><img src="https://r2.lm379.cn/2025/03/5228dc4fe647d2775c10f04330c2cd45.png" alt="" /></p>
+<p>简单暴力算法中，我们让主串和模式串分别从1位置开始遍历，当遍历到 <code>s.ch[3]</code> 和 <code>subs.ch[3]</code>时，发生不匹配，此时会让模式串相对主串后移一位，重新开始遍历</p>
+<p><img src="https://r2.lm379.cn/2025/03/8ea542fa5c99aac91a5536ff072abf12.png" alt="" /></p>
+<p>而很明显，将模式串后移一位后，<code>s.ch[2] != subs.ch[1]</code>，此时仍然需要将模式串后移一位，如下图</p>
+<p><img src="https://r2.lm379.cn/2025/03/5d536c483e5776dd12097527757814c4.png" alt="" /></p>
+<p>在某一次循环后，当 <code>s.ch[6] != subs.ch[3]</code> 时，需要再次后移模式串，会将模式串指针 <code>j</code> 重新指向1</p>
+<p><img src="https://r2.lm379.cn/2025/03/22341a574c0c34bab48ee2fa902c9c7b.png" alt="" /></p>
+<p>很明显后移一次会使得 <code>s.ch[5] != subs.ch[1]</code> ，需要再次移动模式串</p>
+<p><img src="https://r2.lm379.cn/2025/03/48e659c4ec56fa6f0882d20fea552de8.png" alt="" /></p>
+<p>最终成功匹配到字串，此时指针 <code>j</code> 已经指向模式串末尾，根据上面的代码，会将指针 <code>j++</code> 变成 <code>7</code>，使得 <code>j &gt; subs.length</code>，不满足循环条件跳出循环，并返回主串中匹配成功的位置 <code>6</code></p>
+<p><img src="https://r2.lm379.cn/2025/03/6a6a0cd600f5789ac7c18188972e650f.png" alt="" /></p>
+<h2 id="kmp算法"><a class="markdownIt-Anchor" href="#kmp算法"></a> KMP算法</h2>
+<p>kmp算法实际上是一个动态规划问题，求next数组实际上就是动态规划过程中的dp数组，下面是解析</p>
+<h3 id="算法分析"><a class="markdownIt-Anchor" href="#算法分析"></a> 算法分析</h3>
+<p>从上面的过程可以看到，在移动字串的过程中始终有如下这种 <code>主串与模式串头位置就匹配失败</code></p>
+<p><img src="https://r2.lm379.cn/2025/03/48e659c4ec56fa6f0882d20fea552de8.png" alt="" /></p>
+<p>或者 <code>主串与模式串已经比较过的部分匹配失败</code></p>
+<blockquote>
+<p>如这里已经比较过主串的 <code>1 2 3 4 5</code>位置与模式串 <code>1 2 3 4 5</code>位置相同<br />
+<img src="https://r2.lm379.cn/2025/03/d0f3c580f31d31fdd45ba6a49fa17da7.png" alt="" /><br />
+但是在移动模式串时，只将模式串移动了一位<br />
+<img src="https://r2.lm379.cn/2025/03/16ef0c9d9f77d466868d116cc88cf1fe.png" alt="" /></p>
+</blockquote>
+<p>能不能跳过中间这些直接就失败的状态呢？这就是KMP算法会解决的问题</p>
+<p>还是以这个为例</p>
+<p><img src="https://r2.lm379.cn/2025/03/d0f3c580f31d31fdd45ba6a49fa17da7.png" alt="" /></p>
+<p>KMP算法会直接进行如下的过程，并从主串的 <code>6</code> 位置与模式串的 <code>3</code> 位置开始比较<br />
+<img src="https://r2.lm379.cn/2025/03/264d89e982771d07c8b0b37efb4207a8.png" alt="" /></p>
+<p><em>这个过程是怎么来的呢？</em></p>
+<p>首先 KMP 算法会找到模式串发生不匹配位置（上面的6位置）以前的 <strong>最长公共子串</strong>，如下图<br />
+<img src="https://r2.lm379.cn/2025/03/96f7d16eac0a5653a1a685c86405c1ea.png" alt="" /></p>
+<p>并直接将前面一个字串移动到后面一个字串的位置</p>
+<p><img src="https://r2.lm379.cn/2025/03/c61872bb0cf5bc9d77796e518ae0b0f0.png" alt="" /></p>
+<p>而在计算机中其实不能实现将模式串后移这种操作，所以通过代码实现就是将 <code>i</code> 指针不动，<code>j</code> 指针移动到 <strong>最长公共子串+1</strong> 的位置(比如上面就是3位置)，让 <code>s.ch[i]</code> 和 <code>subs.ch[j]</code> 继续比较，从而跳过了很多重复的失败过程，同时避免了 <code>j</code> 指针的来回移动</p>
+<p>而在字串中每个位置都可能发生不匹配，每个位置都可以向前找到最长公共子串，且和模式串位置一一对应，因此我们也可以用一个数组来存储下一步主串和模式串需要比较的位置，因此求得的这个数组就被称作下一步数组，也叫 <strong>next</strong> 数组</p>
+<p>根据上面的描述，KMP算法匹配模式串的步骤就分解成了三步</p>
+
+<div class="callout" data-callout="tip">
+<div class="callout-title">
+<div class="callout-title-icon">
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-flame"><path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 2.5z"/></svg>
+</div>
+<div class="callout-title-inner">Tip</div>
+</div>
+<div class="callout-content"><p></p>
+<ol>
+<li>求每个位置之前的最长公共字串长度</li>
+<li>求解next数组</li>
+<li>遍历主串与模式串，发生不匹配时执行 <code>j=next[j]</code>，继续遍历</li>
+</ol>
+</div></div><h3 id="求解next数组"><a class="markdownIt-Anchor" href="#求解next数组"></a> 求解Next数组</h3>
+<p>从上面可以看到，求解next数组最重要的一步是求最长公共子串，或者叫最长公共前后缀<br />
+上面这个例子中，模式串总长度比较短，可以在很快的求得每个位置的最长公共子串如下所示</p>
+<table>
+<thead>
+<tr>
+<th>数组下标</th>
+<th>0</th>
+<th>1</th>
+<th>2</th>
+<th>3</th>
+<th>4</th>
+<th>5</th>
+<th>6</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>模式串</td>
+<td></td>
+<td>A</td>
+<td>B</td>
+<td>B</td>
+<td>A</td>
+<td>B</td>
+<td>A</td>
+</tr>
+<tr>
+<td>next</td>
+<td></td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>2</td>
+<td>3</td>
+</tr>
+<tr>
+<td>其中会出现一些特殊情况，比如1 2 3位置，这几个位置是没有公共前后缀的，所以对这个过程做出一些规定</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+
+<div class="callout" data-callout="note">
+<div class="callout-title">
+<div class="callout-title-icon">
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-pencil"><path d="M17 3a2.85 2.83 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5Z"/><path d="m15 5 4 4"/></svg>
+</div>
+<div class="callout-title-inner">特殊情况</div>
+</div>
+<div class="callout-content"><p></p>
+<ol>
+<li>next 数组第 1 位置直接赋值为 0 ，表示直接将模式串后移一位 <strong>(或指向主串的指针后移)</strong></li>
+<li>没有公共前缀的地方赋值为1</li>
+</ol>
+</div></div><p>但是假如模式串很长，直接求解最长子串的过程其实就跟简单暴力算法没什么区别了，所以这一个过程也可以进行优化</p>
+<p>以下面的模式串为例，我们已经求得了6位置的next值3，现在要求7位置的next值，怎么办呢？</p>
+<table>
+<thead>
+<tr>
+<th>数组下标</th>
+<th>0</th>
+<th>1</th>
+<th>2</th>
+<th>3</th>
+<th>4</th>
+<th>5</th>
+<th>6</th>
+<th>7</th>
+<th>8</th>
+<th>9</th>
+<th>10</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>模式串</td>
+<td></td>
+<td>A</td>
+<td>B</td>
+<td>B</td>
+<td>A</td>
+<td>B</td>
+<td>A</td>
+<td>B</td>
+<td>B</td>
+<td>A</td>
+<td>B</td>
+</tr>
+<tr>
+<td>next</td>
+<td></td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>2</td>
+<td>3</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>这里为了更直观表示此过程，将模式串复制一份，再按照下面的方式对其两个串，这是不是又回到了上面的求解主串与模式串的匹配与否问题呢</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><img src="https://r2.lm379.cn/2025/03/1d3cb40f32583f6f8808094f274132ad.png" alt="" /></p>
+<p>而在这个例子中，已经求得了 <code>next[6] = 3</code> ，而这个值表示的是 <code>6</code> 位置之前的最长公共子串的长度+1，现在要得到 <code>7</code> 位置的最长公共子串</p>
+<p>假如 <code>subs.ch[6] == subs.ch[3]</code>，说明子串中<code>1~3位置</code>和<code>4~6位置</code>相等，即这部分是最长公共前后缀，直接让<code>next[7] = next[6] + 1</code> 即可</p>
+<p>假如不相等，那么就回到了主串与模式串匹配问题中，发生不匹配时子串的指针应该跳到哪里的问题，上面这里就是在子串 <code>3</code> 位置发生不匹配，<code>next[3]</code> 已知，而 <code>subs.ch[next[3]] == subs.ch[7]</code> 所以 <code>next[7] = next[3] = 1</code></p>
+<p><strong>接下来由特殊推广为一般情况</strong></p>
+<p>假如需要求解 <code>next[j]</code> 的值，而 <code>next[j-1] = t</code>，只需要比较 <code>subs.ch[t]</code> 与 <code>subs.ch[j-1]</code> 是否相等<br />
+若相等，<code>next[j] = next[j-1] + 1</code><br />
+否则，<code>t = next[t]</code> ，再执行一次判断，直到匹配或<code>t == 0</code>为止</p>
+<p>C++代码实现如下</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">getnext</span><span class="params">(Str subs, <span class="type">int</span> next[])</span> </span>&#123;</span><br><span class="line">	<span class="comment">// j指针指向字符串</span></span><br><span class="line">	<span class="type">int</span> t = <span class="number">0</span>, j = <span class="number">1</span>;</span><br><span class="line">	next[<span class="number">1</span>] = <span class="number">0</span>; <span class="comment">// 对应特殊情况 1，规定首位为 0</span></span><br><span class="line">	<span class="keyword">while</span>(j&lt;subs.length) &#123;</span><br><span class="line">		<span class="keyword">if</span> (t == <span class="number">0</span> || subs.ch[t] == subs.ch[j])&#123;</span><br><span class="line">			next[++j] = ++t; <span class="comment">// 等同于 t++; j++; next[j]=t;</span></span><br><span class="line">		&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">			t = next[t];</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="kmp代码"><a class="markdownIt-Anchor" href="#kmp代码"></a> KMP代码</h3>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">int</span> <span class="title">kmp</span><span class="params">(Str s, Str subs,<span class="type">int</span> next[])</span> </span>&#123;  </span><br><span class="line">    <span class="type">int</span> j = <span class="number">1</span>;  </span><br><span class="line">    <span class="type">int</span> i = <span class="number">1</span>;  </span><br><span class="line">    <span class="keyword">while</span> (i&lt;=s.length&amp;&amp;j&lt;=subs.length) &#123;  </span><br><span class="line">        <span class="keyword">if</span> (j == <span class="number">0</span> || s.ch[i] == subs.ch[j]) &#123;  </span><br><span class="line">            i++;  </span><br><span class="line">            j++;  </span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;  </span><br><span class="line">            j = next[j];  </span><br><span class="line">        &#125;  </span><br><span class="line">    &#125;  </span><br><span class="line">    <span class="keyword">if</span> (j &gt; subs.length)  </span><br><span class="line">        <span class="keyword">return</span> i-subs.length;  </span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>完整的kmp demo代码可见 <a target="_blank" rel="noopener" href="https://gitee.com/lm379/datastr/blob/main/kmp.cpp">kmp.cpp · lm379/datastr - 码云 - 开源中国</a></p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="reward-container">
+  <div>打赏</div>
+  <button>
+    赞赏
+  </button>
+  <div class="post-reward">
+      <div>
+        <img src="https://r2.lm379.cn/2024/04/f597f96be857f5d530a787c8b81731da.jpg" alt="lm379 支付宝">
+        <span>支付宝</span>
+      </div>
+
+  </div>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/%E7%AE%97%E6%B3%95/" rel="tag"><i class="fa fa-tag"></i> 算法</a>
+              <a href="/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" rel="tag"><i class="fa fa-tag"></i> 动态规划</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2025/03/08/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E9%A1%BA%E5%BA%8F%E8%A1%A8%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C/" rel="prev" title="顺序表的基本操作">
+                  <i class="fa fa-chevron-left"></i> 顺序表的基本操作
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    
+  
+  <div class="comments giscus-container">
+  </div>
+  
+  
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="beian"><a href="https://beian.miit.gov.cn/" rel="noopener" target="_blank">蜀ICP备2022016740号-1 </a>
+  </div>
+
+<div class="copyright">
+  &copy; 2022 – 
+  <span itemprop="copyrightYear">2025</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">lm379. All Rights Reserved.</span>
+</div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://mirrors.sustech.edu.cn/cdnjs/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="https://mirrors.sustech.edu.cn/cdnjs/ajax/libs/hexo-theme-next/8.12.2/comments.min.js"></script><script src="https://mirrors.sustech.edu.cn/cdnjs/ajax/libs/hexo-theme-next/8.12.2/utils.min.js"></script><script src="https://mirrors.sustech.edu.cn/cdnjs/ajax/libs/hexo-theme-next/8.12.2/motion.min.js"></script><script src="https://mirrors.sustech.edu.cn/cdnjs/ajax/libs/hexo-theme-next/8.12.2/schemes/muse.min.js"></script><script src="https://mirrors.sustech.edu.cn/cdnjs/ajax/libs/hexo-theme-next/8.12.2/next-boot.min.js"></script>
+
+  
+<script src="https://mirrors.sustech.edu.cn/cdnjs/ajax/libs/hexo-generator-searchdb/1.4.0/search.js" integrity="sha256-vXZMYLEqsROAXkEw93GGIvaB2ab+QW6w3+1ahD9nXXA=" crossorigin="anonymous"></script>
+<script src="https://mirrors.sustech.edu.cn/cdnjs/ajax/libs/hexo-theme-next/8.12.2/third-party/search/local-search.min.js"></script>
+
+
+
+
+  <script src="https://mirrors.sustech.edu.cn/cdnjs/ajax/libs/hexo-theme-next/8.12.2/third-party/pace.min.js"></script>
+
+  
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">true</script><link rel="stylesheet" href="https://mirrors.sustech.edu.cn/cdnjs/ajax/libs/KaTeX/0.16.0/katex.min.css" integrity="sha256-uik/hNqHWZldXh/0K35nqOSCff9F61/ZOFReqNOBgB0=" crossorigin="anonymous">
+  <script class="next-config" data-name="katex" type="application/json">{"copy_tex_js":{"url":"https://mirrors.sustech.edu.cn/cdnjs/ajax/libs/KaTeX/0.16.0/contrib/copy-tex.min.js","integrity":"sha256-Us54+rSGDSTvIhKKUs4kygE2ipA0RXpWWh0/zLqw3bs="}}</script>
+  <script src="https://mirrors.sustech.edu.cn/cdnjs/ajax/libs/hexo-theme-next/8.12.2/third-party/math/katex.min.js"></script>
+
+
+<script class="next-config" data-name="giscus" type="application/json">{"enable":true,"repo":"lm379/lm379.github.io","repo_id":"R_kgDOHoD2KA","category":"Announcements","category_id":"DIC_kwDOHoD2KM4CgEIm","mapping":"title","strict":0,"reactions_enabled":1,"emit_metadata":0,"theme":"light_tritanopia","lang":"zh-CN","crossorigin":"anonymous","input_position":"top","loading":"lazy"}</script>
+
+<script>
+document.addEventListener('page:loaded', () => {
+  if (!CONFIG.page.comments) return;
+
+  NexT.utils.loadComments('.giscus-container')
+    .then(() => NexT.utils.getScript('https://giscus.app/client.js', {
+      attributes: {
+        async                   : true,
+        crossOrigin             : 'anonymous',
+        'data-repo'             : CONFIG.giscus.repo,
+        'data-repo-id'          : CONFIG.giscus.repo_id,
+        'data-category'         : CONFIG.giscus.category,
+        'data-category-id'      : CONFIG.giscus.category_id,
+        'data-mapping'          : CONFIG.giscus.mapping,
+        'data-strict'           : CONFIG.giscus.strict,
+        'data-reactions-enabled': CONFIG.giscus.reactions_enabled,
+        'data-emit-metadata'    : CONFIG.giscus.emit_metadata,
+        'data-theme'            : CONFIG.giscus.theme,
+        'data-lang'             : CONFIG.giscus.lang,
+        'data-input-position'   : CONFIG.giscus.input_position,
+        'data-loading'          : CONFIG.giscus.loading
+      },
+      parentNode: document.querySelector('.giscus-container')
+    }));
+});
+</script>
+
+
+  <link rel="stylesheet" href="/dist/APlayer.min.css">
+  <div id="aplayer"></div>
+  <script type="text/javascript" src="/dist/APlayer.min.js"></script>
+  <script type="text/javascript" src="/dist/music.js"></script>  
+
+  <script type="text/javascript" src="\js\FunnyTitle.js"></script>
+
+</body>
+</html>
