@@ -1,0 +1,1 @@
+{"redirects":[{"source":"$wwwhost","destination":"$host","statusCode":301}],"caches":[{"source":"/sitemap.xml","cacheTtl":0},{"source":"/robots.txt","cacheTtl":0},{"source":"/sitemap.txt","cacheTtl":0},{"source":"/images/*","cacheTtl":3600},{"source":"/css/*","cacheTtl":3600},{"source":"/js/*","cacheTtl":3600},{"source":"/dist/*","cacheTtl":3600}]}
