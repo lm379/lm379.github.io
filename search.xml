@@ -801,13 +801,14 @@ Gitee地址：<a href="https://gitee.com/lm379/hexo-cdn-Purge">hexo-cdn-Purge: �
   <entry>
     <title>使用腾讯云CDN加速Cloudflare R2</title>
     <url>/2024/04/12/%E4%BD%BF%E7%94%A8%E8%85%BE%E8%AE%AF%E4%BA%91CDN%E5%8A%A0%E9%80%9FCloudflare-R2/</url>
-    <content><![CDATA[<p>[2025.1.10更新] 添加多吉云(多吉云目前还是腾讯云的二级分销商，所以大部分都差不多，不过优点是免费)</p>
+    <content><![CDATA[<p>[2025.1.10更新] 添加多吉云(多吉云目前还是腾讯云的二级分销商，所以大部分都差不多，不过优点是免费)<br />
+[2025.8.19更新] 添加EdgeOne</p>
 <h2 id="什么是cloudflare-r2"><a class="markdownIt-Anchor" href="#什么是cloudflare-r2"></a> 什么是Cloudflare R2</h2>
 <p>Cloudflare R2，即Cloudflare推出的对象存储，兼容AWS S3协议，提供免费10G存储空间以及每月 <code>100万次写</code>，<code>1000万次读</code>操作，<code>无流量费用</code>，这点对个人用户来说基本是 <code>免费</code><br />
 <img src="https://r2.lm379.cn/2024%2F03%2F11a8baf42d6804470d7766d0e3b681a5.png" alt="Clouflare R2官方介绍" /><br />
 但是不出意外的，Cloudflare R2免费版没有提供 <code>中国大陆</code>的节点，虽然其 <code>亚太</code>地区节点访问速度还可以，但是架不住延迟还是挺高的，所以笔者想到了用境内CDN加速，并且试了下只需要更改自定义域名即可，其他什么操作都不用，还是很方便的</p>
 <h2 id="创建r2-api令牌"><a class="markdownIt-Anchor" href="#创建r2-api令牌"></a> 创建R2 API令牌</h2>
-<p>打开<a href="https://dash.cloudflare.com">Cloudflare控制台</a>，点击左侧的R2，首次打开需要验证开通，用外币信用卡或者 <code>Paypal绑定银联卡</code>即可，中国大陆的用户建议直接后者</p>
+<p>打开<a href="https://dash.cloudflare.com">Cloudflare控制台</a>，点击左侧的R2，首次打开需要验证开通，用外币信用卡或者 <code>Paypal绑定银联卡</code> 即可，中国大陆的用户建议直接后者</p>
 <blockquote>
 <p><s>都2024年了，不会还有人不知道Paypal国区早就开放了吧</s><br />
 下面的内容需要你至少有 <code>一个存储桶</code>，没有存储桶的自己去创建，按下图来就行，区域最好选 <code>亚太地区</code><br />
@@ -845,6 +846,16 @@ Gitee地址：<a href="https://gitee.com/lm379/hexo-cdn-Purge">hexo-cdn-Purge: �
 <p>打开<a href="https://console.dogecloud.com/cdn/list">多吉云控制台</a> ，选择添加域名，这里和腾讯云控制台基本相同，只有一个需要注意的点，回源协议必须选择 <strong>HTTPS</strong></p>
 <p><mark>不能选择HTTP和协议跟随，否则无法访问</mark></p>
 <p><img src="https://r2.lm379.cn/2025/01/d0100ce2b372a89dc1b6289eb6369dd4.png" alt="" /></p>
+<h2 id="启用腾讯云edgeone加速"><a class="markdownIt-Anchor" href="#启用腾讯云edgeone加速"></a> 启用腾讯云EdgeOne加速</h2>
+<p><a href="https://console.cloud.tencent.com/edgeone">EdgeOne中国站</a> <a href="https://console.tencentcloud.com/edgeone">EdgeOne国际站</a></p>
+<p>EdgeOne和普通CDN添加步骤差不多，只是目前EdgeOne有免费不限量套餐罢了，大体上和上面的腾讯云CDN差不多，都需要打开私有访问授权，地域填写 <code>auto</code> 即可</p>
+<p><img src="https://r2.lm379.cn/2025/08/03a302aa6c61c942d2704c4d7442779d.png" alt="" /></p>
+<h2 id="效果对比"><a class="markdownIt-Anchor" href="#效果对比"></a> 效果对比</h2>
+<p>下图为启用EdgeOne加速后的访问速度</p>
+<p><img src="https://r2.lm379.cn/2025/08/9c3a02cfa4e082965f4e6e0c67878650.png" alt="" /></p>
+<p>无国内CDN加速时</p>
+<p><img src="https://r2.lm379.cn/2025/08/ad6f1da83e794fcb62c1def5dfa74020.png" alt="" /></p>
+<p>可以看到，加速效果还是很明显的</p>
 <h2 id="r2添加示例picgo"><a class="markdownIt-Anchor" href="#r2添加示例picgo"></a> R2添加示例：PicGo</h2>
 <p>进去后找到Amazon S3，点击添加<br />
 注意下<a href="#s3api">自定义节点</a>是创建API后显示出来的那个域名(一般是以 <code>r2.cloudflarestorage.com</code>结尾)<br />
@@ -1595,15 +1606,21 @@ OpenWrt设备型号及架构：<code>FastRhino R68S</code>  <code>RK3568</code>�
 <p>如果输入 <code>ifconfig</code> 报错，只需要输入 <code>sudo apt install net-tools</code> 后即可</p>
 </blockquote>
 <p>开启ip转发功能</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sysctl -w net.ipv4.ip_forward=1</span><br></pre></td></tr></table></figure>
-<p>配置防火墙</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">sudo</span> iptables -t nat -A POSTROUTING -o eth0 -j MASQUERADE</span><br><span class="line"><span class="built_in">sudo</span> iptables -A FORWARD -i eth0 -o ztk4jctlrp -m state --state RELATED,ESTABLISHED -j ACCEPT</span><br><span class="line"><span class="built_in">sudo</span> iptables -A FORWARD -i ztk4jctlrp -o eth0 -j ACCEPT</span><br><span class="line">bash -c iptables-save &gt; /etc/iptables/rules.v4</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sysctl -w net.ipv4.ip_forward=1</span><br><span class="line">sysctl -w net.ipv6.conf.all.forwarding=1</span><br></pre></td></tr></table></figure>
+<p>配置路由表</p>
 <blockquote>
-<p>注意，请自行修改其中的 <code>ztk4jctlrp</code> 为你的虚拟网卡，<code>eth0</code> 为你的物理网卡</p>
+<p>请将下面的 <code>eth0</code> 和 <code>ztk4jctlrp</code>替换为你的物理网卡 和 zerotier虚拟网卡</p>
 </blockquote>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">sudo</span> iptables -t nat -A POSTROUTING -o eth0 -j MASQUERADE</span><br><span class="line"><span class="built_in">sudo</span> iptables -A FORWARD -i eth0 -o ztk4jctlrp -m state --state RELATED,ESTABLISHED -j ACCEPT</span><br><span class="line"><span class="built_in">sudo</span> iptables -A FORWARD -i ztk4jctlrp -o eth0 -j ACCEPT</span><br><span class="line">bash -c iptables-save &gt; /etc/iptables/rules.v4</span><br></pre></td></tr></table></figure>
+<p>持久化路由表</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">mkdir</span> -p /etc/sysconfig/ sh -c <span class="string">&quot;iptables-save &gt; /etc/sysconfig/iptables&quot;</span></span><br></pre></td></tr></table></figure>
+<p>让路由表开机自动添加</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">nano /etc/rc.local</span><br></pre></td></tr></table></figure>
+<p>在末尾新增一行</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">/sbin/iptables-restore &lt; /etc/sysconfig/iptables</span><br></pre></td></tr></table></figure>
 <p>回到 zerotier 后台，新增一条路由规则</p>
 <blockquote>
-<p>需要先知道你本地的ip地址，一般家里ip为 <code>192.168.x</code> 开头，前面的目的地址即填写 <code>192.168.x.0/24</code> ，后面的路由填写玩客云的虚拟ip地址，如下</p>
+<p>需要先知道你本地的ip地址，一般家里ip为 <code>192.168.x</code> 开头，前面的目的地址即填写 <code>192.168.x.0/24</code> ，后面的路由填写armbian小主机的虚拟ip地址，如下</p>
 </blockquote>
 <p><img src="https://r2.lm379.cn/2024/08/730f87b8f9e71cb1731258e92ae767df.png" alt="" /></p>
 <p>然后在手机或者其他设备上下载 zerotier 客户端，用流量尝试 ping 一下内网的ip，或者访问下内网的设备，能访问或者ping通即成功</p>
@@ -1642,12 +1659,10 @@ OpenWrt设备型号及架构：<code>FastRhino R68S</code>  <code>RK3568</code>�
 <p>github加速：<a href="https://gh.w12.top">https://gh.w12.top</a></p>
 </li>
 <li>
-<p>docker镜像源：<a href="https://docker.w12.top">https://docker.w12.top</a></p>
-</li>
-<li>
-<p>网站反代：<a href="https://proxy.w12.top">https://proxy.w12.top</a></p>
+<p>docker镜像源：<a href="https://docker.w12.top">https://docker.w12.top</a>或 <a href="https://docker.lm379.cn">https://docker.lm379.cn</a><br />
+%% - 网站反代：<a href="https://proxy.w12.top">https://proxy.w12.top</a></p>
 <blockquote>
-<p>注意：部分网站会触发跨域错误</p>
+<p>注意：部分网站会触发跨域错误 %%</p>
 </blockquote>
 </li>
 <li>
@@ -1705,7 +1720,7 @@ OpenWrt设备型号及架构：<code>FastRhino R68S</code>  <code>RK3568</code>�
 <h3 id="docker"><a class="markdownIt-Anchor" href="#docker"></a> docker</h3>
 <ul>
 <li>腾讯云内网：<a href="https://mirror.ccs.tencentyun.com">https://mirror.ccs.tencentyun.com</a></li>
-<li>本站提供的镜像：<a href="https://docker.w12.top">https://docker.w12.top</a></li>
+<li>本站提供的镜像：<a href="https://docker.w12.top">https://docker.w12.top</a> <a href="https://docker.lm379.cn">https://docker.lm379.cn</a></li>
 <li>DaoCloud: <a href="https://docker.m.daocloud.io">https://docker.m.daocloud.io</a></li>
 <li>1毫秒: <a href="https://docker.1ms.run">https://docker.1ms.run</a></li>
 </ul>
@@ -5060,502 +5075,6 @@ M834 80h400000v40h-400000z"/></svg></span></span></span><span class="vlist-s">�
       </tags>
   </entry>
   <entry>
-    <title>黄梅戏文化平台</title>
-    <url>/2024/12/20/%E6%9D%82%E9%A1%B9/%E9%BB%84%E6%A2%85%E6%88%8F%E6%96%87%E5%8C%96%E5%B9%B3%E5%8F%B0/</url>
-    <content><![CDATA[<h1 id="黄梅戏文化平台"><a class="markdownIt-Anchor" href="#黄梅戏文化平台"></a> 黄梅戏文化平台</h1>
-<p>基于 <code>Node.js</code> + <code>Express</code> + <code>MySQL</code> + <code>Redis</code> 实现的黄梅戏文化展示平台</p>
-<p>Github: <a href="https://github.com/lm379/hmx">lm379/hmx: 黄梅戏文化平台</a><br />
-Gitee: <a href="https://gitee.com/lm379/hmx">lm379/hmx: 黄梅戏文化平台</a></p>
-<h2 id="简介"><a class="markdownIt-Anchor" href="#简介"></a> 简介</h2>
-<p>后端使用 Node.js 配合 Express 框架开发，前端为 HTML + CSS + JavaScript 开发（使用模板）</p>
-<p>数据库使用MySQL + Redis，其中MySQL负责主体业务逻辑，Redis负责处理验证码</p>
-<p>邮箱验证码使用Node.js的nodemailer库，短信使用阿里云的短信接口</p>
-<p>视频/图片文件使用腾讯云对象存储，后端授予前端权限允许前端通过 POST 方法直接上传用户头像/视频文件等到对象存储</p>
-<p>为项目添加了智能处理，通过 OpenAI 开源的whisper 语音识别模型识别文字，再调用大模型API对视频进行总结，智能处理代码修改自下面代码fork的项目，智能处理代码Github链接: <a href="https://github.com/lm379/video_summarize">lm379/video_summarize: video_summarize（视频总结：上传视频通过prompt对视频内容经行总结输出）</a></p>
-<h2 id="项目结构"><a class="markdownIt-Anchor" href="#项目结构"></a> 项目结构</h2>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">├── bin                // 程序入口目录</span><br><span class="line">├── dataBase           // MySQL配置</span><br><span class="line">├── node_modules       // 项目依赖 </span><br><span class="line">├── public             // 前端代码</span><br><span class="line">├── routes             // Express路由</span><br><span class="line">├── utils              // 自定义依赖</span><br><span class="line">├── app.js             // Express主程序</span><br><span class="line">└── views              // Express视图</span><br></pre></td></tr></table></figure>
-<h2 id="数据库表结构"><a class="markdownIt-Anchor" href="#数据库表结构"></a> 数据库表结构</h2>
-<ol>
-<li>User表</li>
-</ol>
-<table>
-<thead>
-<tr>
-<th>名称</th>
-<th>类型</th>
-<th>长度</th>
-<th>Not Null</th>
-<th>键</th>
-<th>默认值</th>
-<th>注释</th>
-<th>Key Order</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>User_id</td>
-<td>int</td>
-<td></td>
-<td>TRUE</td>
-<td>TRUE</td>
-<td></td>
-<td>自增UID</td>
-<td>ASC</td>
-</tr>
-<tr>
-<td>Username</td>
-<td>varchar</td>
-<td>50</td>
-<td>TRUE</td>
-<td>FALSE</td>
-<td></td>
-<td>昵称</td>
-<td></td>
-</tr>
-<tr>
-<td>Phone</td>
-<td>varchar</td>
-<td>15</td>
-<td>TRUE</td>
-<td>FALSE</td>
-<td></td>
-<td>手机号</td>
-<td></td>
-</tr>
-<tr>
-<td>Email</td>
-<td>varchar</td>
-<td>255</td>
-<td>FALSE</td>
-<td>FALSE</td>
-<td>NULL</td>
-<td>邮箱</td>
-<td></td>
-</tr>
-<tr>
-<td>Registration_time</td>
-<td>timestamp</td>
-<td></td>
-<td>TRUE</td>
-<td>FALSE</td>
-<td>CURRENT_TIMESTAMP</td>
-<td>注册时间</td>
-<td></td>
-</tr>
-<tr>
-<td>Password</td>
-<td>varchar</td>
-<td>255</td>
-<td>TRUE</td>
-<td>FALSE</td>
-<td></td>
-<td>密码</td>
-<td></td>
-</tr>
-<tr>
-<td>Sex</td>
-<td>enum</td>
-<td></td>
-<td>TRUE</td>
-<td>FALSE</td>
-<td>‘Other’</td>
-<td>性别</td>
-<td></td>
-</tr>
-<tr>
-<td>Icon</td>
-<td>varchar</td>
-<td>255</td>
-<td>FALSE</td>
-<td>FALSE</td>
-<td>NULL</td>
-<td>头像</td>
-<td></td>
-</tr>
-<tr>
-<td>Role</td>
-<td>enum</td>
-<td></td>
-<td>TRUE</td>
-<td>FALSE</td>
-<td>‘User’</td>
-<td>权限</td>
-<td></td>
-</tr>
-<tr>
-<td>Update_time</td>
-<td>timestamp</td>
-<td></td>
-<td>TRUE</td>
-<td>FALSE</td>
-<td>CURRENT_TIMESTAMP</td>
-<td>更新时间</td>
-<td></td>
-</tr>
-<tr>
-<td>Status</td>
-<td>enum</td>
-<td></td>
-<td>FALSE</td>
-<td>FALSE</td>
-<td>‘Normal’</td>
-<td>状态</td>
-<td></td>
-</tr>
-</tbody>
-</table>
-<ol start="2">
-<li>Opera表</li>
-</ol>
-<table>
-<thead>
-<tr>
-<th>名称</th>
-<th>类型</th>
-<th>长度</th>
-<th>Not Null</th>
-<th>键</th>
-<th>默认值</th>
-<th>注释</th>
-<th>Key Order</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Opera_id</td>
-<td>int</td>
-<td></td>
-<td>TRUE</td>
-<td>TRUE</td>
-<td></td>
-<td>自增ID</td>
-<td>ASC</td>
-</tr>
-<tr>
-<td>Opera_title</td>
-<td>varchar</td>
-<td>100</td>
-<td>TRUE</td>
-<td>FALSE</td>
-<td></td>
-<td>曲名</td>
-<td></td>
-</tr>
-<tr>
-<td>Artist</td>
-<td>varchar</td>
-<td>100</td>
-<td>FALSE</td>
-<td>FALSE</td>
-<td>NULL</td>
-<td>艺术家</td>
-<td></td>
-</tr>
-<tr>
-<td>Release_date</td>
-<td>datetime</td>
-<td></td>
-<td>FALSE</td>
-<td>FALSE</td>
-<td>NULL</td>
-<td>发行时间</td>
-<td></td>
-</tr>
-<tr>
-<td>Duration</td>
-<td>time</td>
-<td></td>
-<td>FALSE</td>
-<td>FALSE</td>
-<td>NULL</td>
-<td>时长</td>
-<td></td>
-</tr>
-<tr>
-<td>Music_path</td>
-<td>varchar</td>
-<td>255</td>
-<td>FALSE</td>
-<td>FALSE</td>
-<td>NULL</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>Create_time</td>
-<td>timestamp</td>
-<td></td>
-<td>FALSE</td>
-<td>FALSE</td>
-<td>CURRENT_TIMESTAMP</td>
-<td>上传时间</td>
-<td></td>
-</tr>
-<tr>
-<td>Update_time</td>
-<td>timestamp</td>
-<td></td>
-<td>FALSE</td>
-<td>FALSE</td>
-<td>CURRENT_TIMESTAMP</td>
-<td>更新时间</td>
-<td></td>
-</tr>
-<tr>
-<td>Video_path</td>
-<td>varchar</td>
-<td>255</td>
-<td>TRUE</td>
-<td>FALSE</td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>Description</td>
-<td>text</td>
-<td></td>
-<td>FALSE</td>
-<td>FALSE</td>
-<td>NULL</td>
-<td>简介</td>
-<td></td>
-</tr>
-<tr>
-<td>Avatar</td>
-<td>varchar</td>
-<td>255</td>
-<td>FALSE</td>
-<td>FALSE</td>
-<td>NULL</td>
-<td>缩略图</td>
-<td></td>
-</tr>
-<tr>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-</tbody>
-</table>
-<ol start="3">
-<li>Comments表</li>
-</ol>
-<table>
-<thead>
-<tr>
-<th>名称</th>
-<th>类型</th>
-<th>Not Null</th>
-<th>键</th>
-<th>默认值</th>
-<th>键长度</th>
-<th>Key Order</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Comment_id</td>
-<td>int</td>
-<td>TRUE</td>
-<td>TRUE</td>
-<td></td>
-<td>0</td>
-<td>ASC</td>
-</tr>
-<tr>
-<td>User_id</td>
-<td>int</td>
-<td>FALSE</td>
-<td>FALSE</td>
-<td>NULL</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>Opera_id</td>
-<td>int</td>
-<td>FALSE</td>
-<td>FALSE</td>
-<td>NULL</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>Comment_text</td>
-<td>text</td>
-<td>TRUE</td>
-<td>FALSE</td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>Create_time</td>
-<td>timestamp</td>
-<td>FALSE</td>
-<td>FALSE</td>
-<td>CURRENT_TIMESTAMP</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>Update_time</td>
-<td>timestamp</td>
-<td>FALSE</td>
-<td>FALSE</td>
-<td>CURRENT_TIMESTAMP</td>
-<td></td>
-<td></td>
-</tr>
-</tbody>
-</table>
-<ol start="4">
-<li>Playhistroy表</li>
-</ol>
-<table>
-<thead>
-<tr>
-<th>名称</th>
-<th>类型</th>
-<th>Not Null</th>
-<th>键</th>
-<th>默认值</th>
-<th>Key Order</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Play_id</td>
-<td>int</td>
-<td>TRUE</td>
-<td>TRUE</td>
-<td></td>
-<td>ASC</td>
-</tr>
-<tr>
-<td>User_id</td>
-<td>int</td>
-<td>FALSE</td>
-<td>FALSE</td>
-<td>NULL</td>
-<td></td>
-</tr>
-<tr>
-<td>Opera_id</td>
-<td>int</td>
-<td>FALSE</td>
-<td>FALSE</td>
-<td>NULL</td>
-<td></td>
-</tr>
-<tr>
-<td>Play_time</td>
-<td>timestamp</td>
-<td>FALSE</td>
-<td>FALSE</td>
-<td>CURRENT_TIMESTAMP</td>
-<td></td>
-</tr>
-</tbody>
-</table>
-<ol start="5">
-<li>Favorite表</li>
-</ol>
-<table>
-<thead>
-<tr>
-<th>名称</th>
-<th>类型</th>
-<th>Not Null</th>
-<th>键</th>
-<th>默认值</th>
-<th>Key Order</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Favorite_id</td>
-<td>int</td>
-<td>TRUE</td>
-<td>TRUE</td>
-<td></td>
-<td>ASC</td>
-</tr>
-<tr>
-<td>User_id</td>
-<td>int</td>
-<td>FALSE</td>
-<td>FALSE</td>
-<td>NULL</td>
-<td></td>
-</tr>
-<tr>
-<td>Opera_id</td>
-<td>int</td>
-<td>FALSE</td>
-<td>FALSE</td>
-<td>NULL</td>
-<td></td>
-</tr>
-<tr>
-<td>Created_time</td>
-<td>timestamp</td>
-<td>FALSE</td>
-<td>FALSE</td>
-<td>CURRENT_TIMESTAMP</td>
-<td></td>
-</tr>
-</tbody>
-</table>
-<h2 id="使用方法"><a class="markdownIt-Anchor" href="#使用方法"></a> 使用方法</h2>
-<p>提前安装好 Node.js npm MySQL Redis 环境</p>
-<blockquote>
-<p>Node.js的代码理论上是跨平台的，但我只在Ubuntu下测试过</p>
-</blockquote>
-<p>然后进入命令行，输入</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm install nodemon -g</span><br></pre></td></tr></table></figure>
-<p>拉取源码，安装依赖</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git <span class="built_in">clone</span> https://github.com/lm379/hmx</span><br><span class="line"><span class="built_in">cd</span> hmx</span><br><span class="line">npm install</span><br></pre></td></tr></table></figure>
-<p>设置环境变量，并修改.env中的相关字段</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">mv</span> .env.example .<span class="built_in">env</span></span><br></pre></td></tr></table></figure>
-<p>启动</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm start</span><br></pre></td></tr></table></figure>
-<h2 id="部分代码示例"><a class="markdownIt-Anchor" href="#部分代码示例"></a> 部分代码示例</h2>
-<ol>
-<li>MySQL数据查询 (以下为示例代码，通过动态构建SQL语句实现)</li>
-</ol>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="title function_">getData</span> = (<span class="params">reqParam</span>) =&gt; &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> &#123;</span><br><span class="line">        <span class="keyword">let</span> query = <span class="string">&quot;SELECT * FROM table WHERE TRUE&quot;</span>;</span><br><span class="line">        <span class="keyword">let</span> params = [];</span><br><span class="line">        <span class="keyword">if</span> (reqParam) &#123;</span><br><span class="line">            query += <span class="string">` AND reqParam = ?`</span>;</span><br><span class="line">            params.<span class="title function_">push</span>(reqParam);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (params.<span class="property">length</span> === <span class="number">0</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="title function_">reject</span>(<span class="keyword">new</span> <span class="title class_">Error</span>(<span class="string">&quot;参数错误&quot;</span>));</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        connection.<span class="title function_">query</span>(query, params, <span class="function">(<span class="params">err, data</span>) =&gt;</span> &#123;</span><br><span class="line">            <span class="keyword">if</span> (err) <span class="keyword">return</span> <span class="title function_">reject</span>(err);</span><br><span class="line">            <span class="keyword">if</span> (data.<span class="property">length</span> === <span class="number">0</span>) <span class="keyword">return</span> <span class="title function_">reject</span>(<span class="title function_">resolve</span>(&#123; <span class="attr">code</span>: <span class="number">1</span>, <span class="attr">msg</span>: errmsg &#125;));</span><br><span class="line">            <span class="keyword">return</span> <span class="title function_">resolve</span>(&#123; <span class="attr">code</span>: <span class="number">0</span>, <span class="attr">data</span>: data &#125;);</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<ol start="2">
-<li>Redis验证码处理<br />
-参考了项目<a href="https://gitee.com/mbjdot/email-resend-demo">TMDOG666/email-resend-demo</a></li>
-</ol>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 存储验证码</span></span><br><span class="line"><span class="keyword">async</span> <span class="keyword">function</span> <span class="title function_">storeVerificationCode</span>(<span class="params">account, verificationCode, verifyType, expiresIn = <span class="number">300</span></span>) &#123;</span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">        <span class="keyword">const</span> data = <span class="title class_">JSON</span>.<span class="title function_">stringify</span>(&#123; verificationCode, verifyType &#125;);</span><br><span class="line">        <span class="keyword">await</span> <span class="title function_">setData</span>(account, data, expiresIn);</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">    &#125; <span class="keyword">catch</span> (error) &#123;</span><br><span class="line">        <span class="keyword">throw</span> error;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 生成6位数字验证码</span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">generateRandomCode</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="keyword">const</span> randomCode = <span class="title class_">Math</span>.<span class="title function_">floor</span>(<span class="number">100000</span> + <span class="title class_">Math</span>.<span class="title function_">random</span>() * <span class="number">900000</span>).<span class="title function_">toString</span>();</span><br><span class="line">    <span class="keyword">return</span> randomCode;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<ol start="3">
-<li>发送短信验证码</li>
-</ol>
-<blockquote>
-<p>注意这里有个坑，阿里云的短信验证码接口无论发送成功与否都会返回状态码200，所以不能通过返回的HTTP状态码来判断是否发送成功</p>
-</blockquote>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">async</span> <span class="keyword">function</span> <span class="title function_">sendSms</span>(<span class="params">phoneNumbers, Code</span>) &#123;</span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">        <span class="keyword">const</span> templateParam = <span class="title class_">JSON</span>.<span class="title function_">stringify</span>(&#123;</span><br><span class="line">            <span class="attr">code</span>: <span class="title class_">Code</span></span><br><span class="line">        &#125;);</span><br><span class="line">        <span class="keyword">await</span> <span class="title class_">Client</span>.<span class="title function_">main</span>(&#123;</span><br><span class="line">            <span class="attr">phoneNumbers</span>: phoneNumbers,</span><br><span class="line">            <span class="attr">templateParam</span>: templateParam</span><br><span class="line">        &#125;);</span><br><span class="line">        <span class="keyword">return</span> &#123; <span class="attr">code</span>: <span class="number">0</span>, <span class="attr">msg</span>: <span class="string">&quot;短信验证码发送成功，请注意查收&quot;</span> &#125;;</span><br><span class="line">    &#125; <span class="keyword">catch</span> (error) &#123;</span><br><span class="line">        <span class="keyword">return</span> &#123; <span class="attr">code</span>: <span class="number">1</span>, <span class="attr">msg</span>: <span class="string">&quot;短信验证码发送失败&quot;</span> + error.<span class="property">message</span> &#125;;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<ol start="4">
-<li>发送邮件验证码</li>
-</ol>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> mailOptions = &#123;</span><br><span class="line">        <span class="attr">from</span>: <span class="string">`&quot;黄梅戏文化平台&quot; &lt;<span class="subst">$&#123;process.env.EMAIL_USER&#125;</span>&gt;`</span>,</span><br><span class="line">        <span class="attr">to</span>: email,</span><br><span class="line">        <span class="attr">subject</span>: subject,</span><br><span class="line">        <span class="attr">text</span>: message</span><br><span class="line">    &#125;;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> &#123;</span><br><span class="line">        transporter.<span class="title function_">sendMail</span>(mailOptions, <span class="function">(<span class="params">error, info</span>) =&gt;</span> &#123;</span><br><span class="line">            <span class="keyword">if</span> (error) &#123;</span><br><span class="line">                <span class="title function_">reject</span>(&#123; <span class="attr">code</span>: <span class="number">1</span>, <span class="attr">msg</span>: <span class="string">&quot;邮箱验证码发送失败&quot;</span> &#125;);</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                <span class="title function_">resolve</span>(&#123; <span class="attr">code</span>: <span class="number">0</span>, <span class="attr">msg</span>: <span class="string">&quot;邮箱验证码发送成功，请注意查收&quot;</span> &#125;);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>效果<img src="https://r2.lm379.cn/2024/12/0abdf24d77f2112823008f7f8d7499b6.png" alt="" /><br />
-5. GPT总结视频，完整项目见<a href="https://github.com/lm379/video_summarize">lm379/video_summarize: video_summarize（视频总结：上传视频通过prompt对视频内容经行总结输出）</a><br />
-下面是针对本项目的扩展代码，使用Python的Flask框架开启HTTP接口，让Node.js可以直接调用该接口，而不需要引入Pyrunner之类的库</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> flask <span class="keyword">import</span> Flask, request, jsonify</span><br><span class="line"><span class="keyword">import</span> json</span><br><span class="line"><span class="keyword">import</span> argparse</span><br><span class="line"><span class="keyword">import</span> whisper</span><br><span class="line"><span class="keyword">import</span> os</span><br><span class="line"><span class="keyword">from</span> utils <span class="keyword">import</span> OpenaiMgr</span><br><span class="line"></span><br><span class="line">app = Flask(__name__)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Whisper模型</span></span><br><span class="line">WHISPER_MODEL = <span class="string">&quot;large-v2.pt&quot;</span></span><br><span class="line">PROJECT_PATH = os.path.dirname(os.path.dirname(__file__))</span><br><span class="line">UP_PROJECT_PATH = os.path.join(PROJECT_PATH, <span class="string">&quot;video_summarize&quot;</span>)</span><br><span class="line">MODE_PATH = os.path.join(UP_PROJECT_PATH, <span class="string">&quot;model&quot;</span>)</span><br><span class="line"><span class="built_in">print</span>(MODE_PATH+<span class="string">&quot;/&quot;</span> + WHISPER_MODEL)</span><br><span class="line">whisper_model =  whisper.load_model(MODE_PATH+ <span class="string">&quot;/&quot;</span> + WHISPER_MODEL)  </span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">whisper_to_str</span>(<span class="params">content</span>):</span><br><span class="line">    <span class="keyword">return</span> whisper_model.transcribe(content)  </span><br><span class="line">    </span><br><span class="line"><span class="meta">@app.route(<span class="params"><span class="string">&#x27;/summarize&#x27;</span>, methods=[<span class="string">&#x27;POST&#x27;</span>]</span>)</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">summarize_video</span>():</span><br><span class="line">    data = request.json</span><br><span class="line">    video_path = data.get(<span class="string">&#x27;video_path&#x27;</span>)</span><br><span class="line">    prompt = data.get(<span class="string">&#x27;prompt&#x27;</span>)</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;1.提取视频文案&quot;</span>)</span><br><span class="line">    video_content = whisper_to_str(video_path)</span><br><span class="line">    question = prompt + video_content[<span class="string">&quot;text&quot;</span>]</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;2.GPT总结文案&quot;</span>)</span><br><span class="line">    s1, content = OpenaiMgr.call(question)</span><br><span class="line">    <span class="built_in">print</span>(content)</span><br><span class="line">    <span class="keyword">return</span> jsonify(&#123;<span class="string">&quot;code&quot;</span>:<span class="number">0</span>, <span class="string">&quot;content&quot;</span>: content&#125;)  </span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    app.run(host=<span class="string">&#x27;0.0.0.0&#x27;</span>, port=<span class="number">7888</span>)</span><br></pre></td></tr></table></figure>]]></content>
-      <tags>
-        <tag>数据库</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>星露谷物语异地联机教程</title>
     <url>/2025/01/06/%E6%B8%B8%E6%88%8F%E7%9B%B8%E5%85%B3/%E6%98%9F%E9%9C%B2%E8%B0%B7%E7%89%A9%E8%AF%AD%E5%BC%82%E5%9C%B0%E8%81%94%E6%9C%BA%E6%95%99%E7%A8%8B/</url>
     <content><![CDATA[<p>星露谷物语没有提供在线联机服务器，联机只能通过局域网进行连接。如果我们想和异地的小伙伴联机应该怎么办呢？这时候可以考虑模拟一个局域网的方式</p>
@@ -6210,6 +5729,333 @@ C++20 以前编译器会认为对a左移两位是未定义的操作</p>
 ]]></content>
       <categories>
         <category>计算机组成原理</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>软件工程复习笔记</title>
+    <url>/2025/07/02/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B%E5%A4%8D%E4%B9%A0%E7%AC%94%E8%AE%B0/</url>
+    <content><![CDATA[<h1 id="一-软件"><a class="markdownIt-Anchor" href="#一-软件"></a> 一、软件</h1>
+<h2 id="什么是软件"><a class="markdownIt-Anchor" href="#什么是软件"></a> 什么是软件</h2>
+<p><strong>软件 = 程序 + 数据结构 + 文档</strong></p>
+<h2 id="软件的分类"><a class="markdownIt-Anchor" href="#软件的分类"></a> 软件的分类</h2>
+<ul>
+<li>应用软件</li>
+<li>系统软件</li>
+<li>支撑软件</li>
+</ul>
+<h2 id="软件需求"><a class="markdownIt-Anchor" href="#软件需求"></a> 软件需求</h2>
+<ul>
+<li>软件功能性需求(Functional Requirement)</li>
+</ul>
+<blockquote>
+<p>能够完成的<code>功能</code>及在某些场景下可展现的外部可见行为或效果</p>
+</blockquote>
+<ul>
+<li>软件质量方面的需求(Quality Requirement)</li>
+</ul>
+<blockquote>
+<p><code>外部质量属性</code>，外部可展现的，用户、客户等会非常关心，如运行性能、可靠性、易用性等<br />
+<code>内部质量属性</code>，隐藏在内部的，软件开发工程师会非常关心，如可扩展性、可维护性、可理解性</p>
+</blockquote>
+<ul>
+<li>软件开发约束性需求(Constraint Requirement)</li>
+</ul>
+<blockquote>
+<p>开发成本、交付进度、技术选型、遵循标准等方面提出的要求</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>类别</th>
+<th>内涵</th>
+<th>关注的利益相关方</th>
+<th>示例</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>功能性需求</td>
+<td>软件具有的功能、行为和服务</td>
+<td>用户、客户、开发者群体、其他系统</td>
+<td>- 分析和识别老人语音呼叫<br>- 分析异常状况</td>
+</tr>
+<tr>
+<td></td>
+<td>内部质量需求</td>
+<td>开发者群体</td>
+<td>- 可维护性、可扩展性、可理解性、可重用性等</td>
+</tr>
+<tr>
+<td>软件质量需求</td>
+<td>外部质量需求</td>
+<td>用户、客户、开发者群体、其他系统</td>
+<td>- 界面操作要在1秒内响应<br>- 视频延迟不超过2秒</td>
+</tr>
+<tr>
+<td>开发约束性需求</td>
+<td>软件开发需满足的要求</td>
+<td>客户、开发者群体、其他系统</td>
+<td>- 要求在6个月内交付产品<br>- 软件运行在Android之上<br>- 采用Java语言来实现</td>
+</tr>
+</tbody>
+</table>
+<h2 id="开源软件和闭源软件"><a class="markdownIt-Anchor" href="#开源软件和闭源软件"></a> 开源软件和闭源软件</h2>
+
+<div class="callout" data-callout="note">
+<div class="callout-title">
+<div class="callout-title-icon">
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-pencil"><path d="M17 3a2.85 2.83 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5Z"/><path d="m15 5 4 4"/></svg>
+</div>
+<div class="callout-title-inner">闭源软件</div>
+</div>
+<div class="callout-content"><p>软件代码不对用户开放的一类软件，购买软件只提供可运行软件或服务，没有提供源代码<br />
+以许可证方式授权用户使用</p>
+</div></div><p>缺点：无法掌握软件内部实现情况（如是否存在安全漏洞和恶意代码），也无法对软件进行修改和完善，极大影响了开发者的创新自由</p>
+
+<div class="callout" data-callout="note">
+<div class="callout-title">
+<div class="callout-title-icon">
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-pencil"><path d="M17 3a2.85 2.83 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5Z"/><path d="m15 5 4 4"/></svg>
+</div>
+<div class="callout-title-inner">开源软件</div>
+</div>
+<div class="callout-content"><p>一种源代码可以自由获取和传播的计算机软件，其拥有者通过开源许可证赋予被许可人对软件进行使用、修改和传播</p>
+</div></div>
+<div class="callout" data-callout="tip">
+<div class="callout-title">
+<div class="callout-title-icon">
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-flame"><path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 2.5z"/></svg>
+</div>
+<div class="callout-title-inner">优点</div>
+</div>
+<div class="callout-content"><p></p>
+<ul>
+<li>源代码可自由传播</li>
+<li>免费使用降低成本</li>
+<li>激发创作者的热情</li>
+<li>快速开发搭建系统</li>
+</ul>
+</div></div><h2 id="软件质量"><a class="markdownIt-Anchor" href="#软件质量"></a> 软件质量</h2>
+<p>软件质量是指软件满足给定需求的程度，它是软件的生命线</p>
+<p><strong>要求</strong>：</p>
+<ul>
+<li>正确性</li>
+<li>可靠性</li>
+<li>健壮性</li>
+<li>有效性</li>
+<li>安全性</li>
+<li>可维护性</li>
+<li>可移植性</li>
+<li>可重用性</li>
+<li>可理解性</li>
+<li>可信性</li>
+<li>持续性</li>
+<li>可用性</li>
+<li>互操作性</li>
+</ul>
+<p>保证方法</p>
+<h1 id="二-软件工程"><a class="markdownIt-Anchor" href="#二-软件工程"></a> 二、软件工程</h1>
+
+<div class="callout" data-callout="note">
+<div class="callout-title">
+<div class="callout-title-icon">
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-pencil"><path d="M17 3a2.85 2.83 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5Z"/><path d="m15 5 4 4"/></svg>
+</div>
+<div class="callout-title-inner">概念</div>
+</div>
+<div class="callout-content"><p>将<code>系统化</code>、<code>规范化</code>、<code>可量化</code>的方法应用于软件的开发、运行和维护的过程；以及上述方法的研究</p>
+</div></div><h2 id="原则"><a class="markdownIt-Anchor" href="#原则"></a> 原则</h2>
+<ul>
+<li>抽象与建模</li>
+<li>模块化</li>
+<li>软件重用</li>
+<li>信息隐藏</li>
+<li>关注点分离</li>
+<li>分而治之</li>
+<li>双向追踪原则</li>
+<li>工具辅助</li>
+</ul>
+<h1 id="三-软件过程模型"><a class="markdownIt-Anchor" href="#三-软件过程模型"></a> 三、软件过程模型</h1>
+<p>定义了软件开发的具体活动以及活动间的逻辑关系</p>
+<h2 id="不同模型的特点"><a class="markdownIt-Anchor" href="#不同模型的特点"></a> 不同模型的特点</h2>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">模型名称</th>
+<th style="text-align:center">指导思想</th>
+<th style="text-align:center">关注点</th>
+<th style="text-align:center">适合软件</th>
+<th style="text-align:center">管理难度</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">瀑布模型</td>
+<td style="text-align:center">提供系统性指导</td>
+<td style="text-align:center">与软件生命周期相一致</td>
+<td style="text-align:center">需求变动不大、较为明确、可预先定义的应用</td>
+<td style="text-align:center">易</td>
+</tr>
+<tr>
+<td style="text-align:center">原型模型</td>
+<td style="text-align:center">以原型为媒介指导用户的需求导出和评价</td>
+<td style="text-align:center">需求获取、导出和确认</td>
+<td style="text-align:center">理解需求难以表述清楚、不易导出和获取的应用</td>
+<td style="text-align:center">易</td>
+</tr>
+<tr>
+<td style="text-align:center">增量模型</td>
+<td style="text-align:center">快速交付和并行开发</td>
+<td style="text-align:center">软件详细设计、编码和测试的增量式完成</td>
+<td style="text-align:center">需求变动不大、较为明确、可预先定义的应用</td>
+<td style="text-align:center">易</td>
+</tr>
+<tr>
+<td style="text-align:center">迭代模型</td>
+<td style="text-align:center">多次迭代，每次仅针对部分明确软件需求</td>
+<td style="text-align:center">分多次迭代来开发软件，每次仅关注部分需求</td>
+<td style="text-align:center">需求变动大、难以一次性说清楚的应用</td>
+<td style="text-align:center">中等</td>
+</tr>
+<tr>
+<td style="text-align:center">螺旋模型</td>
+<td style="text-align:center">集成迭代模型和原型模型，引入风险分析</td>
+<td style="text-align:center">软件计划制定和实施，软件风险管理，基于原型的迭代式开发</td>
+<td style="text-align:center">开发风险大，需求难以确定的应用</td>
+<td style="text-align:center">难</td>
+</tr>
+</tbody>
+</table>
+<h1 id="四-敏捷开发"><a class="markdownIt-Anchor" href="#四-敏捷开发"></a> 四、敏捷开发</h1>
+<blockquote>
+<p><a href="https://agilemanifesto.org/iso/zhchs/manifesto.html">敏捷软件开发宣言</a></p>
+</blockquote>
+<p>一种轻量级软件开发方法</p>
+<blockquote>
+<p>相对于重量级的软件开发方法而言</p>
+</blockquote>
+<p>主张软件开发要以代码为中心，快速、轻巧和主动应对需求变化，持续、及时交付可运行的软件系统</p>
+<p>提供了一组思想和策略，指导快速响应用户需求的变化，快速交付可运行的软件制品</p>
+<h2 id="基本主张"><a class="markdownIt-Anchor" href="#基本主张"></a> 基本主张</h2>
+<p>较之于过程和工具，应更加重视<code>人和交互</code>的价值<br />
+较之于面面俱到文档，应更加重视<code>可运行软件系统</code>的价值<br />
+较之于合同谈判，应更加重视<code>客户合作</code>的价值<br />
+较之于遵循计划，应更加重视<code>响应用户需求变化</code>的价值</p>
+<h2 id="指导思想"><a class="markdownIt-Anchor" href="#指导思想"></a> 指导思想</h2>
+
+<div class="callout" data-callout="note">
+<div class="callout-title">
+<div class="callout-title-icon">
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-pencil"><path d="M17 3a2.85 2.83 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5Z"/><path d="m15 5 4 4"/></svg>
+</div>
+<div class="callout-title-inner">Note</div>
+</div>
+<div class="callout-content"><p></p>
+<ul>
+<li>强化可运行的软件，弱化软件文档</li>
+<li>以适应变化为目的，提升应变能力</li>
+<li>以人为本，让方法等服务于人</li>
+</ul>
+</div></div><h2 id="敏捷准则"><a class="markdownIt-Anchor" href="#敏捷准则"></a> 敏捷准则</h2>
+<ol>
+<li>通过<code>持续不断地及早交付</code>有价值的软件使客户满意。</li>
+<li><code>欣然面对需求变化</code>，即使在开发后期也一样。为了客户的竞争优势，敏捷过程掌控变化。</li>
+<li><code>经常地交付</code>可工作的软件，相隔几星期或一两个月，倾向于采取<code>较短的周期</code>。</li>
+<li>业务人员和开发人员必须<code>相互合作</code>，项目中的每一天都不例外。</li>
+<li><code>激发个体的斗志</code>，以他们为核心搭建项目。提供所需的环境和支援，辅以信任，从而达成目标。</li>
+<li>不论团队内外，传递信息效果最好效率也最高的方式是<code>面对面的交谈</code>。</li>
+<li>可<code>工作的软件</code>是进度的首要度量标准。</li>
+<li>敏捷过程倡导可持续开发。责任人、开发人员和用户要能够共同维持其步调稳定延续。</li>
+<li>坚持不懈地追求<code>技术卓越和良好设计</code>，敏捷能力由此增强。</li>
+<li>以<code>简洁</code>为本，它是极力减少不必要工作量的艺术。</li>
+<li>最好的架构、需求和设计出自<code>自组织团队</code>。</li>
+<li>团队定期地<code>反思</code>如何能提高成效，并依此<code>调整</code>自身的举止表现。</li>
+</ol>
+<h1 id="五-uml统一建模语言"><a class="markdownIt-Anchor" href="#五-uml统一建模语言"></a> 五、UML统一建模语言</h1>
+<table>
+<thead>
+<tr>
+<th>视点</th>
+<th>图（diagram）</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>结构</td>
+<td>包图（package diagram）</td>
+<td>从包层面描述系统的静态结构</td>
+</tr>
+<tr>
+<td></td>
+<td>类图（class diagram）</td>
+<td>从类层面描述系统的静态结构</td>
+</tr>
+<tr>
+<td></td>
+<td>对象图（object diagram）</td>
+<td>从对象层面描述系统的静态结构</td>
+</tr>
+<tr>
+<td></td>
+<td>构件图(component diagram)</td>
+<td>描述系统中构件及其依赖关系</td>
+</tr>
+<tr>
+<td>行为</td>
+<td>状态图(statechart diagram )</td>
+<td>描述状态的变迁</td>
+</tr>
+<tr>
+<td></td>
+<td>活动图(activity diagram)</td>
+<td>描述系统活动的实施</td>
+</tr>
+<tr>
+<td></td>
+<td>通信图(communication diagram)</td>
+<td>描述对象间的消息传递与协作</td>
+</tr>
+<tr>
+<td></td>
+<td>顺序图(sequence diagram)</td>
+<td>描述对象间的消息传递与协作</td>
+</tr>
+<tr>
+<td>部署</td>
+<td>部署图（deployment diagram）</td>
+<td>描述系统中工件在物理运行环境中的部署情况</td>
+</tr>
+<tr>
+<td>用例</td>
+<td>用例图（use case diagram）</td>
+<td>从外部用户角度描述系统功能</td>
+</tr>
+</tbody>
+</table>
+<h1 id="六-软件测试"><a class="markdownIt-Anchor" href="#六-软件测试"></a> 六、软件测试</h1>
+<p>程序是运行软件的载体，也是软件缺陷的载体</p>
+
+<div class="callout" data-callout="note">
+<div class="callout-title">
+<div class="callout-title-icon">
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-pencil"><path d="M17 3a2.85 2.83 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5Z"/><path d="m15 5 4 4"/></svg>
+</div>
+<div class="callout-title-inner">白盒测试</div>
+</div>
+<div class="callout-content"><p>基于程序内部的执行流程来设计测试用例</p>
+</div></div>
+<div class="callout" data-callout="note">
+<div class="callout-title">
+<div class="callout-title-icon">
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-pencil"><path d="M17 3a2.85 2.83 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5Z"/><path d="m15 5 4 4"/></svg>
+</div>
+<div class="callout-title-inner">黑盒测试</div>
+</div>
+<div class="callout-content"><p>基于程序的外在功能和接口来设计测试用例</p>
+</div></div>]]></content>
+      <categories>
+        <category>软件工程</category>
       </categories>
   </entry>
 </search>
