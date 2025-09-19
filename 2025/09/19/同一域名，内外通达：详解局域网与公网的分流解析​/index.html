@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#000"><meta name="generator" content="Hexo 7.3.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#000">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://mirrors.sustech.edu.cn/cdnjs/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha256-DfWjNxDkM94fVBWx1H5BMMp0Zq7luBlV8QRcSES7s+0=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://mirrors.sustech.edu.cn/cdnjs/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://mirrors.sustech.edu.cn/cdnjs/ajax/libs/pace/1.2.4/themes/blue/pace-theme-minimal.css">
+  <script src="https://mirrors.sustech.edu.cn/cdnjs/ajax/libs/pace/1.2.4/pace.min.js" integrity="sha256-gqd7YTjg/BtfqWSwsJOvndl0Bxc8gFImLEkXQT8+qj0=" crossorigin="anonymous"></script>
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"lm379.cn","root":"/","images":"/images","scheme":"Muse","darkmode":false,"version":"8.12.2","exturl":false,"sidebar":{"position":"right","display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":"mac"},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":true}}</script><script src="https://mirrors.sustech.edu.cn/cdnjs/ajax/libs/hexo-theme-next/8.12.2/config.min.js"></script>
+
+    <meta name="description" content="同一域名，内外通达：详解局域网与公网的分流解析​">
+<meta property="og:type" content="article">
+<meta property="og:title" content="同一域名，内外通达：详解局域网与公网的分流解析​">
+<meta property="og:url" content="https://lm379.cn/2025/09/19/%E5%90%8C%E4%B8%80%E5%9F%9F%E5%90%8D%EF%BC%8C%E5%86%85%E5%A4%96%E9%80%9A%E8%BE%BE%EF%BC%9A%E8%AF%A6%E8%A7%A3%E5%B1%80%E5%9F%9F%E7%BD%91%E4%B8%8E%E5%85%AC%E7%BD%91%E7%9A%84%E5%88%86%E6%B5%81%E8%A7%A3%E6%9E%90%E2%80%8B/index.html">
+<meta property="og:site_name" content="lm379のBlog">
+<meta property="og:description" content="同一域名，内外通达：详解局域网与公网的分流解析​">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://r2.lm379.cn/2025/09/aefe68d76cd1622f3c9bfe24be16e5d7.png">
+<meta property="og:image" content="https://r2.lm379.cn/2025/09/d8257cda5915d82ee651f3c54354ebce.jpg">
+<meta property="og:image" content="https://r2.lm379.cn/2025/09/5f568bbbd62481022a483cb17757e41b.png">
+<meta property="og:image" content="https://r2.lm379.cn/2025/09/03cb7e91f1ca0f63d3b6b4d23274c7a0.png">
+<meta property="og:image" content="https://r2.lm379.cn/2025/09/6f62157b93c6ce6b09d76c226bcc931c.png">
+<meta property="og:image" content="https://r2.lm379.cn/2025/09/4fc05c7495eaacc75a2256b93d4f46cc.png">
+<meta property="og:image" content="https://r2.lm379.cn/2025/09/84629dc5cbbffc55523b22f3efc5be9d.png">
+<meta property="og:image" content="https://r2.lm379.cn/2025/09/f4717d1e573fd2f4b2a843d572604fdf.png">
+<meta property="og:image" content="https://r2.lm379.cn/2025/09/f8729a288e5917a53c42de9b7a3d5f40.png">
+<meta property="article:published_time" content="2025-09-19T09:42:56.000Z">
+<meta property="article:modified_time" content="2025-09-19T11:31:06.129Z">
+<meta property="article:author" content="lm379">
+<meta property="article:tag" content="教程">
+<meta property="article:tag" content="openwrt">
+<meta property="article:tag" content="dns">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://r2.lm379.cn/2025/09/aefe68d76cd1622f3c9bfe24be16e5d7.png">
+
+
+<link rel="canonical" href="https://lm379.cn/2025/09/19/%E5%90%8C%E4%B8%80%E5%9F%9F%E5%90%8D%EF%BC%8C%E5%86%85%E5%A4%96%E9%80%9A%E8%BE%BE%EF%BC%9A%E8%AF%A6%E8%A7%A3%E5%B1%80%E5%9F%9F%E7%BD%91%E4%B8%8E%E5%85%AC%E7%BD%91%E7%9A%84%E5%88%86%E6%B5%81%E8%A7%A3%E6%9E%90%E2%80%8B/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://lm379.cn/2025/09/19/%E5%90%8C%E4%B8%80%E5%9F%9F%E5%90%8D%EF%BC%8C%E5%86%85%E5%A4%96%E9%80%9A%E8%BE%BE%EF%BC%9A%E8%AF%A6%E8%A7%A3%E5%B1%80%E5%9F%9F%E7%BD%91%E4%B8%8E%E5%85%AC%E7%BD%91%E7%9A%84%E5%88%86%E6%B5%81%E8%A7%A3%E6%9E%90%E2%80%8B/","path":"2025/09/19/同一域名，内外通达：详解局域网与公网的分流解析​/","title":"同一域名，内外通达：详解局域网与公网的分流解析​"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>同一域名，内外通达：详解局域网与公网的分流解析​ | lm379のBlog</title>
+  
+
+
+
+  <script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{&quot;token&quot;: &quot;5a58651dc232489989204bf6775afe7a&quot;}'></script>
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">lm379のBlog</p>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">44</span></a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">11</span></a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">58</span></a></li><li class="menu-item menu-item-commonweal"><a href="/404/" rel="section"><i class="fa fa-heartbeat fa-fw"></i>公益 404</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BF%AE%E6%94%B9%E8%B7%AF%E7%94%B1%E5%99%A8hosts"><span class="nav-number">1.</span> <span class="nav-text"> 修改路由器hosts</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%87%AA%E5%BB%BAdns"><span class="nav-number">2.</span> <span class="nav-text"> 自建DNS</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%95%88%E6%9E%9C%E5%B1%95%E7%A4%BA"><span class="nav-number">3.</span> <span class="nav-text"> 效果展示</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="lm379"
+      src="https://r2.lm379.cn/2024/05/4e267962f6254f01166242c803cd488f.jpg">
+  <p class="site-author-name" itemprop="name">lm379</p>
+  <div class="site-description" itemprop="description">记录个人的折腾之旅</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">58</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">11</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">44</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/lm379" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;lm379" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:lm379@foxmail.com" title="E-Mail → mailto:lm379@foxmail.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://weibo.com/u/6997206595" title="Weibo → https:&#x2F;&#x2F;weibo.com&#x2F;u&#x2F;6997206595" rel="noopener" target="_blank"><i class="fab fa-weibo fa-fw"></i>Weibo</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://space.bilibili.com/299502822" title="B站 → https:&#x2F;&#x2F;space.bilibili.com&#x2F;299502822" rel="noopener" target="_blank"><i class="fa bilibili fa-fw"></i>B站</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.zhihu.com/people/lm379" title="知乎 → https:&#x2F;&#x2F;www.zhihu.com&#x2F;people&#x2F;lm379" rel="noopener" target="_blank"><i class="fa zhihu fa-fw"></i>知乎</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="http://www.coolapk.com/u/3126124" title="酷安 → http:&#x2F;&#x2F;www.coolapk.com&#x2F;u&#x2F;3126124" rel="noopener" target="_blank"><i class="fa coolapk fa-fw"></i>酷安</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.xiaohongshu.com/user/profile/6306019b0000000012001f11" title="小红书 → https:&#x2F;&#x2F;www.xiaohongshu.com&#x2F;user&#x2F;profile&#x2F;6306019b0000000012001f11" rel="noopener" target="_blank"><i class="fa xiaohongshu fa-fw"></i>小红书</a>
+      </span>
+  </div>
+
+
+  <div class="links-of-blogroll site-overview-item animated">
+    <div class="links-of-blogroll-title"><i class="fa fa-globe fa-fw"></i>
+      Links
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <a href="https://pan.lm379.cn/" title="https:&#x2F;&#x2F;pan.lm379.cn" rel="noopener" target="_blank">OpenList</a>
+        </li>
+    </ul>
+  </div>
+
+        </div>
+      </div>
+        <div class="back-to-top animated" role="button" aria-label="返回顶部">
+          <i class="fa fa-arrow-up"></i>
+          <span>0%</span>
+        </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="reading-progress-bar"></div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://lm379.cn/2025/09/19/%E5%90%8C%E4%B8%80%E5%9F%9F%E5%90%8D%EF%BC%8C%E5%86%85%E5%A4%96%E9%80%9A%E8%BE%BE%EF%BC%9A%E8%AF%A6%E8%A7%A3%E5%B1%80%E5%9F%9F%E7%BD%91%E4%B8%8E%E5%85%AC%E7%BD%91%E7%9A%84%E5%88%86%E6%B5%81%E8%A7%A3%E6%9E%90%E2%80%8B/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://r2.lm379.cn/2024/05/4e267962f6254f01166242c803cd488f.jpg">
+      <meta itemprop="name" content="lm379">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="lm379のBlog">
+      <meta itemprop="description" content="记录个人的折腾之旅">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="同一域名，内外通达：详解局域网与公网的分流解析​ | lm379のBlog">
+      <meta itemprop="description" content="同一域名，内外通达：详解局域网与公网的分流解析​">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          同一域名，内外通达：详解局域网与公网的分流解析​
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2025-09-19 17:42:56 / 修改时间：19:31:06" itemprop="dateCreated datePublished" datetime="2025-09-19T17:42:56+08:00">2025-09-19</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F/" itemprop="url" rel="index"><span itemprop="name">内网穿透</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+</div>
+
+            <div class="post-description">同一域名，内外通达：详解局域网与公网的分流解析​</div>
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <p>先来看效果，两条nslookup命令后面跟的都是同一个域名，前者使用家里的WIFI进行上网，后者用手机开热点模拟外网</p>
+<p><img src="https://r2.lm379.cn/2025/09/aefe68d76cd1622f3c9bfe24be16e5d7.png" alt="|236L" /></p>
+<p>可以看到两条命令返回了不同的IP地址，<code>192.168.1.118</code> 是内网飞牛NAS的主机IP，后者是我将飞牛NAS上部署的 OpenList 通过 Frp 映射到公网上的地址</p>
+<p>要做到这个其实很简单，只需要在内网对DNS进行“劫持”即可，让其为指定的域名返回内网IP，不需要修改外网的任何配置</p>
+
+<div class="callout" data-callout="note">
+<div class="callout-title">
+<div class="callout-title-icon">
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-pencil"><path d="M17 3a2.85 2.83 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5Z"/><path d="m15 5 4 4"/></svg>
+</div>
+<div class="callout-title-inner">IPv6</div>
+</div>
+<div class="callout-content"><p>另外，如果使用的是IPv6，现在大多数路由器都支持内外网自动分流<br />
+即路由器检测到访问的主机和当前设备位于同一局域网时不会走外部流量<br />
+一般在内网Ping IPv6地址时延迟个位数就是直接走内网了</p>
+</div></div><p>实现这个，可以有两种途径，一是修改路由器的hosts，另一个是内网自建DNS服务器</p>
+
+<div class="callout" data-callout="warning">
+<div class="callout-title">
+<div class="callout-title-icon">
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-alert-triangle"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z"/><path d="M12 9v4"/><path d="M12 17h.01"/></svg>
+</div>
+<div class="callout-title-inner">注意</div>
+</div>
+<div class="callout-content"><p>所有设备需要指定DNS为路由器IP为自建的DNS的IP，否则无效</p>
+</div></div><h3 id="修改路由器hosts"><a class="markdownIt-Anchor" href="#修改路由器hosts"></a> 修改路由器hosts</h3>
+<p>很多路由器都有这个功能，一般都在路由器后台或者管理路由器的app内可以找到</p>
+<p>以小米路由器为例，需要前往米家app，在自定义Hosts内输入格式为 <code>IP 域名</code> 的记录，一行一条，如下图所示</p>
+<p><img src="https://r2.lm379.cn/2025/09/d8257cda5915d82ee651f3c54354ebce.jpg" alt="|L|475" /></p>
+<p>然后再ping你设置的域名，就会发现返回的IP是你设置的内网IP了</p>
+<h3 id="自建dns"><a class="markdownIt-Anchor" href="#自建dns"></a> 自建DNS</h3>
+<p>自建DNS的选择有很多，我以<a target="_blank" rel="noopener" href="https://adguard-dns.io/kb/zh-CN/adguard-home/overview/">AdGuardHome</a>为例，这是一个集成去广告、DNS服务器、DHCP服务器的开源局域网级的广告跟踪拦截软件，由AdGuard团队开发并可以免费使用</p>
+<p>如果主路由器为OpenWrt，可以直接安装插件 <a target="_blank" rel="noopener" href="https://github.com/kongfl888/luci-app-adguardhome">kongfl888/luci-app-adguardhome</a> ，并设置重定向53端口到Adguardhome</p>
+<p><img src="https://r2.lm379.cn/2025/09/5f568bbbd62481022a483cb17757e41b.png" alt="" /></p>
+<p>如果主路由不是OpenWrt，直接在内网的任意一台支持Docker的主机上安装，docker-compose.yml如下，其中53端口和3000端口必须映射，其余按需，其实内网使用只开53和3000就够了，<strong>注意修改最后两行的工作目录和数据目录的映射</strong></p>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">version:</span> <span class="string">&#x27;3.8&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="attr">services:</span></span><br><span class="line">  <span class="attr">adguardhome:</span></span><br><span class="line">    <span class="attr">image:</span> <span class="string">adguard/adguardhome</span></span><br><span class="line">    <span class="attr">container_name:</span> <span class="string">adguardhome</span></span><br><span class="line">    <span class="attr">restart:</span> <span class="string">unless-stopped</span></span><br><span class="line">    <span class="attr">ports:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">&quot;53:53/tcp&quot;</span>    <span class="comment"># 映射 DNS over TCP</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">&quot;53:53/udp&quot;</span>    <span class="comment"># 映射 DNS over UDP</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">&quot;3000:3000/tcp&quot;</span> <span class="comment"># 映射管理后台端口</span></span><br><span class="line">      <span class="comment">#- &quot;443:443/tcp&quot;  # [可选] 映射 HTTPS 管理界面</span></span><br><span class="line">      <span class="comment">#- &quot;443:443/udp&quot;  # [可选] 映射 HTTPS over UDP (可能用于 QUIC)</span></span><br><span class="line">      <span class="comment">#- &quot;853:853/tcp&quot;  # [可选] 映射 DNS over TLS (DoT)</span></span><br><span class="line">      <span class="comment">#- &quot;784:784/udp&quot;  # [可选] 映射 DNS over QUIC (DoQ) 或其他用途</span></span><br><span class="line">      <span class="comment">#- &quot;853:853/udp&quot;  # [可选] 映射 DNS over TLS over UDP (可能)</span></span><br><span class="line">      <span class="comment">#- &quot;8853:8853/udp&quot; # [可选] 映射 DNS over HTTPS (DoH) over UDP 或其他用途</span></span><br><span class="line">      <span class="comment">#- &quot;5443:5443/tcp&quot; # [可选] 映射其他加密 DNS 或管理端口</span></span><br><span class="line">      <span class="comment">#- &quot;5443:5443/udp&quot; # [可选] 映射其他加密 DNS 或管理端口 (UDP)</span></span><br><span class="line">    <span class="attr">volumes:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">/my/own/workdir:/opt/adguardhome/work</span>  <span class="comment"># 持久化工作目录</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">/my/own/confdir:/opt/adguardhome/conf</span>  <span class="comment"># 持久化配置目录</span></span><br></pre></td></tr></table></figure>
+<p>安装完成后浏览器输入 <code>IP:3000</code> 按照指引配置好adgh后，点击设置-DNS设置，在上游DNS那里添加几条公共DNS<br />
+<img src="https://r2.lm379.cn/2025/09/03cb7e91f1ca0f63d3b6b4d23274c7a0.png" alt="L|240" /></p>
+<p>比如我设置的如下，你也可以使用你们当地的运营商DNS<br />
+国内推荐腾讯和阿里云的公共DNS，可以前往adguard提供的DNS列表选择几个延迟低的用 <a target="_blank" rel="noopener" href="https://adguard-dns.io/kb/zh-CN/general/dns-providers/">已知的 DNS 提供商 | AdGuard DNS Knowledge Base</a></p>
+<blockquote>
+<p>注：国内不建议使用google或者cloudflare这种国外DNS，往往有减速效果</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">https://dns.alidns.com/dns-query</span><br><span class="line">https://dns.pub/dns-query</span><br><span class="line">https://doh.360.cn/dns-query</span><br></pre></td></tr></table></figure>
+<p>下面这个选项个人比较推荐并行请求<br />
+<img src="https://r2.lm379.cn/2025/09/6f62157b93c6ce6b09d76c226bcc931c.png" alt="" /></p>
+<p>Bootstrap DNS 服务器就填写当地的运营商DNS，比如四川电信的 <code>61.139.2.69</code> 和 <code>218.6.200.139</code></p>
+<p>填写完后点击应用</p>
+<p>填写完后点击 <code>过滤器</code> - <code>DNS重写</code> ，添加你需要的映射规则</p>
+<p>如果你是OpenWrt插件安装的，做到这里就已经结束了</p>
+<p>但如果不是，则还差最后一步，前往路由器后台，修改DHCP配置，将DNS指向安装AdguardHome的IP地址<br />
+<img src="https://r2.lm379.cn/2025/09/4fc05c7495eaacc75a2256b93d4f46cc.png" alt="L|450" /></p>
+<h3 id="效果展示"><a class="markdownIt-Anchor" href="#效果展示"></a> 效果展示</h3>
+<p>尝试在内网访问，查看AdugardHome的日志</p>
+<p><img src="https://r2.lm379.cn/2025/09/84629dc5cbbffc55523b22f3efc5be9d.png" alt="L|450" /></p>
+<p>通过F12可以看到，在内网访问OpenList直接返回了内网IP</p>
+<p><img src="https://r2.lm379.cn/2025/09/f4717d1e573fd2f4b2a843d572604fdf.png" alt="|169L" /></p>
+<p>但是如果你在外网是用的HTTP/HTTPS隧道，或者用了Nginx反向代理，那么还需要在内网安装一个OpenResty或者Nginx来反向代理域名</p>
+<p>Nginx 或 OpenResty 可以直接用 1panel 和 宝塔面板，也可以手动部署，看个人喜好</p>
+<p>我直接用飞牛NAS应用商店内的 1panel 安装 OpenResty</p>
+
+<div class="callout" data-callout="warning">
+<div class="callout-title">
+<div class="callout-title-icon">
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-alert-triangle"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z"/><path d="M12 9v4"/><path d="M12 17h.01"/></svg>
+</div>
+<div class="callout-title-inner">提示</div>
+</div>
+<div class="callout-content"><p>飞牛OS应用商店安装的1panel是飞牛团队魔改过的，无法升级，只能v1.10.18-lts版本<br />
+安装的OpenResty必须选择 <code>1.21.4.3-3-3-focal</code> 这个版本，其他版本会报错！！！</p>
+</div></div><p>OpenResty安装完后选择添加网站，选择反向代理，输入域名和代理的ip，如下，如果外部有HTTPS，在1panel上申请SSL证书即可</p>
+<p><img src="https://r2.lm379.cn/2025/09/f8729a288e5917a53c42de9b7a3d5f40.png" alt="" /></p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="reward-container">
+  <div>打赏</div>
+  <button>
+    赞赏
+  </button>
+  <div class="post-reward">
+      <div>
+        <img src="https://r2.lm379.cn/2024/04/f597f96be857f5d530a787c8b81731da.jpg" alt="lm379 支付宝">
+        <span>支付宝</span>
+      </div>
+
+  </div>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/%E6%95%99%E7%A8%8B/" rel="tag"><i class="fa fa-tag"></i> 教程</a>
+              <a href="/tags/openwrt/" rel="tag"><i class="fa fa-tag"></i> openwrt</a>
+              <a href="/tags/dns/" rel="tag"><i class="fa fa-tag"></i> dns</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2025/07/02/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B%E5%A4%8D%E4%B9%A0%E7%AC%94%E8%AE%B0/" rel="prev" title="软件工程复习笔记">
+                  <i class="fa fa-chevron-left"></i> 软件工程复习笔记
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    
+  
+  <div class="comments giscus-container">
+  </div>
+  
+  
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="beian"><a href="https://beian.miit.gov.cn/" rel="noopener" target="_blank">蜀ICP备2022016740号-1 </a>
+  </div>
+
+<div class="copyright">
+  &copy; 2022 – 
+  <span itemprop="copyrightYear">2025</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">lm379. All Rights Reserved.</span>
+</div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://mirrors.sustech.edu.cn/cdnjs/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="https://mirrors.sustech.edu.cn/cdnjs/ajax/libs/hexo-theme-next/8.12.2/comments.min.js"></script><script src="https://mirrors.sustech.edu.cn/cdnjs/ajax/libs/hexo-theme-next/8.12.2/utils.min.js"></script><script src="https://mirrors.sustech.edu.cn/cdnjs/ajax/libs/hexo-theme-next/8.12.2/motion.min.js"></script><script src="https://mirrors.sustech.edu.cn/cdnjs/ajax/libs/hexo-theme-next/8.12.2/schemes/muse.min.js"></script><script src="https://mirrors.sustech.edu.cn/cdnjs/ajax/libs/hexo-theme-next/8.12.2/next-boot.min.js"></script>
+
+  
+<script src="https://mirrors.sustech.edu.cn/cdnjs/ajax/libs/hexo-generator-searchdb/1.4.0/search.js" integrity="sha256-vXZMYLEqsROAXkEw93GGIvaB2ab+QW6w3+1ahD9nXXA=" crossorigin="anonymous"></script>
+<script src="https://mirrors.sustech.edu.cn/cdnjs/ajax/libs/hexo-theme-next/8.12.2/third-party/search/local-search.min.js"></script>
+
+
+
+
+  <script src="https://mirrors.sustech.edu.cn/cdnjs/ajax/libs/hexo-theme-next/8.12.2/third-party/pace.min.js"></script>
+
+  
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">true</script><link rel="stylesheet" href="https://mirrors.sustech.edu.cn/cdnjs/ajax/libs/KaTeX/0.16.0/katex.min.css" integrity="sha256-uik/hNqHWZldXh/0K35nqOSCff9F61/ZOFReqNOBgB0=" crossorigin="anonymous">
+  <script class="next-config" data-name="katex" type="application/json">{"copy_tex_js":{"url":"https://mirrors.sustech.edu.cn/cdnjs/ajax/libs/KaTeX/0.16.0/contrib/copy-tex.min.js","integrity":"sha256-Us54+rSGDSTvIhKKUs4kygE2ipA0RXpWWh0/zLqw3bs="}}</script>
+  <script src="https://mirrors.sustech.edu.cn/cdnjs/ajax/libs/hexo-theme-next/8.12.2/third-party/math/katex.min.js"></script>
+
+
+<script class="next-config" data-name="giscus" type="application/json">{"enable":true,"repo":"lm379/lm379.github.io","repo_id":"R_kgDOHoD2KA","category":"Announcements","category_id":"DIC_kwDOHoD2KM4CgEIm","mapping":"title","strict":0,"reactions_enabled":1,"emit_metadata":0,"theme":"light_tritanopia","lang":"zh-CN","crossorigin":"anonymous","input_position":"top","loading":"lazy"}</script>
+
+<script>
+document.addEventListener('page:loaded', () => {
+  if (!CONFIG.page.comments) return;
+
+  NexT.utils.loadComments('.giscus-container')
+    .then(() => NexT.utils.getScript('https://giscus.app/client.js', {
+      attributes: {
+        async                   : true,
+        crossOrigin             : 'anonymous',
+        'data-repo'             : CONFIG.giscus.repo,
+        'data-repo-id'          : CONFIG.giscus.repo_id,
+        'data-category'         : CONFIG.giscus.category,
+        'data-category-id'      : CONFIG.giscus.category_id,
+        'data-mapping'          : CONFIG.giscus.mapping,
+        'data-strict'           : CONFIG.giscus.strict,
+        'data-reactions-enabled': CONFIG.giscus.reactions_enabled,
+        'data-emit-metadata'    : CONFIG.giscus.emit_metadata,
+        'data-theme'            : CONFIG.giscus.theme,
+        'data-lang'             : CONFIG.giscus.lang,
+        'data-input-position'   : CONFIG.giscus.input_position,
+        'data-loading'          : CONFIG.giscus.loading
+      },
+      parentNode: document.querySelector('.giscus-container')
+    }));
+});
+</script>
+
+
+  <link rel="stylesheet" href="/dist/APlayer.min.css">
+  <div id="aplayer"></div>
+  <script type="text/javascript" src="/dist/APlayer.min.js"></script>
+  <script type="text/javascript" src="/dist/music.js"></script>  
+
+  <script type="text/javascript" src="\js\FunnyTitle.js"></script>
+
+</body>
+</html>
