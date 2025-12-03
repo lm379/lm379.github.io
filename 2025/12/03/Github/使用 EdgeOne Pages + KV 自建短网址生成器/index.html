@@ -1,0 +1,618 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#000"><meta name="generator" content="Hexo 8.0.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#000">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://mirrors.sustech.edu.cn/cdnjs/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha256-DfWjNxDkM94fVBWx1H5BMMp0Zq7luBlV8QRcSES7s+0=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://mirrors.sustech.edu.cn/cdnjs/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://mirrors.sustech.edu.cn/cdnjs/ajax/libs/pace/1.2.4/themes/blue/pace-theme-minimal.css">
+  <script src="https://mirrors.sustech.edu.cn/cdnjs/ajax/libs/pace/1.2.4/pace.min.js" integrity="sha256-gqd7YTjg/BtfqWSwsJOvndl0Bxc8gFImLEkXQT8+qj0=" crossorigin="anonymous"></script>
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"lm379.cn","root":"/","images":"/images","scheme":"Muse","darkmode":false,"version":"8.12.2","exturl":false,"sidebar":{"position":"right","display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":"mac"},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":true}}</script><script src="https://mirrors.sustech.edu.cn/cdnjs/ajax/libs/hexo-theme-next/8.12.2/config.min.js"></script>
+
+    <meta name="description" content="使用 EdgeOne Pages + KV 自建短网址生成器">
+<meta property="og:type" content="article">
+<meta property="og:title" content="使用 EdgeOne Pages + KV 自建短网址生成器">
+<meta property="og:url" content="https://lm379.cn/2025/12/03/Github/%E4%BD%BF%E7%94%A8%20EdgeOne%20Pages%20+%20KV%20%E8%87%AA%E5%BB%BA%E7%9F%AD%E7%BD%91%E5%9D%80%E7%94%9F%E6%88%90%E5%99%A8/index.html">
+<meta property="og:site_name" content="lm379のBlog">
+<meta property="og:description" content="使用 EdgeOne Pages + KV 自建短网址生成器">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://cdnstatic.tencentcs.com/edgeone/pages/deploy.svg">
+<meta property="og:image" content="https://cdnstatic.tencentcs.com/edgeone/pages/deploy.svg">
+<meta property="og:image" content="https://r2.lm379.cn/2025/12/e3f9dd512378ab7f94108477fabda6ed.png">
+<meta property="article:published_time" content="2025-12-03T13:54:53.000Z">
+<meta property="article:modified_time" content="2025-12-03T14:56:07.743Z">
+<meta property="article:author" content="lm379">
+<meta property="article:tag" content="EdgeOne">
+<meta property="article:tag" content="开源项目">
+<meta property="article:tag" content="短网址">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cdnstatic.tencentcs.com/edgeone/pages/deploy.svg">
+
+
+<link rel="canonical" href="https://lm379.cn/2025/12/03/Github/%E4%BD%BF%E7%94%A8%20EdgeOne%20Pages%20+%20KV%20%E8%87%AA%E5%BB%BA%E7%9F%AD%E7%BD%91%E5%9D%80%E7%94%9F%E6%88%90%E5%99%A8/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://lm379.cn/2025/12/03/Github/%E4%BD%BF%E7%94%A8%20EdgeOne%20Pages%20+%20KV%20%E8%87%AA%E5%BB%BA%E7%9F%AD%E7%BD%91%E5%9D%80%E7%94%9F%E6%88%90%E5%99%A8/","path":"2025/12/03/Github/使用 EdgeOne Pages + KV 自建短网址生成器/","title":"使用 EdgeOne Pages + KV 自建短网址生成器"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>使用 EdgeOne Pages + KV 自建短网址生成器 | lm379のBlog</title>
+  
+
+
+
+  <script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{&quot;token&quot;: &quot;5a58651dc232489989204bf6775afe7a&quot;}'></script>
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">lm379のBlog</p>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">47</span></a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">12</span></a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">59</span></a></li><li class="menu-item menu-item-commonweal"><a href="/404/" rel="section"><i class="fa fa-heartbeat fa-fw"></i>公益 404</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%A1%B9%E7%9B%AE%E5%9C%B0%E5%9D%80"><span class="nav-number">1.</span> <span class="nav-text"> 项目地址</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E9%80%89%E6%8B%A9-edgeone-pages-kv"><span class="nav-number">2.</span> <span class="nav-text"> 为什么选择 EdgeOne Pages + KV</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A0%B8%E5%BF%83%E5%8A%9F%E8%83%BD%E6%A6%82%E8%A7%88"><span class="nav-number">3.</span> <span class="nav-text"> 核心功能概览</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E9%94%AE%E9%83%A8%E7%BD%B2%E4%B8%8E%E6%89%8B%E5%8A%A8%E9%83%A8%E7%BD%B2"><span class="nav-number">4.</span> <span class="nav-text"> 一键部署与手动部署</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%80%E9%94%AE%E9%83%A8%E7%BD%B2"><span class="nav-number">4.1.</span> <span class="nav-text"> 一键部署</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%89%8B%E5%8A%A8%E9%83%A8%E7%BD%B2"><span class="nav-number">4.2.</span> <span class="nav-text"> 手动部署</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F%E9%85%8D%E7%BD%AE"><span class="nav-number">5.</span> <span class="nav-text"> 环境变量配置</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%85%B3%E4%BA%8E%E5%85%AC%E5%91%8A%E7%9A%84%E8%AF%B4%E6%98%8E"><span class="nav-number">5.1.</span> <span class="nav-text"> 关于公告的说明</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#api-%E5%BF%AB%E9%80%9F%E7%A4%BA%E4%BE%8B"><span class="nav-number">6.</span> <span class="nav-text"> API 快速示例</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%9B%E5%BB%BA%E7%9F%AD%E9%93%BE-post-apishorten"><span class="nav-number">6.1.</span> <span class="nav-text"> 创建短链 - POST &#x2F;api&#x2F;shorten</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%A7%A3%E6%9E%90%E7%9F%AD%E9%93%BE-get-apiresolveslugabc123"><span class="nav-number">6.2.</span> <span class="nav-text"> 解析短链 - GET &#x2F;api&#x2F;resolve?slug&#x3D;abc123</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%9F%AD%E9%93%BE%E8%B7%B3%E8%BD%AC"><span class="nav-number">6.3.</span> <span class="nav-text"> 短链跳转</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9C%AC%E5%9C%B0%E5%BC%80%E5%8F%91"><span class="nav-number">7.</span> <span class="nav-text"> 本地开发</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%89%E5%85%A8%E4%B8%8E%E6%9D%83%E9%99%90%E5%BB%BA%E8%AE%AE"><span class="nav-number">8.</span> <span class="nav-text"> 安全与权限建议</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BB%93%E8%AF%AD"><span class="nav-number">9.</span> <span class="nav-text"> 结语</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="lm379"
+      src="https://r2.lm379.cn/2024/05/4e267962f6254f01166242c803cd488f.jpg">
+  <p class="site-author-name" itemprop="name">lm379</p>
+  <div class="site-description" itemprop="description">记录个人的折腾之旅</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">59</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">12</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">47</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/lm379" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;lm379" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:lm379@foxmail.com" title="E-Mail → mailto:lm379@foxmail.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://weibo.com/u/6997206595" title="Weibo → https:&#x2F;&#x2F;weibo.com&#x2F;u&#x2F;6997206595" rel="noopener" target="_blank"><i class="fab fa-weibo fa-fw"></i>Weibo</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://space.bilibili.com/299502822" title="B站 → https:&#x2F;&#x2F;space.bilibili.com&#x2F;299502822" rel="noopener" target="_blank"><i class="fa bilibili fa-fw"></i>B站</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.zhihu.com/people/lm379" title="知乎 → https:&#x2F;&#x2F;www.zhihu.com&#x2F;people&#x2F;lm379" rel="noopener" target="_blank"><i class="fa zhihu fa-fw"></i>知乎</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="http://www.coolapk.com/u/3126124" title="酷安 → http:&#x2F;&#x2F;www.coolapk.com&#x2F;u&#x2F;3126124" rel="noopener" target="_blank"><i class="fa coolapk fa-fw"></i>酷安</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.xiaohongshu.com/user/profile/6306019b0000000012001f11" title="小红书 → https:&#x2F;&#x2F;www.xiaohongshu.com&#x2F;user&#x2F;profile&#x2F;6306019b0000000012001f11" rel="noopener" target="_blank"><i class="fa xiaohongshu fa-fw"></i>小红书</a>
+      </span>
+  </div>
+
+
+  <div class="links-of-blogroll site-overview-item animated">
+    <div class="links-of-blogroll-title"><i class="fa fa-globe fa-fw"></i>
+      Links
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <a href="https://pan.lm379.cn/" title="https:&#x2F;&#x2F;pan.lm379.cn" rel="noopener" target="_blank">OpenList</a>
+        </li>
+    </ul>
+  </div>
+
+        </div>
+      </div>
+        <div class="back-to-top animated" role="button" aria-label="返回顶部">
+          <i class="fa fa-arrow-up"></i>
+          <span>0%</span>
+        </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="reading-progress-bar"></div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://lm379.cn/2025/12/03/Github/%E4%BD%BF%E7%94%A8%20EdgeOne%20Pages%20+%20KV%20%E8%87%AA%E5%BB%BA%E7%9F%AD%E7%BD%91%E5%9D%80%E7%94%9F%E6%88%90%E5%99%A8/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://r2.lm379.cn/2024/05/4e267962f6254f01166242c803cd488f.jpg">
+      <meta itemprop="name" content="lm379">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="lm379のBlog">
+      <meta itemprop="description" content="记录个人的折腾之旅">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="使用 EdgeOne Pages + KV 自建短网址生成器 | lm379のBlog">
+      <meta itemprop="description" content="使用 EdgeOne Pages + KV 自建短网址生成器">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          使用 EdgeOne Pages + KV 自建短网址生成器
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2025-12-03 21:54:53 / 修改时间：22:56:07" itemprop="dateCreated datePublished" datetime="2025-12-03T21:54:53+08:00">2025-12-03</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Github/" itemprop="url" rel="index"><span itemprop="name">Github</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+</div>
+
+            <div class="post-description">使用 EdgeOne Pages + KV 自建短网址生成器</div>
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <p>本文介绍如何基于腾讯 EdgeOne Pages 和 EdgeOne KV 快速搭建一个生产级的短网址服务。该项目提供整套 API（无服务器 Functions）与 Next.js 前端 UI，可以部署在 EdgeOne Pages 的全球分发环境中，结合 KV 存储实现短链映射域访问统计。</p>
+<h2 id="项目地址"><a class="markdownIt-Anchor" href="#项目地址"></a> 项目地址</h2>
+<p>Github仓库: <a target="_blank" rel="noopener" href="https://github.com/lm379/dwz">lm379/dwz: 基于EdgeOne Pages的短网址生成器</a><br />
+Demo: <a target="_blank" rel="noopener" href="https://s.w12.top/">短网址生成器</a></p>
+<h2 id="为什么选择-edgeone-pages-kv"><a class="markdownIt-Anchor" href="#为什么选择-edgeone-pages-kv"></a> 为什么选择 EdgeOne Pages + KV</h2>
+<ul>
+<li>EdgeOne Pages 提供静态与 Functions 混合部署能力，适合将前端静态站点与小型无服务器 API 一并部署。</li>
+<li>EdgeOne KV（键值存储）延迟低、易用、支持高并发，适合短链映射（slug → URL）、反向映射（URL → slug）以及访问计数（计数器）。</li>
+</ul>
+<h2 id="核心功能概览"><a class="markdownIt-Anchor" href="#核心功能概览"></a> 核心功能概览</h2>
+<ul>
+<li>支持任意 URL 的短链生成与自定义别名（slug）。</li>
+<li>幂等性：相同 URL 多次创建返回相同短链（通过 <code>u:{url}</code> 反向映射实现）。</li>
+<li><code>/s/:slug</code> 负责 302 重定向并自动统计访问次数。</li>
+<li>提供查询接口（<code>/api/resolve</code>）以获取原始 URL。</li>
+</ul>
+<h2 id="一键部署与手动部署"><a class="markdownIt-Anchor" href="#一键部署与手动部署"></a> 一键部署与手动部署</h2>
+
+<div class="callout" data-callout="note">
+<div class="callout-title">
+<div class="callout-title-icon">
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-pencil"><path d="M17 3a2.85 2.83 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5Z"/><path d="m15 5 4 4"/></svg>
+</div>
+<div class="callout-title-inner">提示</div>
+</div>
+<div class="callout-content"><p>目前 EdgeOne Pages KV 需要申请后才能用，所以请先前往官网申请KV使用权后再部署</p>
+</div></div><h3 id="一键部署"><a class="markdownIt-Anchor" href="#一键部署"></a> 一键部署</h3>
+<p>选择对应的站点进行部署：</p>
+<div style="display: flex; gap: 16px; align-items: center;">
+  <div class="site-link">
+    <span>中国站：</span>
+    <a href="https://console.cloud.tencent.com/edgeone/pages/new?repository-url=https://github.com/lm379/dwz" target="_blank" rel="noopener noreferrer">
+      <img src="https://cdnstatic.tencentcs.com/edgeone/pages/deploy.svg" alt="EdgeOne Pages 中国站" style="border: none; height: 20px;">
+    </a>
+  </div>
+  <div class="site-link">
+    <span>国际站：</span>
+    <a href="https://edgeone.ai/pages/new?repository-url=https://github.com/lm379/dwz" target="_blank" rel="noopener noreferrer">
+      <img src="https://cdnstatic.tencentcs.com/edgeone/pages/deploy.svg" alt="EdgeOne Pages 国际站" style="border: none; height: 20px;">
+    </a>
+  </div>
+</div>
+<h3 id="手动部署"><a class="markdownIt-Anchor" href="#手动部署"></a> 手动部署</h3>
+<ol>
+<li>在项目设置中创建一个 KV 命名空间，命名空间名字可以随便写</li>
+<li>Fork 仓库</li>
+<li>在 EdgeOne Pages 控制台中绑定该仓库作为项目</li>
+<li>按步骤完成构建设置并部署</li>
+<li>前往项目中绑定KV，KV变量名字设置为 <code>dwz_kv</code> 或自己在环境变量中配置的，其余环境变量按需设置<br />
+<img src="https://r2.lm379.cn/2025/12/e3f9dd512378ab7f94108477fabda6ed.png" alt="|L" /></li>
+<li>重新部署使上述配置生效</li>
+</ol>
+<h2 id="环境变量配置"><a class="markdownIt-Anchor" href="#环境变量配置"></a> 环境变量配置</h2>
+<table>
+<thead>
+<tr>
+<th>变量名</th>
+<th>说明</th>
+<th>必填</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>DWZ_KV_BINDING</code></td>
+<td>KV 命名空间绑定名（默认 <code>dwz_kv</code>）</td>
+<td>否</td>
+<td>如果你使用自定义绑定名，需要设置此项，建议保持默认即可</td>
+</tr>
+<tr>
+<td><code>API_TOKEN</code></td>
+<td>API 访问令牌</td>
+<td>否</td>
+<td>启用后，通过API创建短链时需在请求头中带 token ，WEB段不受影响</td>
+</tr>
+<tr>
+<td><code>PASSWORD</code></td>
+<td>密码</td>
+<td>否</td>
+<td>启用后，创建短链接会要求输入密码（需同时设置 <code>NEXT_PUBLIC_PASSWORD_REQUIRED</code>）</td>
+</tr>
+<tr>
+<td><code>NEXT_PUBLIC_PASSWORD_REQUIRED</code></td>
+<td>UI 是否显示密码框</td>
+<td>否</td>
+<td>设置为 <code>true</code> 时前端显示密码输入框（<strong>设置密码后此项必须</strong>）</td>
+</tr>
+<tr>
+<td><code>NEXT_PUBLIC_ANNOUNCEMENT</code></td>
+<td>页面右上角公告文本（支持 HTML标签）</td>
+<td>否</td>
+<td>如需使用HTML标签，云平台可能对特殊字符有限制，此时建议对全部内容进行URL编码，并使用 <code>NEXT_PUBLIC_ANNOUNCEMENT_ENCODED</code> 变量</td>
+</tr>
+<tr>
+<td><code>NEXT_PUBLIC_ANNOUNCEMENT_ENCODED</code></td>
+<td>URL 编码后的公告内容，优先使用该项</td>
+<td>否</td>
+<td>当云平台限制特殊字符时使用</td>
+</tr>
+<tr>
+<td><code>ICP</code></td>
+<td>备案号</td>
+<td>否</td>
+<td>-</td>
+</tr>
+</tbody>
+</table>
+<h3 id="关于公告的说明"><a class="markdownIt-Anchor" href="#关于公告的说明"></a> 关于公告的说明</h3>
+<p>EO的环境变量不允许空格、换行或特殊字符，这会导致包含 HTML 的 <code>NEXT_PUBLIC_ANNOUNCEMENT</code> 无法正常传入。此时使用工具将全部内容进行URL编码后再填入环境变量 <code>NEXT_PUBLIC_ANNOUNCEMENT_ENCODED</code> 即可</p>
+<p>可以使用一些在线工具生成，比如 <a target="_blank" rel="noopener" href="https://www.iamwawa.cn/urldecode.html">在线URL解码编码工具_蛙蛙工具</a></p>
+<h2 id="api-快速示例"><a class="markdownIt-Anchor" href="#api-快速示例"></a> API 快速示例</h2>
+<h3 id="创建短链-post-apishorten"><a class="markdownIt-Anchor" href="#创建短链-post-apishorten"></a> 创建短链 - POST /api/shorten</h3>
+<p>请求示例（curl）：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">curl -X POST <span class="string">&quot;https://your.domain.com/api/shorten&quot;</span> \</span><br><span class="line">  -H <span class="string">&quot;Content-Type: application/json&quot;</span> \</span><br><span class="line">  -d <span class="string">&#x27;&#123;&quot;url&quot;:&quot;https://example.com/very/long/url&quot;,&quot;slug&quot;:&quot;my-link&quot;&#125;&#x27;</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>注: 如设置了API_Token，创建时需要在请求头中携带 <code>Authorization: Bearer {API_TOKEN}</code> 或者  <code>X-API-Token: {API_TOKEN}</code><br />
+不携带则会直接返回401</p>
+</blockquote>
+<p>响应示例：</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">  <span class="attr">&quot;slug&quot;</span><span class="punctuation">:</span> <span class="string">&quot;my-link&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;url&quot;</span><span class="punctuation">:</span> <span class="string">&quot;https://example.com/very/long/url&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;shortUrl&quot;</span><span class="punctuation">:</span> <span class="string">&quot;https://your.domain.com/s/my-link&quot;</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
+<h3 id="解析短链-get-apiresolveslugabc123"><a class="markdownIt-Anchor" href="#解析短链-get-apiresolveslugabc123"></a> 解析短链 - GET /api/resolve?slug=abc123</h3>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl <span class="string">&quot;https://your.domain.com/api/resolve?slug=abc123&quot;</span></span><br></pre></td></tr></table></figure>
+<p>响应示例：</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">  <span class="attr">&quot;slug&quot;</span><span class="punctuation">:</span> <span class="string">&quot;abc123&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;url&quot;</span><span class="punctuation">:</span> <span class="string">&quot;https://example.com/original/url&quot;</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
+<h3 id="短链跳转"><a class="markdownIt-Anchor" href="#短链跳转"></a> 短链跳转</h3>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">GET /s/:slug 会触发 302 重定向至原始 URL，并自动增加访问计数</span><br></pre></td></tr></table></figure>
+<h2 id="本地开发"><a class="markdownIt-Anchor" href="#本地开发"></a> 本地开发</h2>
+<ol>
+<li>安装 EdgeOne CLI</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install -g edgeone</span><br></pre></td></tr></table></figure>
+<ol start="2">
+<li>绑定项目</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">edgeone pages <span class="built_in">link</span></span><br></pre></td></tr></table></figure>
+<ol start="3">
+<li>绑定 KV 命名空间后，启动本地开发服务器</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">edgeone pages dev</span><br></pre></td></tr></table></figure>
+<p>访问 <code>http://localhost:8088</code> 即可查看并调试应用。</p>
+<h2 id="安全与权限建议"><a class="markdownIt-Anchor" href="#安全与权限建议"></a> 安全与权限建议</h2>
+<ul>
+<li>若对接口滥用有所顾虑，请启用 <code>API_TOKEN</code> 保护 <code>/api/shorten</code> 接口（客户端同源请求可仍可用）。</li>
+<li>如需更严格控制，可启用 <code>PASSWORD</code> 保护，在 UI 中要求用户输入密码创建短链。</li>
+</ul>
+<h2 id="结语"><a class="markdownIt-Anchor" href="#结语"></a> 结语</h2>
+<p>如果你需要一个简单、可扩展、低成本的短网址方案，基于 EdgeOne Pages + KV 的方法值得一试。项目代码已开源（<a target="_blank" rel="noopener" href="https://github.com/lm379/dwz%EF%BC%89%EF%BC%8C%E6%AC%A2%E8%BF%8E">https://github.com/lm379/dwz），欢迎</a> Fork、PR、Issue 与 Star！</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="reward-container">
+  <div>打赏</div>
+  <button>
+    赞赏
+  </button>
+  <div class="post-reward">
+      <div>
+        <img src="https://r2.lm379.cn/2024/04/f597f96be857f5d530a787c8b81731da.jpg" alt="lm379 支付宝">
+        <span>支付宝</span>
+      </div>
+
+  </div>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/%E7%9F%AD%E7%BD%91%E5%9D%80/" rel="tag"><i class="fa fa-tag"></i> 短网址</a>
+              <a href="/tags/EdgeOne/" rel="tag"><i class="fa fa-tag"></i> EdgeOne</a>
+              <a href="/tags/%E5%BC%80%E6%BA%90%E9%A1%B9%E7%9B%AE/" rel="tag"><i class="fa fa-tag"></i> 开源项目</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2025/09/19/%E5%90%8C%E4%B8%80%E5%9F%9F%E5%90%8D%EF%BC%8C%E5%86%85%E5%A4%96%E9%80%9A%E8%BE%BE%EF%BC%9A%E8%AF%A6%E8%A7%A3%E5%B1%80%E5%9F%9F%E7%BD%91%E4%B8%8E%E5%85%AC%E7%BD%91%E7%9A%84%E5%88%86%E6%B5%81%E8%A7%A3%E6%9E%90%E2%80%8B/" rel="prev" title="同一域名，内外通达：详解局域网与公网的分流解析​">
+                  <i class="fa fa-chevron-left"></i> 同一域名，内外通达：详解局域网与公网的分流解析​
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    
+  
+  <div class="comments giscus-container">
+  </div>
+  
+  
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="beian"><a href="https://beian.miit.gov.cn/" rel="noopener" target="_blank">蜀ICP备2022016740号-1 </a>
+  </div>
+
+<div class="copyright">
+  &copy; 2022 – 
+  <span itemprop="copyrightYear">2025</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">lm379. All Rights Reserved.</span>
+</div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://mirrors.sustech.edu.cn/cdnjs/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="https://mirrors.sustech.edu.cn/cdnjs/ajax/libs/hexo-theme-next/8.12.2/comments.min.js"></script><script src="https://mirrors.sustech.edu.cn/cdnjs/ajax/libs/hexo-theme-next/8.12.2/utils.min.js"></script><script src="https://mirrors.sustech.edu.cn/cdnjs/ajax/libs/hexo-theme-next/8.12.2/motion.min.js"></script><script src="https://mirrors.sustech.edu.cn/cdnjs/ajax/libs/hexo-theme-next/8.12.2/schemes/muse.min.js"></script><script src="https://mirrors.sustech.edu.cn/cdnjs/ajax/libs/hexo-theme-next/8.12.2/next-boot.min.js"></script>
+
+  
+<script src="https://mirrors.sustech.edu.cn/cdnjs/ajax/libs/hexo-generator-searchdb/1.4.0/search.js" integrity="sha256-vXZMYLEqsROAXkEw93GGIvaB2ab+QW6w3+1ahD9nXXA=" crossorigin="anonymous"></script>
+<script src="https://mirrors.sustech.edu.cn/cdnjs/ajax/libs/hexo-theme-next/8.12.2/third-party/search/local-search.min.js"></script>
+
+
+
+
+  <script src="https://mirrors.sustech.edu.cn/cdnjs/ajax/libs/hexo-theme-next/8.12.2/third-party/pace.min.js"></script>
+
+  
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">true</script><link rel="stylesheet" href="https://mirrors.sustech.edu.cn/cdnjs/ajax/libs/KaTeX/0.16.0/katex.min.css" integrity="sha256-uik/hNqHWZldXh/0K35nqOSCff9F61/ZOFReqNOBgB0=" crossorigin="anonymous">
+  <script class="next-config" data-name="katex" type="application/json">{"copy_tex_js":{"url":"https://mirrors.sustech.edu.cn/cdnjs/ajax/libs/KaTeX/0.16.0/contrib/copy-tex.min.js","integrity":"sha256-Us54+rSGDSTvIhKKUs4kygE2ipA0RXpWWh0/zLqw3bs="}}</script>
+  <script src="https://mirrors.sustech.edu.cn/cdnjs/ajax/libs/hexo-theme-next/8.12.2/third-party/math/katex.min.js"></script>
+
+
+<script class="next-config" data-name="giscus" type="application/json">{"enable":true,"repo":"lm379/lm379.github.io","repo_id":"R_kgDOHoD2KA","category":"Announcements","category_id":"DIC_kwDOHoD2KM4CgEIm","mapping":"title","strict":0,"reactions_enabled":1,"emit_metadata":0,"theme":"light_tritanopia","lang":"zh-CN","crossorigin":"anonymous","input_position":"top","loading":"lazy"}</script>
+
+<script>
+document.addEventListener('page:loaded', () => {
+  if (!CONFIG.page.comments) return;
+
+  NexT.utils.loadComments('.giscus-container')
+    .then(() => NexT.utils.getScript('https://giscus.app/client.js', {
+      attributes: {
+        async                   : true,
+        crossOrigin             : 'anonymous',
+        'data-repo'             : CONFIG.giscus.repo,
+        'data-repo-id'          : CONFIG.giscus.repo_id,
+        'data-category'         : CONFIG.giscus.category,
+        'data-category-id'      : CONFIG.giscus.category_id,
+        'data-mapping'          : CONFIG.giscus.mapping,
+        'data-strict'           : CONFIG.giscus.strict,
+        'data-reactions-enabled': CONFIG.giscus.reactions_enabled,
+        'data-emit-metadata'    : CONFIG.giscus.emit_metadata,
+        'data-theme'            : CONFIG.giscus.theme,
+        'data-lang'             : CONFIG.giscus.lang,
+        'data-input-position'   : CONFIG.giscus.input_position,
+        'data-loading'          : CONFIG.giscus.loading
+      },
+      parentNode: document.querySelector('.giscus-container')
+    }));
+});
+</script>
+
+
+  <link rel="stylesheet" href="/dist/APlayer.min.css">
+  <div id="aplayer"></div>
+  <script type="text/javascript" src="/dist/APlayer.min.js"></script>
+  <script type="text/javascript" src="/dist/music.js"></script>  
+
+  <script type="text/javascript" src="\js\FunnyTitle.js"></script>
+
+</body>
+</html>
