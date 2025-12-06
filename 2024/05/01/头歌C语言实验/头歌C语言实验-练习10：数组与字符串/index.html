@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width">
-<meta name="theme-color" content="#000"><meta name="generator" content="Hexo 8.0.0">
+<meta name="theme-color" content="#000"><meta name="generator" content="Hexo 8.1.1">
 
 
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
@@ -25,22 +25,22 @@
     <meta name="description" content="Educoder C语言程序设计实验题">
 <meta property="og:type" content="article">
 <meta property="og:title" content="头歌C语言实验 练习10：数组与字符串">
-<meta property="og:url" content="https://lm379.cn/2024/05/02/%E5%A4%B4%E6%AD%8CC%E8%AF%AD%E8%A8%80%E5%AE%9E%E9%AA%8C/%E5%A4%B4%E6%AD%8CC%E8%AF%AD%E8%A8%80%E5%AE%9E%E9%AA%8C-%E7%BB%83%E4%B9%A010%EF%BC%9A%E6%95%B0%E7%BB%84%E4%B8%8E%E5%AD%97%E7%AC%A6%E4%B8%B2/index.html">
+<meta property="og:url" content="https://lm379.cn/2024/05/01/%E5%A4%B4%E6%AD%8CC%E8%AF%AD%E8%A8%80%E5%AE%9E%E9%AA%8C/%E5%A4%B4%E6%AD%8CC%E8%AF%AD%E8%A8%80%E5%AE%9E%E9%AA%8C-%E7%BB%83%E4%B9%A010%EF%BC%9A%E6%95%B0%E7%BB%84%E4%B8%8E%E5%AD%97%E7%AC%A6%E4%B8%B2/index.html">
 <meta property="og:site_name" content="lm379のBlog">
 <meta property="og:description" content="Educoder C语言程序设计实验题">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2024-05-01T16:00:29.000Z">
-<meta property="article:modified_time" content="2024-09-09T12:17:03.000Z">
+<meta property="article:modified_time" content="2025-12-06T09:00:52.432Z">
 <meta property="article:author" content="lm379">
 <meta property="article:tag" content="Educoder">
 <meta name="twitter:card" content="summary">
 
 
-<link rel="canonical" href="https://lm379.cn/2024/05/02/%E5%A4%B4%E6%AD%8CC%E8%AF%AD%E8%A8%80%E5%AE%9E%E9%AA%8C/%E5%A4%B4%E6%AD%8CC%E8%AF%AD%E8%A8%80%E5%AE%9E%E9%AA%8C-%E7%BB%83%E4%B9%A010%EF%BC%9A%E6%95%B0%E7%BB%84%E4%B8%8E%E5%AD%97%E7%AC%A6%E4%B8%B2/">
+<link rel="canonical" href="https://lm379.cn/2024/05/01/%E5%A4%B4%E6%AD%8CC%E8%AF%AD%E8%A8%80%E5%AE%9E%E9%AA%8C/%E5%A4%B4%E6%AD%8CC%E8%AF%AD%E8%A8%80%E5%AE%9E%E9%AA%8C-%E7%BB%83%E4%B9%A010%EF%BC%9A%E6%95%B0%E7%BB%84%E4%B8%8E%E5%AD%97%E7%AC%A6%E4%B8%B2/">
 
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://lm379.cn/2024/05/02/%E5%A4%B4%E6%AD%8CC%E8%AF%AD%E8%A8%80%E5%AE%9E%E9%AA%8C/%E5%A4%B4%E6%AD%8CC%E8%AF%AD%E8%A8%80%E5%AE%9E%E9%AA%8C-%E7%BB%83%E4%B9%A010%EF%BC%9A%E6%95%B0%E7%BB%84%E4%B8%8E%E5%AD%97%E7%AC%A6%E4%B8%B2/","path":"2024/05/02/头歌C语言实验/头歌C语言实验-练习10：数组与字符串/","title":"头歌C语言实验 练习10：数组与字符串"}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://lm379.cn/2024/05/01/%E5%A4%B4%E6%AD%8CC%E8%AF%AD%E8%A8%80%E5%AE%9E%E9%AA%8C/%E5%A4%B4%E6%AD%8CC%E8%AF%AD%E8%A8%80%E5%AE%9E%E9%AA%8C-%E7%BB%83%E4%B9%A010%EF%BC%9A%E6%95%B0%E7%BB%84%E4%B8%8E%E5%AD%97%E7%AC%A6%E4%B8%B2/","path":"2024/05/01/头歌C语言实验/头歌C语言实验-练习10：数组与字符串/","title":"头歌C语言实验 练习10：数组与字符串"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
 <title>头歌C语言实验 练习10：数组与字符串 | lm379のBlog</title>
@@ -245,7 +245,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://lm379.cn/2024/05/02/%E5%A4%B4%E6%AD%8CC%E8%AF%AD%E8%A8%80%E5%AE%9E%E9%AA%8C/%E5%A4%B4%E6%AD%8CC%E8%AF%AD%E8%A8%80%E5%AE%9E%E9%AA%8C-%E7%BB%83%E4%B9%A010%EF%BC%9A%E6%95%B0%E7%BB%84%E4%B8%8E%E5%AD%97%E7%AC%A6%E4%B8%B2/">
+    <link itemprop="mainEntityOfPage" href="https://lm379.cn/2024/05/01/%E5%A4%B4%E6%AD%8CC%E8%AF%AD%E8%A8%80%E5%AE%9E%E9%AA%8C/%E5%A4%B4%E6%AD%8CC%E8%AF%AD%E8%A8%80%E5%AE%9E%E9%AA%8C-%E7%BB%83%E4%B9%A010%EF%BC%9A%E6%95%B0%E7%BB%84%E4%B8%8E%E5%AD%97%E7%AC%A6%E4%B8%B2/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="https://r2.lm379.cn/2024/05/4e267962f6254f01166242c803cd488f.jpg">
@@ -281,7 +281,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-09-09 20:17:03" itemprop="dateModified" datetime="2024-09-09T20:17:03+08:00">2024-09-09</time>
+      <time title="修改时间：2025-12-06 17:00:52" itemprop="dateModified" datetime="2025-12-06T17:00:52+08:00">2025-12-06</time>
     </span>
 
   
@@ -420,12 +420,12 @@ n行，每行对应一个输入。要求每个浮点数的小数点在同一列�
 
           <div class="post-nav">
             <div class="post-nav-item">
-                <a href="/2024/05/02/%E5%A4%B4%E6%AD%8CC%E8%AF%AD%E8%A8%80%E5%AE%9E%E9%AA%8C/%E5%A4%B4%E6%AD%8CC%E8%AF%AD%E8%A8%80%E5%AE%9E%E9%AA%8C-%E8%BE%85%E5%8A%A9%E7%BB%83%E4%B9%A010%EF%BC%9A%E4%BD%BF%E7%94%A8%E5%AD%97%E7%AC%A6%E4%B8%B2/" rel="prev" title="头歌C语言实验 辅助练习10：使用字符串">
+                <a href="/2024/05/01/%E5%A4%B4%E6%AD%8CC%E8%AF%AD%E8%A8%80%E5%AE%9E%E9%AA%8C/%E5%A4%B4%E6%AD%8CC%E8%AF%AD%E8%A8%80%E5%AE%9E%E9%AA%8C-%E8%BE%85%E5%8A%A9%E7%BB%83%E4%B9%A010%EF%BC%9A%E4%BD%BF%E7%94%A8%E5%AD%97%E7%AC%A6%E4%B8%B2/" rel="prev" title="头歌C语言实验 辅助练习10：使用字符串">
                   <i class="fa fa-chevron-left"></i> 头歌C语言实验 辅助练习10：使用字符串
                 </a>
             </div>
             <div class="post-nav-item">
-                <a href="/2024/05/02/%E5%A4%B4%E6%AD%8CC%E8%AF%AD%E8%A8%80%E5%AE%9E%E9%AA%8C/%E5%A4%B4%E6%AD%8CC%E8%AF%AD%E8%A8%80%E5%AE%9E%E9%AA%8C-%E8%BE%85%E5%8A%A9%E7%BB%83%E4%B9%A08%EF%BC%9A%E8%87%AA%E5%AE%9A%E4%B9%89%E5%87%BD%E6%95%B0/" rel="next" title="头歌C语言实验 辅助练习8：自定义函数">
+                <a href="/2024/05/01/%E5%A4%B4%E6%AD%8CC%E8%AF%AD%E8%A8%80%E5%AE%9E%E9%AA%8C/%E5%A4%B4%E6%AD%8CC%E8%AF%AD%E8%A8%80%E5%AE%9E%E9%AA%8C-%E8%BE%85%E5%8A%A9%E7%BB%83%E4%B9%A08%EF%BC%9A%E8%87%AA%E5%AE%9A%E4%B9%89%E5%87%BD%E6%95%B0/" rel="next" title="头歌C语言实验 辅助练习8：自定义函数">
                   头歌C语言实验 辅助练习8：自定义函数 <i class="fa fa-chevron-right"></i>
                 </a>
             </div>
