@@ -1,5 +1,10 @@
-Disallow:/js
-Disallow:/css
-Disallow:/dist
+User-agent: Mediapartners-Google
+Allow: /
+
 User-agent: *
-Disallow:
+Allow: /
+Disallow: /lib/
+Disallow: /vendors/
+Disallow: /dist/
+
+Sitemap: https://lm379.cn/sitemap.xml
