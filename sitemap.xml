@@ -556,14 +556,14 @@
   </url>
   
   <url>
-    <loc>https://lm379.cn/tags/%E7%BE%8E%E5%8C%96/</loc>
+    <loc>https://lm379.cn/tags/Hexo/</loc>
     <lastmod>2026-05-14</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://lm379.cn/tags/Hexo/</loc>
+    <loc>https://lm379.cn/tags/%E7%BE%8E%E5%8C%96/</loc>
     <lastmod>2026-05-14</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -578,20 +578,6 @@
   
   <url>
     <loc>https://lm379.cn/tags/%E7%BC%96%E8%AF%91/</loc>
-    <lastmod>2026-05-14</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://lm379.cn/tags/API/</loc>
-    <lastmod>2026-05-14</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://lm379.cn/tags/hexo/</loc>
     <lastmod>2026-05-14</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -613,6 +599,20 @@
   
   <url>
     <loc>https://lm379.cn/tags/waf/</loc>
+    <lastmod>2026-05-14</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://lm379.cn/tags/API/</loc>
+    <lastmod>2026-05-14</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://lm379.cn/tags/hexo/</loc>
     <lastmod>2026-05-14</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
